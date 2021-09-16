@@ -2,6 +2,7 @@
 env/env
 static/
 migrations/
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

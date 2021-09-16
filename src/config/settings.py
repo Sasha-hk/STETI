@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'about',
     'study',
     'main',
-    'NA',
+    'NAE',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

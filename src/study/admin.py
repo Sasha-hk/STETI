@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Department, ToStudent, ToEntrant
 
-# Register your models here.
+admin.site.register(Department)
+admin.site.register(ToStudent)
+admin.site.register(ToEntrant)

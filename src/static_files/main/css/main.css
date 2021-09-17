@@ -1,25 +1,7 @@
-/* header */
-.header {
-    display: flex;
-    justify-content: space-between;
+.calendar-icon {
+    fill: var(--color-text);
 }
-
-.left-side {
-
-}
-.right-side {
-
-}
-
-/* event */
-.events {
-    max-width: 535px;
-    margin-top: 70px;
-}
-.events h3 {
-    margin-bottom: 20px;
-}
-.event-item {
+.panel {
     display: flex;
     justify-content: space-between;
 
@@ -29,6 +11,40 @@
     padding: 30px;
     width: 100%; 
 }
+.panel a,
+.panel svg {
+    color: var(--color-text);
+    fill: var(--color-text);
+}
+
+.card {
+    background: var(--bg-light-block);
+    box-shadow: var(--main-shadow);
+    border-radius: var(--br-big);
+    padding: 60px 60px 65px 60px;
+}
+
+.fff {
+    height: 1000px;
+}
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.left-side {
+    width: 50%;
+}
+.right-side {
+    width: 50%;
+}
+
+/* event */
+.events {
+    max-width: 535px;
+    margin-top: 70px;
+} 
+  
 .event-item {
     margin-bottom: 30px;
 }
@@ -42,4 +58,77 @@
     display: flex;
     justify-content: center;
     width: 100%; 
+}
+
+/* board */
+.board {
+    padding: 50px;
+    margin-top: 10vh;
+
+    width: 650px;
+    height: 800px; 
+
+    background: var(--bg-light-block); 
+
+    box-shadow: var(--main-shadow);
+    border-radius: var(--br);
+}
+.board-news {
+    margin-bottom: 50px;
+}
+.board-news,
+.board-advertisement {
+    min-height: 40%;
+} 
+
+.news-item,
+.advertisement-item,
+.board-learn-more {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+} 
+.news-item:not(:last-child), 
+.advertisement-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+.news-item a,
+.advertisement-item a {
+    color: var(--color-text); 
+}
+.news-item svg,
+.advertisement-item svg {
+    fill: var(--color-text);
+}
+
+/* for student */ 
+.for-student {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+
+/* department */
+.departments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+}
+
+/* our-goal-and-mission */
+.our-goal-and-mission {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.our-gm-description {
+    padding-right: 50px;
+    width: 50%;
+}
+.our-goal-and-mission img {
+    border-radius: var(--br-big);
+    box-shadow: var(--main-shadow);
+    width: 50%;
 }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- statics -->
+    <link rel="stylesheet" href="{% static 'basis/css/basis.css' %}">
+    {% block static %}{% endblock %}
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>{% block title %}STETI{% endblock %}</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="separator centralize">
+            <div class="navigation">
+                <span class="logo">STETI</span>
+
+                <nav>
+                    <!-- <div class="navigation-part">
+                        {% url 'home' as url_home %}
+                        <a href="{% url 'home' %}" class="navigation-item {% if request.path == url_home %}state-active{% endif %}">Головна</a>
+                    </div>
+                    <div class="navigation-part">
+                        <a href="" class="navigation-item state-inactive">Новини та оголошення</a>
+                    </div> -->
+                    <!-- <div class="navigation-part">
+                        <a href="" class="navigation-item state-inactive">Про заклад</a>
+                        <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z" fill="#BEBEBE"/>
+                        </svg>
+                            
+                        <div class="nav-expanded">
+                            Some else
+                        </div>
+                    </div> -->
+
+                    <div class="nav-item">
+                        {% url 'home' as url_home %}
+                        <a href="{% url 'home' %}" class="nav-link {% if request.path == url_home %}nav-link-active{% endif %}">Головна</a>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="" class="nav-link nav-link-inactive">Новиши та оголошення</a>
+                    </div>
+
+                    <div class="nav-item multi-nav">
+                        <div class="link-view-unit">
+                            <a href="" class="nav-link nav-link-inactive">Про заклад</a>
+                            <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z" fill="#BEBEBE"/>
+                            </svg>
+                        </div>
+
+                        <div class="nav-expanded multi-nav-part">
+                            <a href="" class="nav-link nav-link-inactive">Галерея</a>
+                        </div>
+                        <div class="nav-expanded multi-nav-part">
+                            <a href="" class="nav-link nav-link-inactive">Контакти</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item multi-nav">
+                        <div class="link-view-unit">
+                            <a href="" class="nav-link nav-link-inactive">Навчання</a>
+                            <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z" fill="#BEBEBE"/>
+                            </svg>
+                        </div>
+
+                        <div class="nav-expanded multi-nav-part">
+                            <a href="" class="nav-link nav-link-inactive">Бабліотека</a>
+                        </div>
+                        <div class="nav-expanded multi-nav-part">
+                            <a href="" class="nav-link nav-link-inactive">Абітурієнту</a>
+                        </div>
+                        <div class="nav-expanded multi-nav-part">
+                            <a href="" class="nav-link nav-link-inactive">ЗНО</a>
+                        </div>
+                    </div>
+
+                </nav>
+
+                <!-- <div class="burger">
+
+                </div> -->
+            </div>
+
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer>
+            footer
+        </footer>
+    </div>
+
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

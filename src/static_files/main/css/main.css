@@ -1,0 +1,45 @@
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side {
+
+}
+.right-side {
+
+}
+
+/* event */
+.events {
+    max-width: 535px;
+    margin-top: 70px;
+}
+.events h3 {
+    margin-bottom: 20px;
+}
+.event-item {
+    display: flex;
+    justify-content: space-between;
+
+    background: var(--bg-light-block);
+    box-shadow: var(--main-shadow);
+    border-radius: var(--br);
+    padding: 30px;
+    width: 100%; 
+}
+.event-item {
+    margin-bottom: 30px;
+}
+.date-of-event {
+    display: flex;
+}
+.date-of-event p {
+    margin-right: 10px;
+}
+.event-arrow {
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+}

@@ -16,6 +16,13 @@
     color: var(--color-text);
     fill: var(--color-text);
 }
+.panel-date-of {
+    display: flex;
+    background: url(../img/icon-calendar.svg) 99% 0 no-repeat;  
+    padding-right: 30px;
+    text-overflow: ellipsis;
+} 
+
 
 .card {
     background: var(--bg-light-block);
@@ -47,12 +54,6 @@
   
 .event-item {
     margin-bottom: 30px;
-}
-.date-of-event {
-    display: flex;
-}
-.date-of-event p {
-    margin-right: 10px;
 }
 .event-arrow {
     display: flex;
@@ -131,4 +132,54 @@
     border-radius: var(--br-big);
     box-shadow: var(--main-shadow);
     width: 50%;
+}
+
+/* steps to success */
+.steps-wrapper {
+    display: flex;
+}
+.steps-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 50px;
+}
+.steps-description svg {
+    margin: 30px auto;
+}
+.steps-to-success {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+    width: min-content;
+}
+.steps-to-success div { 
+    position: relative;
+    background: #3F3D56;
+    
+    padding: 40px;
+    border-radius: var(--br-big);
+    
+    width: 45vh;
+    height: 45vh;
+}
+.steps-to-success h3 {
+    position: relative; 
+    color: #FF6584;
+    z-index: 1;
+}
+.steps-to-success p {
+    position: relative;
+    color: #fff;
+    z-index: 1;
+}
+.number-of-step { 
+    position: absolute;
+    bottom: 0px;
+    right: 30px;
+    font-size: 200px;
+    font-weight: 600;
+    color: #39374A;
+    z-index: 0;
 }

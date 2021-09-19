@@ -8,7 +8,7 @@ class Home(View):
         context = {
             'news': News.objects.order_by('-id')[:5],
             'advertisement': Advertisement.objects.order_by('-id')[:5],
-            'event': Event.objects.order_by('-id')[:5],
+            'event': Event.objects.order_by('-id')[:3],
             'to_student': ToStudent.objects.order_by('-id')[:3], 
             'departments': Department.objects.order_by('-id')[:4], 
           

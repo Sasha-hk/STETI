@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- statics -->
-    <link rel="stylesheet" href="{% static 'basis/css/basis.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     {% block static %}{% endblock %}
 
     <!-- fonts -->
@@ -21,16 +21,17 @@
     <!-- the wrapper to separate content from footer -->
     <div class="wrapper"> 
         <!-- navigation -->
-        {% include 'basis/conponents/navigation.html' %}
+        {% include 'base/conponents/navigation.html' %}
 
         <!-- content -->
         {% block content %}{% endblock %} 
 
         <!-- footer -->
-        {% include 'basis/conponents/footer.html' %}
+        {% include 'base/conponents/footer.html' %}
     </div>
 
     <!-- javascript -->
+    <script src="{% static '/base/js/base.js' %}"></script>
     {% block scripts %}{% endblock %}
 
 </body>

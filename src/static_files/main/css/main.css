@@ -1,58 +1,19 @@
-.calendar-icon {
-    fill: var(--color-text);
-}
-.panel {
-    display: flex;
-    justify-content: space-between;
-
-    background: var(--bg-light-block);
-    box-shadow: var(--main-shadow);
-    border-radius: var(--br);
-    padding: 30px;
-    width: 100%; 
-}
-.panel a,
-.panel svg {
-    color: var(--color-text);
-    fill: var(--color-text);
-}
-.panel-date-of {
-    display: flex;
-    background: url(../img/icon-calendar.svg) 99% 0 no-repeat;  
-    padding-right: 30px;
-    text-overflow: ellipsis;
-} 
-
-
-.card {
-    background: var(--bg-light-block);
-    box-shadow: var(--main-shadow);
-    border-radius: var(--br-big);
-    padding: 60px 60px 65px 60px;
-}
-
 .fff {
     height: 1000px;
 }
-/* header */
-.header {
-    display: flex;
-    justify-content: space-between;
-}
+/* header */ 
 .left-side {
-    width: 50%;
-}
+    width: 100%;
+} 
 .right-side {
-    width: 50%;
+    width: 100%;
 }
 
 /* event */
 .events {
-    max-width: 535px;
-    margin-top: 70px;
-} 
-  
-.event-item {
+    width: 100%; 
+}  
+.events .panel {
     margin-bottom: 30px;
 }
 .event-arrow {
@@ -60,26 +21,21 @@
     justify-content: center;
     width: 100%; 
 }
-
+ 
 /* board */
 .board {
-    padding: 50px;
-    margin-top: 10vh;
+    padding: var(--m-block-paddings-big);
+    margin-top: 70px;
 
-    width: 650px;
-    height: 800px; 
+    width: 100%; 
 
     background: var(--bg-light-block); 
 
     box-shadow: var(--main-shadow);
-    border-radius: var(--br);
+    border-radius: var(--br-dynamic);
 }
 .board-news {
     margin-bottom: 50px;
-}
-.board-news,
-.board-advertisement {
-    min-height: 40%;
 } 
 
 .news-item,
@@ -96,16 +52,12 @@
 .news-item a,
 .advertisement-item a {
     color: var(--color-text); 
-}
-.news-item svg,
-.advertisement-item svg {
-    fill: var(--color-text);
-}
+} 
 
 /* for student */ 
 .for-student {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-column-gap: 30px;
     grid-row-gap: 30px;
 }
@@ -113,56 +65,43 @@
 /* department */
 .departments {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 40px;
-    grid-row-gap: 40px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
 }
 
-/* our-goal-and-mission */
-.our-goal-and-mission {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* our-goal-and-mission */ 
 .our-gm-description {
-    padding-right: 50px;
-    width: 50%;
+    margin-bottom: 50px; 
 }
 .our-goal-and-mission img {
-    border-radius: var(--br-big);
+    border-radius: var(--br-dynamic-big);
     box-shadow: var(--main-shadow);
-    width: 50%;
+    width: 100%;
 }
 
-/* steps to success */
-.steps-wrapper {
-    display: flex;
-}
-.steps-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 50px;
+/* steps to success */ 
+.steps-description { 
+    padding-bottom: 30px;
 }
 .steps-description svg {
     margin: 30px auto;
+    display: none;
 }
 .steps-to-success {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 40px;
-    grid-row-gap: 40px;
-    width: min-content;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px; 
 }
 .steps-to-success div { 
     position: relative;
     background: #3F3D56;
     
-    padding: 40px;
-    border-radius: var(--br-big);
+    padding: var(--m-block-paddings-big);
+    border-radius: var(--br-dynamic-big);
     
-    width: 45vh;
-    height: 45vh;
+    width: 100%; 
 }
 .steps-to-success h3 {
     position: relative; 
@@ -178,8 +117,46 @@
     position: absolute;
     bottom: 0px;
     right: 30px;
-    font-size: 200px;
+    font-size: 150px;
     font-weight: 600;
     color: #39374A;
     z-index: 0;
+}
+
+@media screen and (min-width: 550px) {
+    
+}
+
+@media screen and (min-width: 720px) {
+
+}
+
+@media screen and (min-width: 960px) {
+    /* header */ 
+    .left-side {
+        display: flex;
+        justify-content: space-between;
+    }   
+    .left-side h1 {
+        width: 30%;
+    }
+    .events {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 65%;
+    }
+    
+    /* board */
+    .board {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 1140px) {
+    
+}
+
+@media screen and (min-width: 1320px) {
+    
 }

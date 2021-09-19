@@ -3,6 +3,7 @@ env/env
 static/
 migrations/
 media/
+hide.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,4 +1,4 @@
-{% extends 'basis/basis.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 
 <!-- static files -->
@@ -6,25 +6,26 @@
 
 
 <!-- document title -->
-{% block title %}{% endblock %}
+{% block title %}STETI{% endblock %}
 
-<!-- basis content -->
+<!-- base content -->
 {% block content %}
         <div class="centralize">
             <!-- header -->
             <section class="container fix-navigation header">
                 <div class="left-side">
-                    <h1>Sambir College of<br> Economics and<br> Information<br> Technology</h1>
+                    <h1 class="mobile-space">Sambir College of Economics and Information Technology</h1>
                     <div class="events">
-                        <h3>Події</h3>
+                        <h3 class="mobile-space">Події</h3>
 
                         {% for event_item in event %}
-                        <div class="panel event-item"> 
+                        <div class="panel"> 
                             <a href="">{{ event_item.title }}</a>
-
+                             
                             <div class="panel-date-of">
                                 <p>{{ event_item.event_date | date:'d M. Y' }}</p>
-                            </div>
+                                <img src="{% static 'main/img/icon-calendar.svg' %}" alt="">
+                            </div> 
                         </div>
                         {% endfor %}
                         
@@ -41,11 +42,7 @@
                             {% for news_item in news %}
                             <div class="news-item"> 
                                 <a href="">{{ news_item.title }}</a>
-                                <svg width="36" height="10" viewBox="0 0 36 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="5" cy="5" r="5"/>
-                                    <circle cx="18" cy="5" r="5"/>
-                                    <circle cx="31" cy="5" r="5"/>
-                                </svg>
+                                <img src="{% static 'main/img/icon-three-dots.svg' %}" alt="">
                             </div>
                             {% endfor %}
                             
@@ -59,11 +56,7 @@
                             {% for advertisement_item in advertisement %}
                             <div class="advertisement-item"> 
                                 <a href="">{{ advertisement_item.title }}</a>
-                                <svg width="36" height="10" viewBox="0 0 36 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="5" cy="5" r="5"/>
-                                    <circle cx="18" cy="5" r="5"/>
-                                    <circle cx="31" cy="5" r="5"/>
-                                </svg>
+                                <img src="{% static 'main/img/icon-three-dots.svg' %}" alt="">
                             </div> 
                             {% endfor %}
 
@@ -78,7 +71,7 @@
 
             <!-- for student -->
             <section class="container">
-                <h2>Студенту</h2>
+                <h2 class="mobile-space">Студенту</h2>
                 
                 <div class="for-student"> 
                     {% for to_student_item in to_student %}
@@ -98,7 +91,7 @@
 
             <!-- departments -->
             <section class="container">
-                <h2>Кафедри</h2>
+                <h2 class="mobile-space">Кафедри</h2>
                 <div class="departments">
                     {% for department in departments %}
                     <div class="card">
@@ -112,8 +105,8 @@
             <!-- our goal and mission -->
             <section class="container our-goal-and-mission">
                 <div class="our-gm-description">
-                    <h2>Наша ціль та місія</h2>
-                    <p>У нас працюють педегоги які знають та любляьть свою справу, тому вони хочуть та прагнуть передати студентам свої знання, які пригодяться їм в майбутньому. Адміністрація також зацікавленя в ефективному та якісному навчанні студентівф, тому створює благо приємні умови для навчання. Ми розуміємо як складно студентам після звкінчення закдаду, найти роботу, тому всіма силами намагаємся допомогти кожному хто прикладає хочаб чуть чуть зусиль.</p>
+                    <h2 class="mobile-space">Наша ціль та місія</h2>
+                    <p class="mobile-space">У нас працюють педегоги які знають та любляьть свою справу, тому вони хочуть та прагнуть передати студентам свої знання, які пригодяться їм в майбутньому. Адміністрація також зацікавленя в ефективному та якісному навчанні студентівф, тому створює благо приємні умови для навчання. Ми розуміємо як складно студентам після звкінчення закдаду, найти роботу, тому всіма силами намагаємся допомогти кожному хто прикладає хочаб чуть чуть зусиль.</p>
                 </div>
                 <img src="{% static 'main/img/our-goal-and-mission.jpg' %}" alt="">
             </section> 
@@ -121,11 +114,12 @@
             <!-- steps to success -->
             <section class="container steps-wrapper">
                 <div class="steps-description">
-                    <h2>Кроки до успіху</h2>
-                    <p>Ходять чутки дехто пройшов цей шлях в порядку курсів як і на кроках описаних тут.</p>
+                    <h2 class="mobile-space">Кроки до успіху</h2>
+                    <p class="mobile-space">Ходять чутки дехто пройшов цей шлях в порядку курсів як і на кроках описаних тут.</p>
                     <svg width="210" height="303" viewBox="0 0 210 303" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.21298 3.1129C6.27533 1.7336 5.20773 0.564903 3.82843 0.502551C2.44912 0.440198 1.28043 1.5078 1.21808 2.8871L6.21298 3.1129ZM209.453 268.906C209.72 267.552 208.838 266.237 207.484 265.97L185.408 261.618C184.054 261.351 182.739 262.233 182.472 263.587C182.205 264.942 183.087 266.257 184.441 266.524L204.064 270.392L200.195 290.014C199.928 291.369 200.81 292.684 202.165 292.951C203.519 293.218 204.834 292.336 205.101 290.981L209.453 268.906ZM1.21808 2.8871C-1.90849 72.0502 4.48537 168.676 34.1407 233.214C48.977 265.501 69.8463 290.205 98.699 299.015C127.587 307.836 163.681 300.485 208.392 270.499L205.608 266.346C161.513 295.919 127.013 302.433 100.159 294.233C73.2696 286.022 53.2478 262.821 38.684 231.126C9.5391 167.699 3.09635 72.0559 6.21298 3.1129L1.21808 2.8871Z" fill="black"/>
-                    </svg>
+                    </svg> 
+                        
                 </div>
                 <div class="steps-to-success">
                     <div class="step-one">
@@ -149,9 +143,11 @@
                         <span class="number-of-step">4</span>
                     </div>
                 </div>
-            </section>
+            </section> 
         </div>
 {% endblock %}
 
 <!-- javascript -->
-{% block scripts %}{% endblock %}
+{% block scripts %}
+        <script src="{% static 'main/js/main.js' %}"></script>
+{% endblock %}

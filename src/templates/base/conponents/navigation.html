@@ -1,0 +1,47 @@
+<div class="navigation">
+    <span class="logo"><a href="{% url 'home' %}">STETI</a></span>
+    
+    <nav>
+        <div class="nav-item">{% url 'home' as url_home %}
+            <a href="{% url 'home' %}" class="nav-link {% if request.path == url_home %}nav-link-active{% endif %}">Головна</a>
+        </div>
+
+        <div class="nav-item">
+            <a href="" class="nav-link">Новиши та оголошення</a>
+        </div>
+
+        <div class="nav-item multi-nav">
+            <div class="link-view-unit">
+                <p href="" class="nav-link">Про заклад</p>
+                <svg width="13" height="8" viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
+                </svg>
+            </div>
+
+            <div class="nav-expanded">
+                <a href="" class="nav-link">Галерея</a>
+                <a href="" class="nav-link">Контакти</a>
+            </div> 
+        </div>
+
+        <div class="nav-item multi-nav">
+            <div class="link-view-unit">
+                <p href="" class="nav-link">Навчання</p>
+                <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
+                </svg>
+            </div>
+
+            <div class="nav-expanded">
+                <a href="" class="nav-link">Бабліотека</a>
+                <a href="" class="nav-link">Абітурієнту</a>
+                <a href="" class="nav-link">Студенту</a>
+                <a href="" class="nav-link">ЗНО</a>
+            </div> 
+        </div>
+    </nav>  
+
+    <div class="burger">
+        <span></span>
+    </div>
+</div>

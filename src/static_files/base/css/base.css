@@ -73,12 +73,10 @@ h6 {
     font-size: 16px; 
 }
 
-
 /* basis components */
 .lock-scroll {
     overflow: hidden;
 }
-
 .calendar-icon {
     fill: var(--color-text);
 }
@@ -86,8 +84,6 @@ h6 {
     display: flex; 
     justify-content: space-between;
     align-items: center;
-    
-
     background: var(--bg-light-block);
     box-shadow: var(--main-shadow);
     border-radius: var(--br-dynamic);
@@ -95,8 +91,12 @@ h6 {
     width: 100%; 
 }  
 .panel a {
-    color: var(--color-text); 
+    color: var(--color-text);
     margin-right: 10px;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;   
 }
 .panel p {
     margin-right: 10px;
@@ -104,7 +104,12 @@ h6 {
 .panel-date-of {
     display: flex; 
 }   
-
+.panel-date-of p {
+    white-space: nowrap;
+}
+.panel-date-of img {
+    flex-shrink: 0;
+}
 .card {
     background: var(--bg-light-block);
     box-shadow: var(--main-shadow);
@@ -112,13 +117,19 @@ h6 {
     padding: var(--m-block-paddings-big);
 }
 
+.overflow-ellipsis {
+    margin-right: 20px;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* basis set up */
 .wrapper {
     display: flex;
     flex-direction: column;
-
     justify-content: space-between;
-
     height: 100vh;
 } 
 section{
@@ -135,7 +146,6 @@ section{
 .container-fluid {
     width: var(---container-fluid);
 }
-
 .fix-navigation {
     margin-top: 100px;
 }
@@ -296,6 +306,8 @@ footer {
     padding: 0 0 50px 0; 
 }
 .footer-item {
+    display: flex;
+    justify-content: center;
     text-align: center; 
 }
 .footer-item:not(:last-child) {
@@ -413,9 +425,17 @@ footer {
 }
 
 @media screen and (min-width: 1140px) {
-    
+    * { 
+        --container: 1060px;
+    }
+    .fix-navigation {
+        margin-top: 150px;
+    }
 }
 
 @media screen and (min-width: 1320px) {
+    * { 
+        --container: 1250px;
+    }
     
 }  

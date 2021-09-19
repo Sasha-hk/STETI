@@ -20,6 +20,7 @@
 
                         {% for event_item in event %}
                         <div class="panel"> 
+                            
                             <a href="">{{ event_item.title }}</a>
                              
                             <div class="panel-date-of">
@@ -41,7 +42,7 @@
                             <h3>Новини</h3> 
                             {% for news_item in news %}
                             <div class="news-item"> 
-                                <a href="">{{ news_item.title }}</a>
+                                <a class="overflow-ellipsis" href="">{{ news_item.title }}</a>
                                 <img src="{% static 'main/img/icon-three-dots.svg' %}" alt="">
                             </div>
                             {% endfor %}
@@ -55,7 +56,7 @@
                             <h3>Оголошення</h3> 
                             {% for advertisement_item in advertisement %}
                             <div class="advertisement-item"> 
-                                <a href="">{{ advertisement_item.title }}</a>
+                                <a class="overflow-ellipsis" href="">{{ advertisement_item.title }}</a>
                                 <img src="{% static 'main/img/icon-three-dots.svg' %}" alt="">
                             </div> 
                             {% endfor %}
@@ -74,13 +75,13 @@
                 <h2 class="mobile-space">Студенту</h2>
                 
                 <div class="for-student"> 
-                    {% for to_student_item in to_student %}
+                    {% for for_student_item in for_student %}
                     <div class="panel"> 
-                        <a href="">{{ to_student_item.title }}</a>
-
-                        <div class="panel-date-of"> 
-                            <p>{{ to_student_item.pub_date | date:'d M. Y' }}</p>
-                        </div>
+                        <a href="">{{ for_student_item.title }}</a>
+                         
+                        <div class="panel-date-of">
+                            <p>{{ for_student_item.pub_date | date:'d M. Y' }}</p> 
+                        </div> 
                     </div>
                     {% endfor %} 
                     <div class="panel"> 
@@ -139,7 +140,7 @@
                     </div>
                     <div class="step-fuour">
                         <h3>результат</h3>
-                        <p>Після того як ви освоїди всі необхідні навички в вашій галузі і закінчили навчання, вітаю! Приступайте до пошуку роботи.</p>
+                        <p>Ви освоїди всі необхідні навички в вашій галузі, вітаю! Приступайте до пошуку роботи.</p>
                         <span class="number-of-step">4</span>
                     </div>
                 </div>

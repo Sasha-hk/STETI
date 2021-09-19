@@ -12,7 +12,7 @@ class Department(models.Model):
         return str(self.name)
 
 
-class ToStudent(models.Model):
+class ForStudent(models.Model):
     title = models.CharField('Назва', max_length=100)  
     content = models.TextField('Вміст', blank=True) 
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -22,10 +22,10 @@ class ToStudent(models.Model):
         slug_str = '' 
 
         if self.slug == '': 
-            for i in range(0, ToStudent._meta.get_field('slug').max_length):
+            for i in range(0, ForStudent._meta.get_field('slug').max_length):
                 slug_str += choice(ascii_letters) 
             while True: 
-                if ToStudent.objects.filter(slug = slug_str).exists():  
+                if ForStudent.objects.filter(slug = slug_str).exists():  
                     for i in range(0, self.slug.max_length): 
                         slug_str += choice(ascii_letters)
             
@@ -41,7 +41,7 @@ class ToStudent(models.Model):
     def __str__(self):
         return str(self.title)
 
-class ToEntrant(models.Model):
+class ForEntrant(models.Model):
     title = models.CharField('Назва', max_length=100)  
     content = models.TextField('Вміст', blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)

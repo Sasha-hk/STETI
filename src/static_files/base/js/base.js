@@ -6,7 +6,7 @@ let sm  = 540,
     xxl = 1320,
 
     Width = window.innerWidth,
-    height = window.innerHeight;
+    Height = window.innerHeight;
 
 // current screen size
 
@@ -71,9 +71,13 @@ function main() {
     node['navigation'] = new Navigation();
 }
 
+function onResize() {
+    node['navigation'].formatRecognition()
+    
+    Width = window.innerWidth,
+    Height = window.innerHeight; 
+}
+
 window.onload = main 
  
-window.addEventListener('resize', resize => {
-    
-    node['navigation'].formatRecognition()
-})
+window.addEventListener('resize', onResize)

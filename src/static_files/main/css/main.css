@@ -13,7 +13,7 @@
 .events {
     width: 100%; 
 }  
-.events .panel {
+.events .panel:not(:last-child) {
     margin-bottom: 30px;
 }
 .event-arrow {
@@ -56,10 +56,11 @@
 
 /* for student */ 
 .for-student {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.for-student .panel:not(:last-child) {
+    margin-bottom: 30px
 }
 
 /* department */
@@ -128,7 +129,20 @@
 }
 
 @media screen and (min-width: 720px) {
-
+    /* steps to success */ 
+    .steps-to-success {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+        width: auto;
+    }
+    .steps-to-success div {  
+        padding: 40px; 
+    }  
+    .number-of-step {  
+        font-size: 180px; 
+    }
 }
 
 @media screen and (min-width: 960px) {
@@ -136,6 +150,7 @@
     .left-side {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }   
     .left-side h1 {
         width: 30%;
@@ -149,14 +164,107 @@
     
     /* board */
     .board {
-        margin-top: 20px;
+        margin-top: 50px;
+    }
+
+    /* for student */ 
+    .for-student { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    .for-student .panel:not(:last-child) {
+        margin: 0;
+    }
+
+    /* department */
+    .departments { 
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+    }
+
+    /* our-goal-and-mission */
+    .our-goal-and-mission {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .our-gm-description {
+        padding-right: 50px;
+        width: 50%;
+    }
+    .our-goal-and-mission img { 
+        width: 50%;
     }
 }
 
 @media screen and (min-width: 1140px) {
-    
+    /* header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .left-side {
+        display: block; 
+        width: 50%;
+    }
+    .right-side {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+    }
+    .left-side h1 {
+        width: 100%;
+    }
+
+    /* event */
+    .events { 
+        margin-top: 100px;
+        width: 100%;
+    }
+
+    /* board */
+    .board {
+        margin-top: 50px;
+        width: 90%;
+        min-height: 670px;
+    }
+    .board-news,
+    .board-advertisement {
+        min-height: 45%;
+    }
 }
 
 @media screen and (min-width: 1320px) {
-    
+    /* header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .left-side {
+        display: block; 
+        width: 40%;
+    }
+    .right-side {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+    } 
+
+    /* steps to success */
+    .steps-wrapper {
+        display: flex;
+    }
+    .steps-description { 
+        padding-right: 50px;
+    }
+    .steps-description h2 {
+        margin-top: 70px;
+    }
+    .steps-description svg {
+        display: block;
+        margin: 30px auto;
+    } 
 }

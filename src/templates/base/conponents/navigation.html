@@ -1,6 +1,5 @@
 <div class="navigation">
     <span class="logo"><a href="{% url 'home' %}">STETI</a></span>
-    
     <nav>
         <div class="nav-item">{% url 'home' as url_home %}
             <a href="{% url 'home' %}" class="nav-link {% if request.path == url_home %}nav-link-active{% endif %}">Головна</a>
@@ -23,7 +22,6 @@
                 <a href="" class="nav-link">Контакти</a>
             </div> 
         </div>
-
         <div class="nav-item multi-nav">
             <div class="link-view-unit">
                 <p href="" class="nav-link">Навчання</p>
@@ -31,7 +29,6 @@
                     <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                 </svg>
             </div>
-
             <div class="nav-expanded">
                 <a href="" class="nav-link">Бабліотека</a>
                 <a href="" class="nav-link">Абітурієнту</a>
@@ -40,7 +37,6 @@
             </div> 
         </div>
     </nav>  
-
     <div class="burger">
         <span></span>
     </div>

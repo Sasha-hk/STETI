@@ -5,15 +5,27 @@ let steps      = document.querySelectorAll('.steps-to-success div')
 function setStepSize(size) {
     for (let i = 0; i < steps.length; i++) { 
         steps[i].style.height = size + 'px'
-    }
+    } 
 }
 
-if (sm > Width) {
-    setStepSize(stepHeight)
-}
-else if (md > Width) {
-    setStepSize(stepHeight / 100 * 70)
-}
-else if (lg > Width) { 
-    setStepSize(stepHeight / 100 * 50)
-}
+function detectStepSize() {
+    steps      = document.querySelectorAll('.steps-to-success div')
+    stepHeight = steps[0].getBoundingClientRect().width
+     
+    if (sm - 150 > Width) {
+        setStepSize(stepHeight / 100 * 90)
+    } 
+    else if (md > Width) {
+        setStepSize(stepHeight / 100 * 60)
+    }
+    else if (lg > Width) { 
+        setStepSize(stepHeight)
+    }
+    else if (lg < Width) { 
+        setStepSize(stepHeight)
+    }  
+}  
+
+detectStepSize()
+
+window.addEventListener('resize', detectStepSize)

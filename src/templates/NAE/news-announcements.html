@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="more-news">
-                    <a class="mobile-space" href="">Дивитись більше</a>
+                    <a class="mobile-space" href="{% url 'news' %}">Дивитись більше</a>
                 </div>
             </section> 
 
@@ -39,18 +39,17 @@
                     {% for announcements_item in announcements %} 
                     <div class="card announcements-item">  
                         <div class="announcements-description">
-                            <h3>{{ announcements_item.title }}</h3>
+                            <a href="{% url 'announcement_detail' announcements_item.slug %}"><h3>{{ announcements_item.title }}</h3></a>
                             <p>{{ announcements_item.description }}</p>
                         </div>
                         <div class="panel-date-of">
                             <p>{{ announcements_item.pub_date | date:'d M. Y' }}</p>
                             <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">
-                        </div> 
-                        <a class="link-fluid" href="{% url 'announcement_detail' announcements_item.slug %}"></a>
+                        </div>  
                     </div> 
                     {% endfor %}
                     <div class="card more-announcements">  
-                        <h3>Дивитись більше</h3>
+                        <a href="{% url 'announcements' %}"><h3>Дивитись більше</h3></a>
                         <svg width="190" height="30" viewBox="0 0 190 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M189.5 15L164.5 0.566243V29.4338L189.5 15ZM0 17.5H167V12.5H0V17.5Z" fill="black"/>
                         </svg>     

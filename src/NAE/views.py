@@ -18,21 +18,29 @@ class NewsAnnounce(View):
 # news
 class AllNews(View):
     def get(self, request):
-        return render(request, 'NAE/news-announcements.html')
+        context = {
+            'records': News.objects.order_by('-id')[:50],
+        }  
+
+        return render(request, 'NAE/all-news.html', context)
 
 
 class NewsDetail(View):
-    def get(self, request):
-        return render(request, 'NAE/news-announcements.html')
+    def get(self, request, slug):
+        return render(request, 'NAE/all-announcements.html')
 
 
 
 # announcements
 class AllAnnouncements(View):
     def get(self, request):
-        return render(request, 'NAE/news-announcements.html')
+        context = {
+            'records': Advertisement.objects.order_by('-id')[:50],
+        }  
+
+        return render(request, 'NAE/all-announcements.html', context) 
 
 
 class AnnouncementsDetail(View):
-    def get(self, request):
+    def get(self, request, slug):
         return render(request, 'NAE/news-announcements.html')

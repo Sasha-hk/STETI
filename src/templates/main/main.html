@@ -42,13 +42,13 @@
                             <h3>Новини</h3> 
                             {% for news_item in news %}
                             <div class="news-item"> 
-                                <a class="overflow-ellipsis" href="">{{ news_item.title }}</a>
-                                <img src="{% static 'main/img/icon-three-dots.svg' %}" alt="">
+                                <a class="overflow-ellipsis" href="{% url 'news_detail' news_item.slug %}">{{ news_item.title }}</a>
+                                <img src="{% static 'base/img/icon-three-dots.svg' %}" alt="">
                             </div>
                             {% endfor %}
                             
                             <div class="board-learn-more"> 
-                                <a href="">Дивитись більше</a>
+                                <a href="{% url 'news' %}">Дивитись більше</a>
                             </div>
                         </div>
 
@@ -56,13 +56,13 @@
                             <h3>Оголошення</h3> 
                             {% for advertisement_item in advertisement %}
                             <div class="advertisement-item"> 
-                                <a class="overflow-ellipsis" href="">{{ advertisement_item.title }}</a>
-                                <img src="{% static 'main/img/icon-three-dots.svg' %}" alt="">
+                                <a class="overflow-ellipsis" href="{% url 'announcement_detail' advertisement_item.slug %}">{{ advertisement_item.title }}</a>
+                                <img src="{% static 'base/img/icon-three-dots.svg' %}" alt="">
                             </div> 
                             {% endfor %}
 
                             <div class="board-learn-more"> 
-                                <a href="">Дивитись більше</a>
+                                <a href="{% url 'announcements' %}">Дивитись більше</a>
                             </div>
                         </div>
                     </div>

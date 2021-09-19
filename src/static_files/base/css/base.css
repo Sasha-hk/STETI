@@ -351,12 +351,17 @@ footer {
     }
     /* navigation */
     .navigation {
+        height: 70px;
         align-items: unset;
         padding: 0 0 0 16px;
     }
     .navigation::before {
         display: none;
     }
+    .logo a {  
+        font-size: 35px; 
+    }
+    
     nav {  
         position: static;
         display: flex; 
@@ -389,7 +394,7 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 28px; 
+        padding: 23px; 
     }
     .nav-expanded {
         border: none;

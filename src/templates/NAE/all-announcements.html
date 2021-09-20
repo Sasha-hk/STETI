@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!-- static files -->
+{% block static %}<link rel="stylesheet" href="{% static 'NAE/css/all-records.css' %}">{% endblock %}
+
+<!-- document title -->
+{% block title %}STETI{% endblock %}
+
+<!-- base content -->
+{% block content %}
+        <div class="centralize">
+           <section class="container fix-navigation">
+                <h2 class="mobile-space">Всі оголошення</h2>
+                
+                <div class="all-records">
+                    {% for record in records %}
+                    <div class="panel"> 
+                                
+                        <a href="{% url 'announcement_detail' record.slug %}">{{ record.title }}</a>
+                        
+                        <div class="panel-date-of">
+                            <p>{{ record.pub_date | date:'d M. Y' }}</p>
+                            <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">
+                        </div>  
+                    </div>
+                    {% endfor %}
+                </div>
+           </section>
+        </div>
+{% endblock %}
+
+<!-- javascript -->
+{% block scripts %}{% endblock %}

@@ -6,7 +6,8 @@
         </div>
 
         <div class="nav-item">
-            <a href="" class="nav-link">Новиши та оголошення</a>
+            {% url 'news_announces' as news_announces_url %}
+            <a href="{% url 'news_announces' %}" class="nav-link {% if request.path == news_announces_url %}nav-link-active{% endif %}">Новиши та оголошення</a>
         </div>
 
         <div class="nav-item multi-nav">

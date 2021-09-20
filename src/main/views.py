@@ -3,6 +3,7 @@ from django.views.generic import View
 from NAE.models import Advertisement, News, Event
 from study.models import Department, ForEntrant, ForStudent
 
+
 class Home(View):
     def get(self, request):
         context = {

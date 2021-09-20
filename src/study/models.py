@@ -51,10 +51,10 @@ class ForEntrant(models.Model):
         slug_str = '' 
 
         if self.slug == '': 
-            for i in range(0, ToEntrant._meta.get_field('slug').max_length):
+            for i in range(0, ForEntrant._meta.get_field('slug').max_length):
                 slug_str += choice(ascii_letters) 
             while True: 
-                if ToEntrant.objects.filter(slug = slug_str).exists():  
+                if ForEntrant.objects.filter(slug = slug_str).exists():  
                     for i in range(0, self.slug.max_length): 
                         slug_str += choice(ascii_letters)
             

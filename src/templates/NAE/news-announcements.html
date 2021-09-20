@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!-- static files -->
+{% block static %}<link rel="stylesheet" href="{% static 'NAE/css/news-announcements.css' %}">{% endblock %}
+
+<!-- document title -->
+{% block title %}STETI{% endblock %}
+
+<!-- base content -->
+{% block content %}
+        <div class="centralize">
+            <section class="container fix-navigation">
+                <h2 class="mobile-space">Новини</h2>
+                <div class="news">
+                    {% for news_item in news %}
+                    {% if news_item.baner %}
+                    <div class="news-item">
+                        <img src="{{ news_item.baner.url }}" alt="">
+                        <div class="news-shadow">
+                            <h3 class="overflow-ellipsis">{{ news_item.title }}</h3>
+                            <p>{{ news_item.pub_date | date:'d M. Y' }}</p>
+                        </div>
+                        <a class="link-fluid" href="{% url 'news_detail' news_item.slug %}"></a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="more-news">
+                    <a class="mobile-space" href="">Дивитись більше</a>
+                </div>
+            </section> 
+
+            <section class="container">
+                <h2 class="mobile-space">Оголошення</h2>
+
+                <div class="announcements">
+                    {% for announcements_item in announcements %} 
+                    <div class="card announcements-item">  
+                        <div class="announcements-description">
+                            <h3>{{ announcements_item.title }}</h3>
+                            <p>{{ announcements_item.description }}</p>
+                        </div>
+                        <div class="panel-date-of">
+                            <p>{{ announcements_item.pub_date | date:'d M. Y' }}</p>
+                            <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">
+                        </div> 
+                        <a class="link-fluid" href="{% url 'announcement_detail' announcements_item.slug %}"></a>
+                    </div> 
+                    {% endfor %}
+                    <div class="card more-announcements">  
+                        <h3>Дивитись більше</h3>
+                        <svg width="190" height="30" viewBox="0 0 190 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M189.5 15L164.5 0.566243V29.4338L189.5 15ZM0 17.5H167V12.5H0V17.5Z" fill="black"/>
+                        </svg>     
+                    </div> 
+                </div>
+            </section>
+        </div>
+{% endblock %}
+
+<!-- javascript -->
+{% block scripts %}{% endblock %}

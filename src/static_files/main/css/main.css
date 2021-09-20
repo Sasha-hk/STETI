@@ -31,7 +31,7 @@
 
     background: var(--bg-light-block); 
 
-    box-shadow: var(--main-shadow);
+    box-shadow: var(--shadow);
     border-radius: var(--br-dynamic);
 }
 .board-news {
@@ -77,7 +77,7 @@
 }
 .our-goal-and-mission img {
     border-radius: var(--br-dynamic-big);
-    box-shadow: var(--main-shadow);
+    box-shadow: var(--shadow);
     width: 100%;
 }
 

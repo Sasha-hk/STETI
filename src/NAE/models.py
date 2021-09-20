@@ -33,12 +33,13 @@ class Advertisement(models.Model):
         return str(self.title)
 
         
-class News(models.Model):
+class News(models.Model): 
     title = models.CharField('Назва новини', max_length=100)
     description = models.TextField('Опис новини')
     baner = models.ImageField('Банер', upload_to='NA/news/', blank=True) 
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
+
 
     def generate_slug(self):
         slug_str = '' 
@@ -61,7 +62,7 @@ class News(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.title)
+        return str(self.title) 
 
 
 class Event(models.Model):

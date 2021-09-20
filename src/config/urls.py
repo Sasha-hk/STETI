@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+    path('na/', include('NAE.urls')),
+    # path('news-announcements/', include('NAE.urls')),
 ]
 
 if settings.DEBUG == True:

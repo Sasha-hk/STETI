@@ -27,7 +27,8 @@ class AllNews(View):
 
 class NewsDetail(View):
     def get(self, request, slug):
-        return render(request, 'NAE/all-announcements.html')
+        pass
+        # return render(request, 'NAE/all-announcements.html')
 
 
 
@@ -43,4 +44,5 @@ class AllAnnouncements(View):
 
 class AnnouncementsDetail(View):
     def get(self, request, slug):
-        return render(request, 'NAE/news-announcements.html')
+        pass
+        # return render(request, 'NAE/news-announcements.html')

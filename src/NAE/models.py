@@ -2,10 +2,19 @@ from django.db import models
 from string import ascii_letters
 from random import choice
 
+class Images(models.Model):
+    name = models.CharField('Підпис картинки', max_length=30)
+    img = models.ImageField('Забраження', upload_to='NAE/images/')
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.name)
+
 class Advertisement(models.Model):
     title = models.CharField('Назва оголошення', max_length=100)
     description = models.TextField('Опис оголошення')
-    baner = models.ImageField('Банер', upload_to='NA/advertisment/', blank=True) 
+    baner = models.ImageField('Банер', upload_to='NAE/advertisment/', blank=True) 
+    images = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
@@ -36,7 +45,8 @@ class Advertisement(models.Model):
 class News(models.Model): 
     title = models.CharField('Назва новини', max_length=100)
     description = models.TextField('Опис новини')
-    baner = models.ImageField('Банер', upload_to='NA/news/', blank=True) 
+    baner = models.ImageField('Банер', upload_to='NAE/news/', blank=True) 
+    images = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 

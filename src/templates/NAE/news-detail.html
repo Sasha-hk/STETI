@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!-- static files -->
+{% block static %}<link rel="stylesheet" href="{% static 'NAE/css/news-detail.css' %}">{% endblock %}
+
+
+<!-- document title -->
+{% block title %}STETI{% endblock %}
+
+<!-- base content -->
+{% block content %}
+        <div class="centralize"> 
+            <section class="container fix-navigation">
+                <div class="record-header">
+                    <div class="record-description">
+                        <h2 class="mobile-space">{{ record.title }}</h2>
+                        <p class="mobile-space">{{ record.description }}</p>
+                        <p class="mobile-space">{{ record.pub_date | date:'d M. Y' }}</p>
+                    </div>
+    
+                    <div class="record-images">
+                        <img src="{{ record.baner.url }}" alt="">
+                    </div>
+                </div>
+ 
+                <div class="more-images">
+                    {% if record.images.all %}
+
+                    {% for image in record.images.all %}
+                    <img class="image-fluid" src="{{ image.img.url }}" alt="{{ image.name }}">
+                    {% endfor %}
+
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+{% endblock %}
+
+<!-- javascript -->
+{% block scripts %}{% endblock %}

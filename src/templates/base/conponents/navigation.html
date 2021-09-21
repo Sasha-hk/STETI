@@ -9,10 +9,10 @@
             {% url 'news_announces' as news_announces_url %}
             <a href="{% url 'news_announces' %}" class="nav-link {% if request.path == news_announces_url %}nav-link-active{% endif %}">Новиши та оголошення</a>
         </div>
-
+        {% url 'contacts' as contacts_url %}
         <div class="nav-item multi-nav">
             <div class="link-view-unit">
-                <p href="" class="nav-link">Про заклад</p>
+                <p href="" class="nav-link {% if request.path == contacts_url %}nav-link-active{% endif %}">Про заклад</p>
                 <svg width="13" height="8" viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                 </svg>
@@ -20,7 +20,7 @@
 
             <div class="nav-expanded">
                 <a href="" class="nav-link">Галерея</a>
-                <a href="" class="nav-link">Контакти</a>
+                <a href="{% url 'contacts' %}" class="nav-link {% if request.path == contacts_url %}nav-link-active{% endif %}">Контакти</a>
             </div> 
         </div>
         <div class="nav-item multi-nav">

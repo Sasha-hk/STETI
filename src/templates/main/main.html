@@ -18,10 +18,11 @@
                     <div class="events">
                         <h3 class="mobile-space">Події</h3>
 
+                        {% if event %}
                         {% for event_item in event %}
                         <div class="panel"> 
                             
-                            <a href="">{{ event_item.title }}</a>
+                            <a href="{% url 'event_detail' event_item.slug %}">{{ event_item.title }}</a>
                              
                             <div class="panel-date-of">
                                 <p>{{ event_item.event_date | date:'d M. Y' }}</p>
@@ -29,10 +30,17 @@
                             </div> 
                         </div>
                         {% endfor %}
-                        
                         <svg class="event-arrow" width="42" height="17" viewBox="0 0 42 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 2L21 14L40 2" stroke="#86868B" stroke-width="4" stroke-linecap="round"/>
                         </svg>
+
+                        {% else %}
+                        <div class="panel"> 
+                            <p>Покищо немає подій</p>
+                        </div>
+                        {% endif %}
+
+                        
                     </div>
                 </div>
 
@@ -40,36 +48,47 @@
                     <div class="board">
                         <div class="board-news">
                             <h3>Новини</h3> 
+                            {% if news %}
                             {% for news_item in news %}
                             <div class="news-item"> 
                                 <a class="overflow-ellipsis" href="{% url 'news_detail' news_item.slug %}">{{ news_item.title }}</a>
                                 <img src="{% static 'base/img/icon-three-dots.svg' %}" alt="">
                             </div>
                             {% endfor %}
-                            
                             <div class="board-learn-more"> 
                                 <a href="{% url 'news' %}">Дивитись більше</a>
                             </div>
+                            {% else %}
+                            <div class="news-item"> 
+                                <p>Покищо немає новин</p>
+                            </div>
+                            {% endif %}
                         </div>
 
                         <div class="board-advertisement">
-                            <h3>Оголошення</h3> 
+                            <h3>Оголошення</h3>  
+                            {% if advertisement %} 
                             {% for advertisement_item in advertisement %}
                             <div class="advertisement-item"> 
                                 <a class="overflow-ellipsis" href="{% url 'announcement_detail' advertisement_item.slug %}">{{ advertisement_item.title }}</a>
                                 <img src="{% static 'base/img/icon-three-dots.svg' %}" alt="">
                             </div> 
-                            {% endfor %}
-
+                            {% endfor %} 
                             <div class="board-learn-more"> 
                                 <a href="{% url 'announcements' %}">Дивитись більше</a>
                             </div>
+                            {% else %}
+                            <div class="advertisement-item"> 
+                                <p>Покищо немає оголошення</p>
+                            </div> 
+                            {% endif %}
                         </div>
                     </div>
 
                 </div>
             </section>
 
+            {% if for_student %}
             <!-- for student -->
             <section class="container">
                 <h2 class="mobile-space">Студенту</h2>
@@ -89,7 +108,8 @@
                     </div>
                 </div>
             </section>
-
+            {% endif %}
+            {% if departments %}
             <!-- departments -->
             <section class="container">
                 <h2 class="mobile-space">Кафедри</h2>
@@ -102,7 +122,7 @@
                     {% endfor %}
                 </div>
             </section>
-
+            {% endif %}
             <!-- our goal and mission -->
             <section class="container our-goal-and-mission">
                 <div class="our-gm-description">

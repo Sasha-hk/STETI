@@ -12,6 +12,7 @@
         <div class="centralize">
             <section class="container fix-navigation">
                 <h2 class="mobile-space">Новини</h2>
+                {% if news %}
                 <div class="news">
                     {% for news_item in news %}
                     {% if news_item.baner %}
@@ -30,11 +31,15 @@
                 <div class="more-news">
                     <a class="mobile-space" href="{% url 'news' %}">Дивитись більше</a>
                 </div>
+                {% else %}
+                <p>Покищо немає новин</p>
+                {% endif %}
             </section> 
 
             <section class="container">
                 <h2 class="mobile-space">Оголошення</h2>
 
+                {% if announcements %}
                 <div class="announcements">
                     {% for announcements_item in announcements %} 
                     <div class="card announcements-item">  
@@ -55,6 +60,9 @@
                         </svg>     
                     </div> 
                 </div>
+                {% else %}
+                <p>Покищо немає оголошення</p>
+                {% endif %}
             </section>
         </div>
 {% endblock %}

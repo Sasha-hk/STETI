@@ -13,7 +13,7 @@ class Images(models.Model):
 class Advertisement(models.Model):
     title = models.CharField('Назва оголошення', max_length=100)
     description = models.TextField('Опис оголошення')
-    baner = models.ImageField('Банер', upload_to='NAE/advertisment/', blank=True) 
+    baner = models.ImageField('Банер', upload_to='NAE/advertisment/') 
     images = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
@@ -45,7 +45,7 @@ class Advertisement(models.Model):
 class News(models.Model): 
     title = models.CharField('Назва новини', max_length=100)
     description = models.TextField('Опис новини')
-    baner = models.ImageField('Банер', upload_to='NAE/news/', blank=True) 
+    baner = models.ImageField('Банер', upload_to='NAE/news/') 
     images = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
@@ -78,7 +78,7 @@ class News(models.Model):
 class Event(models.Model):
     title = models.CharField('Назва події', max_length=100)
     description = models.TextField('Опис події')
-    baner = models.ImageField('Банер', upload_to='NA/envent/', blank=True)
+    baner = models.ImageField('Банер', upload_to='NA/envent/')
     event_date = models.DateTimeField('Дата проведення')
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 

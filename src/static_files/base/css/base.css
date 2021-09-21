@@ -33,6 +33,7 @@
     --navigation-transitoin: 0.2s;
 
     --m-block-paddings: 20px 16px;
+    --m-block-paddings-sides: 0 16px;
     --m-block-paddings-big: 35px 16px;
 } 
 body {
@@ -66,6 +67,7 @@ h3 {
 } 
 h4 {
     font-size: 23px; 
+    margin-bottom: 15px;
 }
 h5 {
     font-size: 20px; 
@@ -80,7 +82,7 @@ h6 {
 }
 .calendar-icon {
     fill: var(--color-text);
-}
+} 
 .panel {  
     position: relative;
     display: flex; 
@@ -343,7 +345,9 @@ footer {
         --br-dynamic: 7px;
         --br-big: 20px;
         --br-dynamic-big: 20px; 
+        
         --m-block-paddings: 23px 20px;
+        --m-block-paddings-sides: 0 16px;
         --m-block-paddings-big: 35px 30px;
     }
     .mobile-space {

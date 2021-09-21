@@ -1,0 +1,79 @@
+/* faces */
+.face-part {
+    padding: var(--m-block-paddings-sides);
+}
+.face-part:not(:last-child) {
+    margin-bottom: 40px;
+}
+.face-view {
+    width: 100%;
+    border-radius: 100%;
+    margin-bottom: 10px;
+}
+.face-part h3 { 
+    margin-bottom: 0px;
+}
+.phone-number {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.phone-number img {
+    margin-right: 10px;
+}
+
+/* other-phone-numbers */ 
+.other-phone-numbers {
+    padding: var(--m-block-paddings-sides);
+} 
+.other-phone-number:not(:last-child) {
+    margin-bottom: 30px;
+}
+.other-phone-number .phone-number {
+    margin: 0;
+}
+
+
+@media screen and (min-width: 550px) {
+    
+}
+
+@media screen and (min-width: 720px) {
+    /* faces */
+    .face-part {
+        display: flex;
+    }
+    .face-view {
+        min-width: 30%;
+        max-width: 30%;
+        margin-right: 30px; 
+    }
+
+    .other-phone-numbers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+    .other-phone-number:not(:last-child) {
+        margin-bottom: 0;
+    }
+    
+}
+
+@media screen and (min-width: 960px) {
+    /* faces */ 
+    .face-view {
+        min-width: 20%;
+        max-width: 20%;
+        margin-right: 30px; 
+    } 
+}
+
+@media screen and (min-width: 1140px) {
+    
+}
+
+@media screen and (min-width: 1320px) {
+    
+}

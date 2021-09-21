@@ -14,6 +14,14 @@ class NewsAnnounce(View):
         return render(request, 'NAE/news-announcements.html', context)
 
 
+class EventDetail(View):
+    def get(self, request, slug):
+        context = {
+            'record': Event.objects.get(slug=slug)
+        } 
+
+        return render(request, 'NAE/record-detail.html', context)
+
 
 # news
 class AllNews(View):
@@ -27,7 +35,11 @@ class AllNews(View):
 
 class NewsDetail(View):
     def get(self, request, slug):
-        return render(request, 'NAE/all-announcements.html')
+        context = {
+            'record': News.objects.get(slug=slug)
+        } 
+
+        return render(request, 'NAE/record-detail.html', context)
 
 
 
@@ -43,4 +55,8 @@ class AllAnnouncements(View):
 
 class AnnouncementsDetail(View):
     def get(self, request, slug):
-        return render(request, 'NAE/news-announcements.html')
+        context = {
+            'record': Advertisement.objects.get(slug=slug)
+        } 
+
+        return render(request, 'NAE/record-detail.html', context)

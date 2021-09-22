@@ -17,3 +17,27 @@ class ContactsFace(models.Model):
 
     def __str__(self):
         return self.FL
+
+
+class GalleryCategoryImage(models.Model):
+    name = models.CharField('Назва фото', max_length=100) 
+    image = models.ImageField('Фото', upload_to='about/gallery')
+
+    def __str__(self):
+        return str(self.name)
+
+class Gallery(models.Model):
+    name = models.CharField('Назва фото', max_length=100) 
+    image = models.ImageField('Фото', upload_to='about/gallery')
+
+    def __str__(self):
+        return str(self.name)
+
+class GalleryCategory(models.Model):
+    categoru_name = models.CharField("Ім'я категорії", max_length=100)
+    image = models.ForeignKey(GalleryCategoryImage, verbose_name='Фото категоріії', on_delete=models.CASCADE, blank=True, null=True)
+    images = models.ManyToManyField(Gallery, verbose_name='Більше фото')
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.categoru_name)

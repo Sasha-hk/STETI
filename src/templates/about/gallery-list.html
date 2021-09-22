@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!-- static files -->
+{% block static %}<link rel="stylesheet" href="{% static 'about/css/gallery-list.css' %}">{% endblock %}
+
+
+<!-- document title -->
+{% block title %}STETI{% endblock %}
+
+<!-- base content -->
+{% block content %}
+        <div class="centralize">
+            <section class="container fix-navigation faces">
+                <h2 class="mobile-space">Категорії фото</h2>
+                <div class="categorys">
+                    {% for category in categorys %}
+                    <div class="">
+                        <div class="category-item">
+                            <img class="image-fluid" src="{{ category.image.image.url }}" alt="{{ category.image.name }}">
+                            <p>{{ category.categoru_name }}</p>
+                            <a class="link-fluid" href="{% url 'gallery_detail' category.id %}"></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+{% endblock %}
+
+<!-- javascript -->
+{% block scripts %}{% endblock %}

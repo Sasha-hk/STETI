@@ -1,0 +1,60 @@
+/* about us */
+section p {
+    margin-bottom: 30px;
+} 
+.about-header img {
+    margin-bottom: 30px;
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: var(--br-dynamic);
+    box-shadow: var(--shadow);
+} 
+
+/* department */
+.departments {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+}
+
+@media screen and (min-width: 550px) {
+    
+}
+
+@media screen and (min-width: 720px) {
+}
+
+@media screen and (min-width: 960px) {
+    /* about us */
+    .about-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 100px;
+    }
+    .about-header img {
+        margin-bottom: 30px;
+        width: 50%;
+    } 
+    .about-header img {
+        margin-bottom: 0; 
+    } 
+    .about-description {
+        margin-right: 30px;
+    }
+
+    /* department */
+    .departments {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+    }
+}
+
+@media screen and (min-width: 1140px) {
+    
+}
+
+@media screen and (min-width: 1320px) {
+    
+}

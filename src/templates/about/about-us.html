@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!-- static files -->
+{% block static %}<link rel="stylesheet" href="{% static 'about/css/about-us.css' %}">{% endblock %}
+
+<!-- document title -->
+{% block title %}STETI{% endblock %}
+
+<!-- base content -->
+{% block content %}
+        <div class="centralize">
+            <section class="container fix-navigation">
+                <div class="about-header">
+                    <div class="about-description">
+                        <h2 class="mobile-space">Про нас</h2>
+                        <p class="mobile-space">{{ data.first_paragraph }}</p>
+                    </div>
+
+                    <img src="{{ data.img.url }}" alt="">
+                    
+                </div>
+                <p class="mobile-space">{{ data.second_paragraph }}</p>
+                <p class="mobile-space">{{ data.third_paragraph }}</p>
+
+            </section>
+            <section class="container">
+                <h2 class="mobile-space">Кафедри</h2>
+                <p class="mobile-space">{{ data.about_departments }}</p>
+                <div class="departments">
+                    {% for department in departments %}
+                    <div class="card">
+                        <h3>{{ department.name }}</h3>
+                        <p>{{ department.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+{% endblock %}
+
+<!-- javascript -->
+{% block scripts %}{% endblock %}

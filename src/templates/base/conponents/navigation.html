@@ -9,17 +9,19 @@
             {% url 'news_announces' as news_announces_url %}
             <a href="{% url 'news_announces' %}" class="nav-link {% if request.path == news_announces_url %}nav-link-active{% endif %}">Новиши та оголошення</a>
         </div>
+        {% url 'about_us' as about_us_url %}
         {% url 'contacts' as contacts_url %}
         {% url 'gallery_categorys' as gallery_categorys_url %}
         <div class="nav-item multi-nav">
             <div class="link-view-unit">
-                <p href="" class="nav-link {% if request.path == contacts_url or request.path == gallery_categorys_url %}nav-link-active{% endif %}">Про заклад</p>
+                <p href="" class="nav-link {% if request.path == contacts_url or request.path == gallery_categorys_url or request.path == about_us_url %}nav-link-active{% endif %}">Про заклад</p>
                 <svg width="13" height="8" viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                 </svg>
             </div>
 
             <div class="nav-expanded">
+                <a href="{% url 'about_us' %}" class="nav-link {% if request.path == about_us_url %}nav-link-active{% endif %}">Про нас</a>
                 <a href="{% url 'gallery_categorys' %}" class="nav-link {% if request.path == gallery_categorys_url %}nav-link-active{% endif %}">Галерея</a>
                 <a href="{% url 'contacts' %}" class="nav-link {% if request.path == contacts_url %}nav-link-active{% endif %}">Контакти</a>
             </div> 

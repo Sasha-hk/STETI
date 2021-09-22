@@ -41,3 +41,13 @@ class GalleryCategory(models.Model):
 
     def __str__(self):
         return str(self.categoru_name)
+
+class About(models.Model):
+    first_paragraph = models.TextField('Перший абзац')
+    img = models.ImageField('Фото', upload_to='about/about_us/', blank=True)
+    second_paragraph = models.TextField('Другий абзац', blank=True)
+    third_paragraph = models.TextField('Третій абзац', blank=True)
+    about_departments = models.TextField('Про кафедри', blank=True)
+
+    def __str__(self):
+        return 'Про нас'

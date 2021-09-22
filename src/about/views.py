@@ -1,6 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import View
-from .models import ContactsFace, ContactsPhoneNumbers, Gallery, GalleryCategory
+from study.models import Department
+from .models import About, ContactsFace, ContactsPhoneNumbers, Gallery, GalleryCategory
+
+class AboutUs(View):
+    def get(self, request):
+        context = {
+            'data': About.objects.all().last(),
+            'departments': Department.objects.order_by('-id')[:4],  
+        }
+        return render(request, 'about/about-us.html', context)
 
 class Contact(View):
     def get(self, request):

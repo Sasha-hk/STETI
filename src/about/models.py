@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ContactsPhoneNumbers(models.Model):
     name = models.CharField('Назва відділення', max_length=100)
     phone_number = models.CharField('Номере телефону', max_length=15)

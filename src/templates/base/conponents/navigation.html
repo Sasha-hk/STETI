@@ -26,15 +26,16 @@
                 <a href="{% url 'contacts' %}" class="nav-link {% if request.path == contacts_url %}nav-link-active{% endif %}">Контакти</a>
             </div> 
         </div>
+        {% url 'library' as library_url %}
         <div class="nav-item multi-nav">
             <div class="link-view-unit">
-                <p href="" class="nav-link">Навчання</p>
+                <p href="" class="nav-link {% if request.path == library_url %}nav-link-active{% endif %}">Навчання</p>
                 <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                 </svg>
             </div>
             <div class="nav-expanded">
-                <a href="" class="nav-link">Бабліотека</a>
+                <a href="{% url 'library' %}" class="nav-link {% if request.path == library_url %}nav-link-active{% endif %}">Бабліотека</a>
                 <a href="" class="nav-link">Абітурієнту</a>
                 <a href="" class="nav-link">Студенту</a>
                 <a href="" class="nav-link">ЗНО</a>

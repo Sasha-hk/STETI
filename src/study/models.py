@@ -69,3 +69,41 @@ class ForEntrant(models.Model):
 
     def __str__(self):
         return str(self.title)
+
+
+class LibraryCategory(models.Model):
+    category_name = models.CharField(verbose_name='Назва категорії', max_length=100)
+    background = models.ImageField(verbose_name='Фон для кафелри', upload_to='study/library/library-category-img/', null=True, blank=True)
+
+    slug = models.SlugField(max_length=10, default='', blank=True, editable=False) 
+
+    def generate_slug(self):
+        slug_str = '' 
+
+        if self.slug == '': 
+            for i in range(0, ForEntrant._meta.get_field('slug').max_length):
+                slug_str += choice(ascii_letters) 
+            while True: 
+                if ForEntrant.objects.filter(slug = slug_str).exists():  
+                    for i in range(0, self.slug.max_length): 
+                        slug_str += choice(ascii_letters)
+            
+                else: 
+                    self.slug = slug_str
+                    break
+
+    def save(self, *args, **kwargs): 
+        self.generate_slug()  
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.category_name)
+
+class LibraryItem(models.Model):
+    name = models.CharField(verbose_name='Нащва ресурсу', max_length=100)
+    category = models.ForeignKey(LibraryCategory, verbose_name='Наледить до категорії', on_delete=models.CASCADE)
+    link = models.CharField(verbose_name='Посилання на ресурс', max_length=200)
+
+    def __str__(self):
+        return self.name[:20]

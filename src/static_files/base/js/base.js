@@ -1,3 +1,53 @@
+// base class
+class Base {
+    constructor(optoins) {
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.onLoadLoop = [];
+        this.onResizeLoop = [];
+
+        
+
+        window.addEventListener('resize', this.onResize.bind(this))
+        window.onload = this.onLoad;
+        
+        console.log(1)
+    }
+
+    addOnLoad(onLoads) {
+        this.onLoadLoop.push(onLoads);
+        console.log(2)
+    }
+
+    addOnResize(onResize) {
+        this.onResizeLoop.push(onResize);
+    }
+
+    onLoad() {
+        console.log(111111112)
+        this.onLoadLoop.forEach(element => {
+            element()
+        })
+    }
+
+    onResize() {
+        this.onResizeLoop.forEach(element => {
+            element()
+        }) 
+    }
+}
+
+let x = new Base()
+
+function lll() {
+    console.log(1123)
+}
+x.addOnResize(lll)
+x.addOnLoad(lll)
+
+
+
+
 // screen sizing
 let sm  = 540,
     md  = 720,

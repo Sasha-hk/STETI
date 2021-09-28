@@ -9,7 +9,7 @@
     min-height: 300px;
     overflow: hidden;
 }
-  
+
 @media screen and (min-width: 960px) {
     .all-categorys {
         display: grid;

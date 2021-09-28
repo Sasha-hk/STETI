@@ -100,5 +100,5 @@ su -c "ln -s $PWD/systemd/$project_name.service /etc/systemd/system"
 
 su -c "service nginx restart"
 su -c "systemctl daemon-reload"
-su -c "systemctl enable petryk" 
-su -c "systemctl restart petryk" 
+su -c "systemctl enable $project_name" 
+su -c "systemctl restart $project_name" 

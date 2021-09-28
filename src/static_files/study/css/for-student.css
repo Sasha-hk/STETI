@@ -1,0 +1,15 @@
+.all_imes .panel:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+@media screen and (min-width: 960px) {
+    .all_imes .panel:not(:last-child) {
+        margin-bottom: 0;
+    }
+    .all_imes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+    }
+}

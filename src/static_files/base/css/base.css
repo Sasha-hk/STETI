@@ -4,8 +4,11 @@
     margin: 0;
     box-sizing: border-box;
 
+    --font-size-little: 14px;
+    --font-size-base: 16px;
+    --font-size-big: 18px;
+    font-size: var(--font-size-base);
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
 
     --bg-general: #F6F7FB;
     --bg-light-block: #ffffff; 
@@ -19,6 +22,8 @@
  
     --container: 100%; 
     --container-fluid: 100%;
+
+    --color-text-revert: #ffffff;
 
     --color-text: #86868B;
     --color-bold: #5B5B61;
@@ -115,12 +120,54 @@ h6 {
     height: 23px;
     flex-shrink: 0;
 }
+/* card */
 .card {
     position: relative;
     background: var(--bg-light-block);
     box-shadow: var(--shadow);
     border-radius: var(--br-dynamic-big);
     padding: var(--m-block-paddings-big);
+    overflow: hidden;
+    min-height: 200px;
+}
+.card > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+.card > .shadow-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(196, 196, 196, 0) 100%);
+    z-index: 2;
+}
+.card > .shadow-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(196, 196, 196, 0) 100%);
+    z-index: 2;
+}
+.card .card-data {
+    position: relative; 
+    z-index: 3;
+}
+.card .card-data * { 
+    margin: 0; 
+}
+.card .card-data.color-revert * {
+    margin: 0;
+    color: var(--color-text-revert);
 }
 
 .overflow-ellipsis {
@@ -223,11 +270,12 @@ section{
 
 /* nav */
 nav { 
+    visibility: hidden;
     transition: var(--navigation-transitoin);
     opacity: 0;
     overflow: scroll;
-    position: fixed;
-    top: -100%; 
+    position: fixed; 
+    top: -50px;
     left: 0;
     padding: 100px 10px 100px 16px;
     width: 100%; 
@@ -314,6 +362,7 @@ nav {
     opacity: 0;
 }
 .navigation.navigation-active nav {  
+    visibility: visible;
     top: 0; 
     opacity: 1;
     height: 100vh; 
@@ -388,6 +437,7 @@ footer {
     }
     
     nav {  
+        visibility: visible;
         position: static;
         display: flex; 
         opacity: 1;

@@ -27,17 +27,19 @@
             </div> 
         </div>
         {% url 'library' as library_url %}
+        {% url 'for_student' as for_student_url %}
+        {% url 'for_entrant' as for_entrant_url %}
         <div class="nav-item multi-nav">
             <div class="link-view-unit">
-                <p href="" class="nav-link {% if request.path == library_url %}nav-link-active{% endif %}">Навчання</p>
+                <p href="" class="nav-link {% if request.path == library_url or request.path == for_student_url or request.path == for_entrant_url %}nav-link-active{% endif %}">Навчання</p>
                 <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                 </svg>
             </div>
             <div class="nav-expanded">
                 <a href="{% url 'library' %}" class="nav-link {% if request.path == library_url %}nav-link-active{% endif %}">Бабліотека</a>
-                <a href="" class="nav-link">Абітурієнту</a>
-                <a href="" class="nav-link">Студенту</a>
+                <a href="{% url 'for_student' %}" class="nav-link {% if request.path == for_student_url %}nav-link-active{% endif %}">Студенту</a>
+                <a href="{% url 'for_entrant' %}" class="nav-link {% if request.path == for_entrant_url %}nav-link-active{% endif %}">Абітурієнту</a>
                 <a href="" class="nav-link">ЗНО</a>
             </div> 
         </div>

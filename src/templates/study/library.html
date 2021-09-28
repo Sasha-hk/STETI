@@ -18,10 +18,8 @@
 					{% if category.background %}
 					<img src="{{ category.background.url }}" alt="">
 					{% endif %}
-					{% if category.is_shadow %}
 					<div class="shadow-top"></div>
-					{% endif %}
-					<div class="card-date">
+					<div class="card-data color-revert">
 						<h3>{{ category.category_name }}</h3> 
 					</div>
 					<a href="{% url 'library_detail' category.slug %}" class="link-fluid"></a>
@@ -29,7 +27,7 @@
 				{% endfor %}
 			</div>
         </section>
-    </div>
+    </div>   
 {% endblock %}
 
 <!-- javascript -->

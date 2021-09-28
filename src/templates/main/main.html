@@ -4,7 +4,6 @@
 <!-- static files -->
 {% block static %}<link rel="stylesheet" href="{% static 'main/css/main.css' %}">{% endblock %}
 
-
 <!-- document title -->
 {% block title %}STETI{% endblock %}
 
@@ -21,7 +20,6 @@
                         {% if event %}
                         {% for event_item in event %}
                         <div class="panel"> 
-                            
                             <a href="{% url 'event_detail' event_item.slug %}">{{ event_item.title }}</a>
                              
                             <div class="panel-date-of">
@@ -39,8 +37,6 @@
                             <p>Покищо немає подій</p>
                         </div>
                         {% endif %}
-
-                        
                     </div>
                 </div>
 
@@ -96,15 +92,18 @@
                 <div class="for-student"> 
                     {% for for_student_item in for_student %}
                     <div class="panel"> 
-                        <a href="">{{ for_student_item.title }}</a>
-                         
+                        <p href="">{{ for_student_item.title }}</p>
+                        
                         <div class="panel-date-of">
                             <p>{{ for_student_item.pub_date | date:'d M. Y' }}</p> 
                         </div> 
+
+                        <a href="" class="link-fluid"></a>
                     </div>
                     {% endfor %} 
                     <div class="panel"> 
-                        <a href="">Дивитись більше</a>
+                        <p href="">Дивитись більше</p>
+                        <a href="" class="link-fluid"></a>
                     </div>
                 </div>
             </section>
@@ -114,11 +113,13 @@
             <section class="container">
                 <h2 class="mobile-space">Кафедри</h2>
                 <div class="departments">
-                    {% for department in departments %}
-                    <div class="card">
-                        <h3>{{ department.name }}</h3>
-                        <p>{{ department.description }}</p>
-                    </div>
+                    {% for department in departments %} 
+                    <div class="card">  
+                        <div class="card-data">
+                            <h3>{{ department.name }}</h3>
+                            <p>{{ department.description }}</p>
+                        </div> 
+                    </div>  
                     {% endfor %}
                 </div>
             </section>

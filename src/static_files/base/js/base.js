@@ -14,9 +14,7 @@ class Base {
         }
         this.that = this
 
-
         window.addEventListener('resize', this.onResize.bind(this))
-        // window.onload = this.onLoad; 
         window.addEventListener('load', this.onLoad.bind(this))
     }
 

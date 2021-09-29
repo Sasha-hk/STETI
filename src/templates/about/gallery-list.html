@@ -17,7 +17,7 @@
                     {% for category in categorys %}
                     <div class="">
                         <div class="category-item">
-                            <img class="image-fluid" src="{{ category.image.image.url }}" alt="{{ category.image.name }}">
+                            <img class="image-fluid" src="{{ category.image.url }}" alt="{{ category.name }}">
                             <p>{{ category.categoru_name }}</p>
                             <a class="link-fluid" href="{% url 'gallery_detail' category.id %}"></a>
                         </div>

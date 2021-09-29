@@ -42,23 +42,20 @@
                 {% if announcements %}
                 <div class="announcements">
                     {% for announcements_item in announcements %} 
-                    <div class="card announcements-item">  
-                        <div class="announcements-description">
-                            <a href="{% url 'announcement_detail' announcements_item.slug %}"><h3>{{ announcements_item.title }}</h3></a>
-                            <p>{{ announcements_item.description }}</p>
-                        </div>
+                  
+                    
+                    <div class="panel"> 
+                        <a href="{% url 'announcement_detail' announcements_item.slug %}">{{ announcements_item.title }}</a>
+                         
                         <div class="panel-date-of">
                             <p>{{ announcements_item.pub_date | date:'d M. Y' }}</p>
                             <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">
-                        </div>  
-                    </div> 
+                        </div> 
+                    </div>
                     {% endfor %}
-                    <div class="card more-announcements">  
-                        <a href="{% url 'announcements' %}"><h3>Дивитись більше</h3></a>
-                        <svg width="190" height="30" viewBox="0 0 190 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M189.5 15L164.5 0.566243V29.4338L189.5 15ZM0 17.5H167V12.5H0V17.5Z" fill="black"/>
-                        </svg>     
-                    </div> 
+                     <div class="panel"> 
+                        <a href="{% url 'announcements' %}">Дивитись більше</a>
+                    </div>                    
                 </div>
                 {% else %}
                 <p class="mobile-space">Покищо немає оголошення</p>

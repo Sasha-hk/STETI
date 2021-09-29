@@ -1,8 +1,13 @@
 from django.db import models
 from string import ascii_letters
 from random import choice
+from ckeditor.fields import RichTextField
+
 
 class Images(models.Model):
+    class Meta:
+        verbose_name_plural = "Фото до новин та оголошень"
+
     name = models.CharField('Підпис картинки', max_length=30)
     img = models.ImageField('Забраження', upload_to='NAE/images/')
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -11,8 +16,11 @@ class Images(models.Model):
         return str(self.name)
 
 class Advertisement(models.Model):
+    class Meta:
+        verbose_name_plural = "Оголошення"
+
     title = models.CharField('Назва оголошення', max_length=100)
-    description = models.TextField('Опис оголошення')
+    description = RichTextField('Опис оголошення', blank=True)
     baner = models.ImageField('Банер', upload_to='NAE/advertisment/') 
     images = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -43,8 +51,11 @@ class Advertisement(models.Model):
 
         
 class News(models.Model): 
+    class Meta:
+        verbose_name_plural = "Новини"
+
     title = models.CharField('Назва новини', max_length=100)
-    description = models.TextField('Опис новини')
+    description = RichTextField('Опис новини', blank=True)
     baner = models.ImageField('Банер', upload_to='NAE/news/') 
     images = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -76,8 +87,11 @@ class News(models.Model):
 
 
 class Event(models.Model):
+    class Meta:
+        verbose_name_plural = "Події"
+
     title = models.CharField('Назва події', max_length=100)
-    description = models.TextField('Опис події')
+    description = RichTextField('Опис події', blank=True)
     baner = models.ImageField('Банер', upload_to='NA/envent/')
     event_date = models.DateTimeField('Дата проведення')
     pub_date = models.DateTimeField(auto_now_add=True)

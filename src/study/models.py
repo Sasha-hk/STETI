@@ -1,9 +1,13 @@
 from django.db import models
 from string import ascii_letters
 from random import choice
+from ckeditor.fields import RichTextField
 
 
 class Department(models.Model):
+    class Meta:
+        verbose_name_plural = "Кафедри"
+
     name = models.CharField('Назва кафедри', max_length=100)
     description = models.TextField('Опис кафедри')
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -13,13 +17,17 @@ class Department(models.Model):
 
 
 class ForStudent(models.Model):
-    title = models.CharField('Назва', max_length=100)  
-    content = models.TextField('Вміст', blank=True) 
+    class Meta:
+        verbose_name_plural = "Для студентів"
+
+    title = models.CharField('Назва', max_length=100)
+    content = RichTextField('Вміст', blank=True)
+    link = models.CharField('Посилання на ресурс', max_length=500, blank=True, help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" поля не біде доступні')
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
     def generate_slug(self):
-        slug_str = '' 
+        slug_str = ''
 
         if self.slug == '': 
             for i in range(0, ForStudent._meta.get_field('slug').max_length):
@@ -42,8 +50,12 @@ class ForStudent(models.Model):
         return str(self.title)
 
 class ForEntrant(models.Model):
+    class Meta:
+        verbose_name_plural = "Для абітурієнтів"
+
     title = models.CharField('Назва', max_length=100)  
-    content = models.TextField('Вміст', blank=True)
+    content = RichTextField('Вміст', blank=True)
+    link = models.CharField('Посилання на ресурс', max_length=500, blank=True, help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" поля не біде доступні')
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
@@ -72,9 +84,11 @@ class ForEntrant(models.Model):
 
 
 class LibraryCategory(models.Model):
+    class Meta:
+        verbose_name_plural = "Категорії бібліотеки"
+
     category_name = models.CharField(verbose_name='Назва категорії', max_length=100)
     background = models.ImageField(verbose_name='Фон для кафелри', upload_to='study/library/library-category-img/', null=True, blank=True)
-
     slug = models.SlugField(max_length=10, default='', blank=True, editable=False) 
 
     def generate_slug(self):
@@ -101,6 +115,9 @@ class LibraryCategory(models.Model):
         return str(self.category_name)
 
 class LibraryItem(models.Model):
+    class Meta:
+        verbose_name_plural = "Вміст бібліотеки"
+
     name = models.CharField(verbose_name='Нащва ресурсу', max_length=100)
     category = models.ForeignKey(LibraryCategory, verbose_name='Наледить до категорії', on_delete=models.CASCADE)
     link = models.CharField(verbose_name='Посилання на ресурс', max_length=200)

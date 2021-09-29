@@ -15,7 +15,7 @@
                 <div class="record-header">
                     <div class="record-description">
                         <h2 class="mobile-space">{{ record.title }}</h2>
-                        <p class="mobile-space">{{ record.description }}</p>
+                        <p class="mobile-space">{{ record.description | safe }}</p>
                         <p class="mobile-space">{{ record.pub_date | date:'d M. Y' }}</p>
                     </div>
     

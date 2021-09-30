@@ -14,9 +14,8 @@
             <h2 class="mobile-space">Студенту</h2> 
 			<div class="all_imes">
                 {% for for_student_item in for_student %}
-                <div class="panel"> 
-                                
-                    <a href="">{{ for_student_item.title }}</a>
+                <div class="panel">    
+                    <a href="{% url 'for_student_detail' for_student_item.slug %}">{{ for_student_item.title }}</a>
                     
                     <div class="panel-date-of">
                         <p>{{ for_student_item.pub_date | date:'d M. Y' }}</p>

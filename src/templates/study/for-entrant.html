@@ -16,12 +16,12 @@
                 {% for for_entrant_item in for_entrant %}
                 <div class="panel"> 
                                 
-                    <a href="">{{ for_entrant_item.title }}</a>
+                    <a href="{% url 'for_entrant_detail' for_entrant_item.slug %}">{{ for_entrant_item.title }}</a>
                     
                     <div class="panel-date-of">
                         <p>{{ for_entrant_item.pub_date | date:'d M. Y' }}</p>
                         <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">
-                    </div> 
+                    </div>
                 </div>
                 {% endfor %}
             </div>

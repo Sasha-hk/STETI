@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<!-- static files -->
+{% block static %}<link rel="stylesheet" href="{% static 'study/css/for-student-and-entrant-details.css' %}">{% endblock %}
+
+<!-- document title -->
+{% block title %}STETI{% endblock %}
+
+<!-- base content -->
+{% block content %}
+	<div class="centralize">
+		<section class="container fix-navigation details">
+            {% if details.img %}
+            <a href="{{ details.img.url }}" target="_blank"><img src="{{ details.img.url }}" alt="" class="img-fix"></a>
+            {% endif %}
+            <div class="">
+                <h2 class="mobile-space">{{ details.title }}</h2>
+                <div class="mobile-space-block">
+                    {{ details.content | safe }}
+                </div>
+                <p class="mobile-space pub-date">{{ details.pub_date }}</p>
+            </div>
+        </section>
+        {% if details.imgs %}
+        <section class="container more-images">
+            {% for img in details.imgs.all %}
+            <a href="{{ img.img.url }}" target="_blank" rel="noopener noreferrer"><img src="{{ img.img.url }}" alt="{{ img.name }}" class="img-fix"></a>
+            {% endfor %}
+        </section>
+        {% endif %}
+    </div>   
+{% endblock %}
+
+<!-- javascript -->
+{% block scripts %}{% endblock %}

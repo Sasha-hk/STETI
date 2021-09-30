@@ -20,7 +20,7 @@
                     <div class="face-description">
                         <h3>{{ face.FL }}</h3>
                         <b>{{ face.positon }}</b>
-                        <p>{{ face.description }}</p>
+                        <p>{{ face.description | safe }}</p>
                         <div class="phone-number">
                             <img src="{% static '/base/img/icon-phone.svg' %}" alt="">
                             <p>{{ face.phone_number }}</p>

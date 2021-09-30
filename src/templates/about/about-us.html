@@ -14,19 +14,19 @@
                 <div class="about-header">
                     <div class="about-description">
                         <h2 class="mobile-space">Про нас</h2>
-                        <p class="mobile-space">{{ data.first_paragraph }}</p>
+                        <p class="mobile-space">{{ data.first_paragraph|safe }}</p>
                     </div>
 
                     <img src="{{ data.img.url }}" alt="">
                     
                 </div>
-                <p class="mobile-space">{{ data.second_paragraph }}</p>
-                <p class="mobile-space">{{ data.third_paragraph }}</p>
+                <p class="mobile-space">{{ data.second_paragraph|safe }}</p>
+                <p class="mobile-space">{{ data.third_paragraph|safe }}</p>
 
             </section>
             <section class="container">
                 <h2 class="mobile-space">Кафедри</h2>
-                <p class="mobile-space">{{ data.about_departments }}</p>
+                <p class="mobile-space">{{ data.about_departments|safe }}</p>
                 <div class="departments">
                     {% for department in departments %}
                     <div class="card">

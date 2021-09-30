@@ -94,9 +94,6 @@ h6 {
 .lock-scroll {
     overflow: hidden;
 }
-.calendar-icon {
-    fill: var(--color-text);
-} 
 .panel {  
     position: relative;
     display: flex; 
@@ -439,9 +436,14 @@ footer {
     } 
 }
 @media screen and (min-width: 720px) {
+
 }
 
 @media screen and (min-width: 960px) {
+    /* general */
+    section{
+        margin-bottom: 100px;
+    }
     /* general */
     .fix-navigation {
         margin-top: 130px;

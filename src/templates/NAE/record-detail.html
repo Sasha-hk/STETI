@@ -2,8 +2,7 @@
 {% load static %}
 
 <!-- static files -->
-{% block static %}<link rel="stylesheet" href="{% static 'NAE/css/news-detail.css' %}">{% endblock %}
-
+{% block static %}<link rel="stylesheet" href="{% static 'NAE/css/news-announcements-details.css' %}">{% endblock %}
 
 <!-- document title -->
 {% block title %}STETI{% endblock %}
@@ -11,29 +10,35 @@
 <!-- base content -->
 {% block content %}
         <div class="centralize"> 
-            <section class="container fix-navigation">
-                <div class="record-header">
-                    <div class="record-description">
-                        <h2 class="mobile-space">{{ record.title }}</h2>
-                        <p class="mobile-space">{{ record.description | safe }}</p>
-                        <p class="mobile-space">{{ record.pub_date | date:'d M. Y' }}</p>
-                    </div>
-    
-                    <div class="record-images">
-                        <img src="{{ record.baner.url }}" alt="">
-                    </div>
-                </div>
- 
-                <div class="more-images">
-                    {% if record.images.all %}
+            <section class="container fix-navigation details">
+                {% if details.img %}
+                <a href="{{ details.img.url }}" target="_blank"><img src="{{ details.img.url }}" alt="" class="img-fix"></a>
+                {% endif %}
+                <div class="">
+                    <h2 class="mobile-space">{{ details.title }}</h2>
 
-                    {% for image in record.images.all %}
-                    <img class="image-fluid" src="{{ image.img.url }}" alt="{{ image.name }}">
-                    {% endfor %}
-
+                    {% if details.event_date_from %}
+                    {% if details.event_date_from and details.event_date_to %}
+                    <p>Дата проведення {{ details.event_date_from | date:'d.m.Y' }} - {{ details.event_date_to | date:'d.m.Y' }}</p>
+                    {% else %}
+                    <p>Дата проведення {{ details.event_date_from | date:'d.m.Y' }}</p>
                     {% endif %}
+                    {% endif %}
+                    
+
+                    <div class="mobile-space-block">
+                        {{ details.content | safe }}
+                    </div>
+                    <p class="mobile-space pub-date">{{ details.pub_date }}</p>
                 </div>
             </section>
+            {% if details.imgs %}
+            <section class="container more-images">
+                {% for img in details.imgs.all %}
+                <a href="{{ img.img.url }}" target="_blank" rel="noopener noreferrer"><img src="{{ img.img.url }}" alt="{{ img.name }}" class="img-fix"></a>
+                {% endfor %}
+            </section>
+            {% endif %}
         </div>
 {% endblock %}
 

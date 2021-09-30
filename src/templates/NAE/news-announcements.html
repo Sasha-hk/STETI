@@ -15,9 +15,9 @@
                 {% if news %}
                 <div class="news">
                     {% for news_item in news %}
-                    {% if news_item.baner %}
+                    {% if news_item.img %}
                     <div class="news-item">
-                        <img src="{{ news_item.baner.url }}" alt="">
+                        <img src="{{ news_item.img.url }}" alt="">
                         <div class="news-shadow">
                             <h3 class="overflow-ellipsis">{{ news_item.title }}</h3>
                             <p>{{ news_item.pub_date | date:'d M. Y' }}</p>

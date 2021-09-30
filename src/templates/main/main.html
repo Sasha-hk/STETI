@@ -21,11 +21,17 @@
                         {% for event_item in event %}
                         <div class="panel"> 
                             <a href="{% url 'event_detail' event_item.slug %}">{{ event_item.title }}</a>
+                            <div class="alert-wrapper">
+                                <svg class="alert-dot" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#FF0000"/>
+                                </svg>  
+                            </div>
                              
                             <div class="panel-date-of">
-                                <p>{{ event_item.event_date | date:'d M. Y' }}</p>
+                                <p>{{ event_item.pub_date | date:'d M. Y' }}</p>
                                 <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">
                             </div> 
+
                         </div>
                         {% endfor %}
                         <svg class="event-arrow" width="42" height="17" viewBox="0 0 42 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +54,10 @@
                             {% for news_item in news %}
                             <div class="news-item"> 
                                 <a class="overflow-ellipsis" href="{% url 'news_detail' news_item.slug %}">{{ news_item.title }}</a>
-                                <img src="{% static 'base/img/icon-three-dots.svg' %}" alt="">
+                                <p>{{ news_item.pub_date | date:'d M. Y' }}</p>
+                                <!-- <svg class="alert-dot" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="20" rx="10" fill="#FF0000"/>
+                                </svg>   -->
                             </div>
                             {% endfor %}
                             <div class="board-learn-more"> 
@@ -67,7 +76,7 @@
                             {% for advertisement_item in advertisement %}
                             <div class="advertisement-item"> 
                                 <a class="overflow-ellipsis" href="{% url 'announcement_detail' advertisement_item.slug %}">{{ advertisement_item.title }}</a>
-                                <img src="{% static 'base/img/icon-three-dots.svg' %}" alt="">
+                                <p>{{ advertisement_item.pub_date | date:'d M. Y' }}</p>
                             </div> 
                             {% endfor %} 
                             <div class="board-learn-more"> 

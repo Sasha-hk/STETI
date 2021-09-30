@@ -15,8 +15,12 @@
 			<div class="all_imes">
                 {% for for_student_item in for_student %}
                 <div class="panel">    
+                    {% if for_student_item.link %}
+                    <a href="{{ for_student_item.link }}" target="_blank">{{ for_student_item.title }}</a>
+                    {% else %} 
                     <a href="{% url 'for_student_detail' for_student_item.slug %}">{{ for_student_item.title }}</a>
-                    
+                    {% endif %}
+
                     <div class="panel-date-of">
                         <p>{{ for_student_item.pub_date | date:'d M. Y' }}</p>
                         <img src="{% static 'base/img/icon-calendar.svg' %}" alt="">

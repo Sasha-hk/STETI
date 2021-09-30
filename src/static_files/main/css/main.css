@@ -1,6 +1,3 @@
-.fff {
-    height: 1000px;
-}
 /* header */ 
 .left-side {
     width: 100%;
@@ -123,6 +120,8 @@
     color: #39374A;
     z-index: 0;
 }
+
+
 
 @media screen and (min-width: 550px) {
     

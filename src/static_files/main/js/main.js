@@ -8,6 +8,7 @@ function setStepSize(size) {
         steps[i].style.height = size + 'px'
     }
 }
+
 function detectStepSize() {
     steps      = document.querySelectorAll('.steps-to-success div')
     stepHeight = steps[0].getBoundingClientRect().width;

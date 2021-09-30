@@ -38,6 +38,7 @@ class ForStudent(models.Model):
     imgs = models.ManyToManyField(ForStudentImages, verbose_name='Більше фото', blank=True)
     link = models.CharField('Посилання на ресурс', max_length=500, blank=True, help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" не біде доступне')
     pub_date = models.DateTimeField(auto_now_add=True)
+    show_on_home = models.BooleanField(verbose_name='Показувати на домашній сторінці', default=False)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
     def generate_slug(self):

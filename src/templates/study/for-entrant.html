@@ -11,12 +11,15 @@
 {% block content %}
 	<div class="centralize">
 		<section class="container fix-navigation">
-            <h2 class="mobile-space">Студенту</h2> 
+            <h2 class="mobile-space">Абітурієнту</h2> 
 			<div class="all_imes">
                 {% for for_entrant_item in for_entrant %}
                 <div class="panel"> 
-                                
+                    {% if for_entrant_item.link %}
+                    <a href="{{ for_entrant_item.link }}" target="_blank">{{ for_entrant_item.title }}</a>
+                    {% else %} 
                     <a href="{% url 'for_entrant_detail' for_entrant_item.slug %}">{{ for_entrant_item.title }}</a>
+                    {% endif %}
                     
                     <div class="panel-date-of">
                         <p>{{ for_entrant_item.pub_date | date:'d M. Y' }}</p>

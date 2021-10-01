@@ -1,14 +1,117 @@
 <div class="navigation">
-    <span class="logo"><a href="{% url 'home' %}">STETI</a></span>
+    <!-- 
+    ==================
+        gifferents
+    ==================
+        navigation
+    ==================
+
+    
+    ==================
+          burger
+    ==================
+        navigation
+        differents
+    ================== 
+    -->
+
+
+    <div class="navigation-head">
+        <div class="container">
+            1            
+        </div>
+    </div>
+
+    <div class="nav-wrapper centralize">
+        <nav>
+            <div class="nav-item-wrapper active">
+                <div class="nav-item">
+                    <a href="" class="nav-link">Головна</a>
+                </div>
+            </div>
+
+            <div class="nav-item-wrapper">
+                <div class="nav-item">
+                    <a href="" class="nav-link">Новиши та оголошення</a>
+                </div>
+            </div>
+
+            <div class="nav-item-wrapper">
+                <div class="nav-item">
+                    <a href="" class="nav-link">Циклова комісія</a>
+                </div>
+            </div>
+
+
+            <div class="nav-item-wrapper multi">
+                <div class="nav-item">
+                    <div class="nav-item-flex">
+                        <p href="" class="nav-link">Про заклад</p>
+                        <svg width="10" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>    
+                    </div>
+                </div>
+
+                <div class="nav-drop-down">
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">Про нас</a>
+                    </div>
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">Контакти</a>
+                    </div>
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">Галерея</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item-wrapper multi">
+                <div class="nav-item">
+                    <div class="nav-item-flex">
+                        <p class="nav-link">Навчання</p>
+                        <svg width="10" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>    
+                    </div>
+                </div>
+
+                <div class="nav-drop-down">
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">Бабліотека</a>
+                    </div>
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">Студенту</a>
+                    </div>
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">Абітурієнту</a>
+                    </div>
+                    <div class="drop-down-item">
+                        <a href="" class="nav-link">ЗНО</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <!-- <span class="logo"><a href="{% url 'home' %}">STETI</a></span>
     <nav>
-        <div class="nav-item">{% url 'home' as url_home %}
+        {% url 'home' as url_home %}
+        <div class="nav-item">
             <a href="{% url 'home' %}" class="nav-link {% if request.path == url_home %}nav-link-active{% endif %}">Головна</a>
         </div>
 
+        {% url 'news_announces' as news_announces_url %}
         <div class="nav-item">
-            {% url 'news_announces' as news_announces_url %}
             <a href="{% url 'news_announces' %}" class="nav-link {% if request.path == news_announces_url %}nav-link-active{% endif %}">Новиши та оголошення</a>
         </div>
+
+        <div class="nav-item">
+            <a href="" class="nav-link">Циклова комісія</a>
+        </div>
+        
         {% url 'about_us' as about_us_url %}
         {% url 'contacts' as contacts_url %}
         {% url 'gallery_categorys' as gallery_categorys_url %}
@@ -43,8 +146,8 @@
                 <a href="" class="nav-link">ЗНО</a>
             </div> 
         </div>
-    </nav>  
-    <div class="burger">
+    </nav>   -->
+    <!-- <div class="burger">
         <span></span>
-    </div>
+    </div> -->
 </div>

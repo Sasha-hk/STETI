@@ -54,7 +54,6 @@ class Base {
         })
     }
     onResize() { 
-        console.log(this.onResizeLoop)
         this.onResizeLoop.forEach(element => {
             if (element[1]) {
                 element[0](element[1])
@@ -71,7 +70,7 @@ class Navigation extends Base {
         super();
         this.burger     = document.querySelector('.burger')
         this.body       = document.querySelector('body')
-        this.multi_nav  = document.querySelectorAll('.multi-nav')
+        this.multi_nav  = document.querySelectorAll('.nav-item-wrapper.multi')
         this.navigation = document.querySelector('.navigation')
 
         this.isListen = false
@@ -88,29 +87,21 @@ class Navigation extends Base {
 
     }
     
-    formatRecognition() {   
-        if (window.innerWidth <= this.screenSizes.lg) {
-            if (!this.isListen) {  
-                this.isListen = true   
-                
-                // multi navigation
-                for (let i = 0; i < this.multi_nav.length; i++) {
-                    this.multi_nav[i].children[0].addEventListener('click', click => {
-                        for (let j = 0; j < this.multi_nav.length; j++) {
-                            if (i != j) {
-                                this.multi_nav[j].classList.remove('active')
-                            }
-                        }
-                        this.multi_nav[i].classList.toggle('active')
-                    })
-                } 
-
-                // burger
-                this.burger.addEventListener('click', this.burgerHandler.bind(this), false)  
+    formatRecognition() {  
+        window.addEventListener('scroll', handle => {
+            for (let j = 0; j < this.multi_nav.length; j++) {
+                this.multi_nav[j].classList.remove('dropdown-active')
             }
-        }
-        else { 
-            this.navigationRemoveActive() 
+        }) 
+        for (let i = 0; i < this.multi_nav.length; i++) {
+            this.multi_nav[i].addEventListener('click', handle => {
+                for (let j = 0; j < this.multi_nav.length; j++) {
+                    if (i != j) {
+                        this.multi_nav[j].classList.remove('dropdown-active')
+                    }
+                }
+                this.multi_nav[i].classList.toggle('dropdown-active')
+            })
         }
     }
 

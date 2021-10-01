@@ -24,6 +24,7 @@
     
     
     --color-text-revert: #ffffff;
+    --color-text-dark: #000;
     --color-text: #86868B;
     --color-bold: #5B5B61;
     --color-title: #1D1D1F;
@@ -43,6 +44,7 @@
     --navigation-transitoin: 0.2s;
     --navigation-space-between-items: 15px;
     --navigation-height: 40px;
+    --navigation-head-height: 85px; 
 
 
     
@@ -99,6 +101,33 @@ h6 {
 }
 
 /* basis components */
+/* buttons */
+button {
+    outline: none;
+    border: none;
+    background: none;
+    border-radius: 7px;
+    font-weight: 500;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.btn-transparent {
+    background: var(--bg-light-block);
+    color: var(--color-text-dark);
+}
+.btn-black {
+    background: #000;
+    color: var(--color-text-revert);
+
+}
+.btn-blue {
+    background: #5C6AEA;
+    color: var(--color-text-revert);
+}
+.btn-border-black {
+    border: 1.5px solid black;
+}
+
 .lock-scroll {
     overflow: hidden;
 }
@@ -254,10 +283,40 @@ section{
 
 /* navigation */
 .navigation-head {
+    display: flex;
+    justify-content: center;
     background: var(--bg-light-block);
-    height: 85px;
+    height: var(--navigation-head-height);
 }
+.head-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo .logoo {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-light-block);
+    box-shadow: var(--shadow);
+    margin-right: var(--margin-3);
+}
+.logo p {
+    color: #000;
+    font-size: 23px;
+}
+.in-up button:not(:last-child) {
+    margin-right: 5px;
+}
+
+
 .nav-wrapper {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
     display: flex;
     justify-content: center;
     background: var(--bg-light-block);

@@ -87,12 +87,34 @@ class Navigation extends Base {
 
     }
     
-    formatRecognition() {  
+    formatRecognition() {
+        // handle click enywhwre
+        document.addEventListener('click', (event) => {
+            let hide_dropdown = true
+
+            for (let i = 0; i < event.path.length; i++) {
+                for (let j = 0; j < event.path.length; j++) {
+                    if (event.path[j] == this.multi_nav[i]) {
+                        hide_dropdown = false
+                    }
+                }
+            }
+
+            if (hide_dropdown) {
+                for (let i = 0; i < this.multi_nav.length; i++) {
+                    this.multi_nav[i].classList.remove('dropdown-active')
+                }
+            }
+        })
+
+        // handle scroll
         window.addEventListener('scroll', handle => {
             for (let j = 0; j < this.multi_nav.length; j++) {
                 this.multi_nav[j].classList.remove('dropdown-active')
             }
         }) 
+
+        // activate dropdown manu
         for (let i = 0; i < this.multi_nav.length; i++) {
             this.multi_nav[i].addEventListener('click', handle => {
                 for (let j = 0; j < this.multi_nav.length; j++) {

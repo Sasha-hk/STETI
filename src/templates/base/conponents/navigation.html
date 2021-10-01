@@ -1,27 +1,27 @@
 <div class="navigation">
-    <!-- 
-    ==================
-        gifferents
-    ==================
-        navigation
-    ==================
-
-    
-    ==================
-          burger
-    ==================
-        navigation
-        differents
-    ================== 
-    -->
-
-
     <div class="navigation-head">
-        <div class="container">
-            1            
+        <div class="head-content container">
+            <div class="logo">
+                <div class="logoo"></div>
+
+                <p>STETI</p>
+            </div>
+
+            <div class="in-up">
+                <button class="btn-transparent btn-border-black">реєстрація</button>
+                <button class="btn-black btn-border-black">вхід</button>
+            </div>
         </div>
     </div>
 
+    {% url 'home' as url_home %}
+    {% url 'news_announces' as news_announces_url %}
+    {% url 'about_us' as about_us_url %}
+    {% url 'contacts' as contacts_url %}
+    {% url 'gallery_categorys' as gallery_categorys_url %}
+    {% url 'library' as library_url %}
+    {% url 'for_student' as for_student_url %}
+    {% url 'for_entrant' as for_entrant_url %}
     <div class="nav-wrapper centralize">
         <nav>
             <div class="nav-item-wrapper active">
@@ -29,20 +29,20 @@
                     <a href="" class="nav-link">Головна</a>
                 </div>
             </div>
-
+    
             <div class="nav-item-wrapper">
                 <div class="nav-item">
                     <a href="" class="nav-link">Новиши та оголошення</a>
                 </div>
             </div>
-
+    
             <div class="nav-item-wrapper">
                 <div class="nav-item">
                     <a href="" class="nav-link">Циклова комісія</a>
                 </div>
             </div>
-
-
+    
+    
             <div class="nav-item-wrapper multi">
                 <div class="nav-item">
                     <div class="nav-item-flex">
@@ -52,7 +52,7 @@
                         </svg>    
                     </div>
                 </div>
-
+    
                 <div class="nav-drop-down">
                     <div class="drop-down-item">
                         <a href="" class="nav-link">Про нас</a>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="nav-item-wrapper multi">
                 <div class="nav-item">
                     <div class="nav-item-flex">
@@ -75,7 +75,7 @@
                         </svg>    
                     </div>
                 </div>
-
+    
                 <div class="nav-drop-down">
                     <div class="drop-down-item">
                         <a href="" class="nav-link">Бабліотека</a>
@@ -93,61 +93,4 @@
             </div>
         </nav>
     </div>
-
-
-
-    <!-- <span class="logo"><a href="{% url 'home' %}">STETI</a></span>
-    <nav>
-        {% url 'home' as url_home %}
-        <div class="nav-item">
-            <a href="{% url 'home' %}" class="nav-link {% if request.path == url_home %}nav-link-active{% endif %}">Головна</a>
-        </div>
-
-        {% url 'news_announces' as news_announces_url %}
-        <div class="nav-item">
-            <a href="{% url 'news_announces' %}" class="nav-link {% if request.path == news_announces_url %}nav-link-active{% endif %}">Новиши та оголошення</a>
-        </div>
-
-        <div class="nav-item">
-            <a href="" class="nav-link">Циклова комісія</a>
-        </div>
-        
-        {% url 'about_us' as about_us_url %}
-        {% url 'contacts' as contacts_url %}
-        {% url 'gallery_categorys' as gallery_categorys_url %}
-        <div class="nav-item multi-nav">
-            <div class="link-view-unit">
-                <p href="" class="nav-link {% if request.path == contacts_url or request.path == gallery_categorys_url or request.path == about_us_url %}nav-link-active{% endif %}">Про заклад</p>
-                <svg width="13" height="8" viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
-                </svg>
-            </div>
-
-            <div class="nav-expanded">
-                <a href="{% url 'about_us' %}" class="nav-link {% if request.path == about_us_url %}nav-link-active{% endif %}">Про нас</a>
-                <a href="{% url 'gallery_categorys' %}" class="nav-link {% if request.path == gallery_categorys_url %}nav-link-active{% endif %}">Галерея</a>
-                <a href="{% url 'contacts' %}" class="nav-link {% if request.path == contacts_url %}nav-link-active{% endif %}">Контакти</a>
-            </div> 
-        </div>
-        {% url 'library' as library_url %}
-        {% url 'for_student' as for_student_url %}
-        {% url 'for_entrant' as for_entrant_url %}
-        <div class="nav-item multi-nav">
-            <div class="link-view-unit">
-                <p href="" class="nav-link {% if request.path == library_url or request.path == for_student_url or request.path == for_entrant_url %}nav-link-active{% endif %}">Навчання</p>
-                <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
-                </svg>
-            </div>
-            <div class="nav-expanded">
-                <a href="{% url 'library' %}" class="nav-link {% if request.path == library_url %}nav-link-active{% endif %}">Бабліотека</a>
-                <a href="{% url 'for_student' %}" class="nav-link {% if request.path == for_student_url %}nav-link-active{% endif %}">Студенту</a>
-                <a href="{% url 'for_entrant' %}" class="nav-link {% if request.path == for_entrant_url %}nav-link-active{% endif %}">Абітурієнту</a>
-                <a href="" class="nav-link">ЗНО</a>
-            </div> 
-        </div>
-    </nav>   -->
-    <!-- <div class="burger">
-        <span></span>
-    </div> -->
 </div>

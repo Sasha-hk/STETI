@@ -3,6 +3,7 @@ class Base {
     constructor(optoins) {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
+        this.body = document.body
         this.onLoadLoop = [[this.setVariables, null]]; 
         this.onResizeLoop = [[this.setVariables, null]];
         this.screenSizes = {
@@ -68,77 +69,37 @@ class Base {
 class Navigation extends Base {
     constructor() {
         super();
-        this.burger     = document.querySelector('.burger')
-        this.body       = document.querySelector('body')
-        this.multi_nav  = document.querySelectorAll('.nav-item-wrapper.multi')
-        this.navigation = document.querySelector('.navigation')
+        this.burger = document.querySelector('.burger')
+        this.nav    = document.querySelector('.nav')
+        this.multi  = document.querySelectorAll('.nav-multi')
 
         this.isListen = false
 
         this.formatRecognition()
-        this.addOnResize(this.formatRecognition.bind(this))
     }
 
-    handleTable() {
-
-    }
-
-    handlePC() {
-
-    }
-    
     formatRecognition() {
-        // handle click enywhwre
-        document.addEventListener('click', (event) => {
-            let hide_dropdown = true
-
-            for (let i = 0; i < event.path.length; i++) {
-                for (let j = 0; j < event.path.length; j++) {
-                    if (event.path[j] == this.multi_nav[i]) {
-                        hide_dropdown = false
-                    }
-                }
-            }
-
-            if (hide_dropdown) {
-                for (let i = 0; i < this.multi_nav.length; i++) {
-                    this.multi_nav[i].classList.remove('dropdown-active')
-                }
-            }
-        })
-
-        // handle scroll
-        window.addEventListener('scroll', handle => {
-            for (let j = 0; j < this.multi_nav.length; j++) {
-                this.multi_nav[j].classList.remove('dropdown-active')
-            }
-        }) 
-
-        // activate dropdown manu
-        for (let i = 0; i < this.multi_nav.length; i++) {
-            this.multi_nav[i].addEventListener('click', handle => {
-                for (let j = 0; j < this.multi_nav.length; j++) {
-                    if (i != j) {
-                        this.multi_nav[j].classList.remove('dropdown-active')
-                    }
-                }
-                this.multi_nav[i].classList.toggle('dropdown-active')
+        if (this.screenSizes.md > this.width) {
+            // handle burger
+            this.burger.addEventListener('click', handle => {
+                this.nav.classList.toggle('open')
+                this.body.classList.toggle('lock-scroll')
             })
-        }
-    }
+            
+            // handle multi nav item
+            for (let i = 0; i < this.multi.length; i++) {
+                this.multi[i].addEventListener('click', handle => {
+                    for (let j = 0; j < this.multi.length; j++) {
+                        if (i != j) {
+                            this.multi[j].classList.remove('open')
+                        }
+                    }
+                    this.multi[i].classList.toggle('open')
+                })
+                
+            }
 
-    // handlers 
-    burgerHandler() {
-        this.navigation.classList.toggle('navigation-active')
-        this.body.classList.toggle('lock-scroll')
-    }
-    navigationRemoveActive() {
-        this.navigation.classList.remove('navigation-active')
-        this.body.classList.remove('lock-scroll')
-        
-        for (let i = 0; i < this.multi_nav.length; i++) {
-            this.multi_nav[i].classList.remove('active')
-        } 
+        }
     }
 } 
 

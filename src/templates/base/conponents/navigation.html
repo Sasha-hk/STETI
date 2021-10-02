@@ -25,30 +25,30 @@
             <div class="nav-item nav-multi {% if request.path == about_us_url or request.path == contacts_url or request.path == gallery_categorys_url %}active{% endif %}">
                 <div class="multi-wrapper">
                     <p class="nav-link">Про заклад</p>
-                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="12" height="5" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                     </svg>
                 </div>
                 
                 <ul class="dropdown">
                     <li><a href="{{ about_us_url }}" class="nav-link {% if request.path == about_us_url %}active{% endif %}">Про нас</a></li>
-                    <li><a href="{{ contacts_url }}" class="nav-link {% if request.path == contacts_url %}active{% endif %}">Галерея</a></li>
-                    <li><a href="{{ gallery_categorys_url }}" class="nav-link {% if request.path == gallery_categorys_url %}active{% endif %}">Контакти</a></li>
+                    <li><a href="{{ gallery_categorys_url }}" class="nav-link {% if request.path == gallery_categorys_url %}active{% endif %}">Галерея</a></li>
+                    <li><a href="{{ contacts_url }}" class="nav-link {% if request.path == contacts_url %}active{% endif %}">Контакти</a></li>
                 </ul>
             </div>
             {% url 'library' as library_url %}{% url 'for_entrant' as for_entrant_url %}{% url 'for_student' as for_student_url %}{% url 'gallery_categorys' as gallery_categorys_url %}
             <div class="nav-item nav-multi {% if request.path == library_url or request.path == for_entrant_url or request.path == for_student_url or request.path == gallery_categorys_url %}active{% endif %}">
                 <div class="multi-wrapper">
                     <p class="nav-link">Навчання</p>
-                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="12" height="5" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 7.5L0.870834 0.75L12.1292 0.75L6.5 7.5Z"/>
                     </svg>
                 </div>
 
                 <ul class="dropdown">
                     <li><a href="{{ library_url }}" class="nav-link {% if request.path == library_url %}active{% endif %}">Бібліотека</a></li>
-                    <li><a href="{{ for_entrant_url }}" class="nav-link {% if request.path == for_entrant_url %}active{% endif %}">Студунту</a></li>
-                    <li><a href="{{ for_student_url }}" class="nav-link {% if request.path == for_student_url %}active{% endif %}">Абітурієнту</a></li>
+                    <li><a href="{{ for_student_url }}" class="nav-link {% if request.path == for_student_url %}active{% endif %}">Студунту</a></li>
+                    <li><a href="{{ for_entrant_url }}" class="nav-link {% if request.path == for_entrant_url %}active{% endif %}">Абітурієнту</a></li>
                     <li><a href="" class="nav-link">ЗНО</a></li>
                 </ul>
             </div>

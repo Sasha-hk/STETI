@@ -78,30 +78,58 @@ class Navigation extends Base {
         this.formatRecognition()
     }
 
-    formatRecognition() {
-        if (this.screenSizes.md > this.width) {
-            // handle burger
-            this.burger.addEventListener('click', handle => {
-                this.nav.classList.toggle('open')
-                this.body.classList.toggle('lock-scroll')
-            })
-            
-            // handle multi nav item
+    handleLaptop() {
+        
+        window.addEventListener('scroll', handle => {
             for (let i = 0; i < this.multi.length; i++) {
-                this.multi[i].addEventListener('click', handle => {
-                    for (let j = 0; j < this.multi.length; j++) {
-                        if (i != j) {
-                            this.multi[j].classList.remove('open')
-                        }
+                this.multi[i].classList.remove('open')
+            }
+        })
+        
+        document.addEventListener('click', (event) => {
+            let hide_dropdown = true
+
+            for (let i = 0; i < event.path.length; i++) {
+                for (let j = 0; j < event.path.length; j++) {
+                    if (event.path[j] == this.multi[i]) {
+                        hide_dropdown = false
                     }
-                    this.multi[i].classList.toggle('open')
-                })
-                
+                }
             }
 
+            if (hide_dropdown) {
+                for (let i = 0; i < this.multi.length; i++) {
+                    this.multi[i].classList.remove('open')
+                }
+            }
+        })
+    }
+
+    formatRecognition() {
+        if (this.screenSizes.lg < this.width) {
+            this.handleLaptop()
+            console.log(12)
+        }
+        
+        // handle burger
+        this.burger.addEventListener('click', handle => {
+            this.nav.classList.toggle('open')
+            this.body.classList.toggle('lock-scroll')
+        })
+        
+        // handle multi nav item
+        for (let i = 0; i < this.multi.length; i++) {
+            this.multi[i].addEventListener('click', handle => {
+                for (let j = 0; j < this.multi.length; j++) {
+                    if (i != j) {
+                        this.multi[j].classList.remove('open')
+                    }
+                }
+                this.multi[i].classList.toggle('open')
+            })   
         }
     }
-} 
+}
 
 
 let $ = new Base(),

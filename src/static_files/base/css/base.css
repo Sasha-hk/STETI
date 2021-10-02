@@ -278,11 +278,12 @@ section{
 
 /* navigation */
 nav {
-    position: relative;
+    position: fixed;
+    width: 100%;
     z-index: 10;
 }
 .nav {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     background: var(--bg-light-block);
@@ -329,8 +330,10 @@ nav {
 }
 .nav-link {
     color: var(--navigation-color-inactive);
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 600;
+    cursor: pointer;
+    user-select: none;
 }
 .nav-item:not(:last-child) {
     margin-bottom: 25px;
@@ -466,17 +469,89 @@ footer {
 }
 
 @media screen and (min-width: 960px) {
+    * {
+        --navigation-height: 50px;
+    }
+
     /* general */
     section{
         margin-bottom: 100px;
-    }
-    /* general */
-    .fix-navigation {
-        margin-top: 130px;
-    }
+    } 
+    
     /* navigation */
-    
-    
+    .nav::before {
+        display: none;
+    }
+    .logo {
+        display: none;
+    }
+    .burger {   
+        display: none;
+    }
+    .links {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        opacity: 1; 
+        overflow: unset;
+        position: static;
+        visibility: visible;
+        height: 100%;
+    }
+    .nav-link {
+        font-size: 16px;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+    .nav-item:not(:last-child) {
+        margin-bottom: 0px;
+    }
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;  
+        height: 100%;
+    }
+    .nav-multi {
+        position: relative;
+    }
+    .dropdown {
+        background: var(--bg-light-block);
+        border-radius: var(--br);
+        box-shadow: var(--shadow);
+        display: block;
+        opacity: 0;
+        padding: var(--margin-2);
+        position: absolute;
+        top: var(--navigation-height);
+        left: 0;
+        transition: transform var(--navigation-transition) linear, opacity var(--navigation-transition) linear;
+        min-width: 100%;
+    }
+    .nav-item.open .dropdown {
+        border-left: none;
+        opacity: 1;
+        padding: 0;
+        margin: 0;
+        transform: translate(0, 10px);
+    }
+    .dropdown li {
+        margin: 0;
+    }
+    .dropdown li {
+        padding: var(--margin-3); 
+    }
+    .dropdown li:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: calc(var(--margin-2) / 2);
+        margin-bottom: 0;
+    }
+    .dropdown li:not(:first-child) {
+        padding-top: calc(var(--margin-2) / 2);
+    } 
+    .nav-item.active.open .dropdown { 
+        border-left: none;
+    }
 }
 
 @media screen and (min-width: 1140px) {
@@ -484,7 +559,7 @@ footer {
         --container: 1060px;
     }
     .fix-navigation {
-        margin-top: 140px;
+        margin-top: 100px;
     }
 }
 

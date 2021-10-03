@@ -72,6 +72,7 @@ class Navigation extends Base {
         this.burger = document.querySelector('.burger')
         this.nav    = document.querySelector('.nav')
         this.multi  = document.querySelectorAll('.nav-multi')
+        this.head   = document.querySelector('.head')
 
         this.isListen = false
 
@@ -79,6 +80,15 @@ class Navigation extends Base {
     }
 
     handleLaptop() {
+        window.addEventListener('scroll', handle => {
+            if (window.pageYOffset != 0) {
+                this.head.classList.add('head-hide')
+            }
+            else {
+                this.head.classList.remove('head-hide')
+            }
+
+        })
         
         window.addEventListener('scroll', handle => {
             for (let i = 0; i < this.multi.length; i++) {
@@ -108,7 +118,6 @@ class Navigation extends Base {
     formatRecognition() {
         if (this.screenSizes.lg < this.width) {
             this.handleLaptop()
-            console.log(12)
         }
         
         // handle burger

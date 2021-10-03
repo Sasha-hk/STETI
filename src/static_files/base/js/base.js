@@ -4,8 +4,8 @@ class Base {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
         this.body = document.body
-        this.onLoadLoop = [[this.setVariables, null]]; 
-        this.onResizeLoop = [[this.setVariables, null]];
+        this.onLoadLoop = []; 
+        this.onResizeLoop = [];
         this.screenSizes = {
             sm: 540,
             md: 720,
@@ -17,14 +17,9 @@ class Base {
 
         window.addEventListener('resize', this.onResize.bind(this))
         window.addEventListener('load', this.onLoad.bind(this))
+        window.addEventListener('resize', this.setVariables)
     }
-
-    // set variables
-    setVariables() {
-        this.width = window.innerWidth;
-        this.height = window.innerHeight;
-    }
-
+    
     // on Load / Resize
     addOnLoad(functionName, args = null) { 
         if (args) {
@@ -87,7 +82,6 @@ class Navigation extends Base {
             else {
                 this.head.classList.remove('head-hide')
             }
-
         })
         
         window.addEventListener('scroll', handle => {

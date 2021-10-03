@@ -25,7 +25,7 @@ function detectStepSize() {
     else if ($.screenSizes.lg < $.width) {
         setStepSize(stepHeight)
     }  
-}  
+}
 
 $.addOnLoad(detectStepSize)
 $.addOnResize(detectStepSize)

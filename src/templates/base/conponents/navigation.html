@@ -6,8 +6,15 @@
             </div>
     
             <div class="in-up">
+                {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <a href="/admin"><button class="btn-transparent btn-border-black">admin</button></a>
+                {% endif %}
+                
+                {% else %}
                 <button class="btn-transparent btn-border-black">вхід</button>
                 <button class="btn-black">реєстрація</button>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -45,8 +52,8 @@
                     <li><a href="{{ contacts_url }}" class="nav-link {% if request.path == contacts_url %}active{% endif %}">Контакти</a></li>
                 </ul>
             </div>
-            {% url 'library' as library_url %}{% url 'for_entrant' as for_entrant_url %}{% url 'for_student' as for_student_url %}{% url 'gallery_categorys' as gallery_categorys_url %}
-            <div class="nav-item nav-multi {% if request.path == library_url or request.path == for_entrant_url or request.path == for_student_url or request.path == gallery_categorys_url %}active{% endif %}">
+            {% url 'library' as library_url %}{% url 'for_entrant' as for_entrant_url %}{% url 'for_student' as for_student_url %}
+            <div class="nav-item nav-multi {% if request.path == library_url or request.path == for_entrant_url or request.path == for_student_url %}active{% endif %}">
                 <div class="multi-wrapper">
                     <p class="nav-link">Навчання</p>
                     <svg width="12" height="5" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">

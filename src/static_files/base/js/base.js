@@ -3,6 +3,7 @@ class Base {
     constructor(optoins) {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
+        this.body = document.body
         this.onLoadLoop = [[this.setVariables, null]]; 
         this.onResizeLoop = [[this.setVariables, null]];
         this.screenSizes = {
@@ -54,7 +55,6 @@ class Base {
         })
     }
     onResize() { 
-        console.log(this.onResizeLoop)
         this.onResizeLoop.forEach(element => {
             if (element[1]) {
                 element[0](element[1])
@@ -69,65 +69,76 @@ class Base {
 class Navigation extends Base {
     constructor() {
         super();
-        this.burger     = document.querySelector('.burger')
-        this.body       = document.querySelector('body')
-        this.multi_nav  = document.querySelectorAll('.multi-nav')
-        this.navigation = document.querySelector('.navigation')
+        this.burger = document.querySelector('.burger')
+        this.nav    = document.querySelector('.nav')
+        this.multi  = document.querySelectorAll('.nav-multi')
+        this.head   = document.querySelector('.head')
 
         this.isListen = false
 
         this.formatRecognition()
-        this.addOnResize(this.formatRecognition.bind(this))
     }
 
-    handleTable() {
-
-    }
-
-    handlePC() {
-
-    }
-    
-    formatRecognition() {   
-        if (window.innerWidth <= this.screenSizes.lg) {
-            if (!this.isListen) {  
-                this.isListen = true   
-                
-                // multi navigation
-                for (let i = 0; i < this.multi_nav.length; i++) {
-                    this.multi_nav[i].children[0].addEventListener('click', click => {
-                        for (let j = 0; j < this.multi_nav.length; j++) {
-                            if (i != j) {
-                                this.multi_nav[j].classList.remove('active')
-                            }
-                        }
-                        this.multi_nav[i].classList.toggle('active')
-                    })
-                } 
-
-                // burger
-                this.burger.addEventListener('click', this.burgerHandler.bind(this), false)  
+    handleLaptop() {
+        window.addEventListener('scroll', handle => {
+            if (window.pageYOffset != 0) {
+                this.head.classList.add('head-hide')
             }
-        }
-        else { 
-            this.navigationRemoveActive() 
-        }
+            else {
+                this.head.classList.remove('head-hide')
+            }
+
+        })
+        
+        window.addEventListener('scroll', handle => {
+            for (let i = 0; i < this.multi.length; i++) {
+                this.multi[i].classList.remove('open')
+            }
+        })
+        
+        document.addEventListener('click', (event) => {
+            let hide_dropdown = true
+
+            for (let i = 0; i < event.path.length; i++) {
+                for (let j = 0; j < event.path.length; j++) {
+                    if (event.path[j] == this.multi[i]) {
+                        hide_dropdown = false
+                    }
+                }
+            }
+
+            if (hide_dropdown) {
+                for (let i = 0; i < this.multi.length; i++) {
+                    this.multi[i].classList.remove('open')
+                }
+            }
+        })
     }
 
-    // handlers 
-    burgerHandler() {
-        this.navigation.classList.toggle('navigation-active')
-        this.body.classList.toggle('lock-scroll')
-    }
-    navigationRemoveActive() {
-        this.navigation.classList.remove('navigation-active')
-        this.body.classList.remove('lock-scroll')
+    formatRecognition() {
+        if (this.screenSizes.lg < this.width) {
+            this.handleLaptop()
+        }
         
-        for (let i = 0; i < this.multi_nav.length; i++) {
-            this.multi_nav[i].classList.remove('active')
-        } 
+        // handle burger
+        this.burger.addEventListener('click', handle => {
+            this.nav.classList.toggle('open')
+            this.body.classList.toggle('lock-scroll')
+        })
+        
+        // handle multi nav item
+        for (let i = 0; i < this.multi.length; i++) {
+            this.multi[i].addEventListener('click', handle => {
+                for (let j = 0; j < this.multi.length; j++) {
+                    if (i != j) {
+                        this.multi[j].classList.remove('open')
+                    }
+                }
+                this.multi[i].classList.toggle('open')
+            })   
+        }
     }
-} 
+}
 
 
 let $ = new Base(),

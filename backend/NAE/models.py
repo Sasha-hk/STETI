@@ -7,13 +7,15 @@ from django.db import models
 
 
 
+# slug generator
 def generate_slug():
     slug = ""
     for i in range(settings.SLUG_LENGTH):
         slug += choice(ascii_letters)
     
     return slug
-    
+  
+# slug setter
 def get_slug(self):
     slug = generate_slug()
  
@@ -29,7 +31,6 @@ def get_slug(self):
                 break
 
 
-
 class Images(models.Model):
     class Meta:
         verbose_name_plural = "Фото до новин та оголошень"
@@ -37,6 +38,7 @@ class Images(models.Model):
     name = models.CharField('Підпис картинки', max_length=30)
     img = models.ImageField('Забраження', upload_to='NAE/images/')
     pub_date = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return str(self.name)
@@ -51,13 +53,13 @@ class Announcement(models.Model):
     img = models.ImageField('Банер', upload_to='NAE/advertisment/', blank=True) 
     imgs = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
 
     get_slug = get_slug
 
+
     def save(self, *args, **kwargs): 
         self.get_slug()
-
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -74,9 +76,10 @@ class Event(models.Model):
     event_date_from = models.DateTimeField('Дата проведення', help_text='Якщо подія триватиме декілька днів то вкажіть "дата проведення до"', null=True, blank=True)
     event_date_to = models.DateTimeField('Дата проведення - до', null=True, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
 
     get_slug = get_slug
+
 
     def save(self, *args, **kwargs): 
         self.get_slug()
@@ -97,10 +100,10 @@ class News(models.Model):
     img = models.ImageField('Банер', upload_to='NAE/news/', blank=True)
     imgs = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
-
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
 
     get_slug = get_slug
+
 
     def save(self, *args, **kwargs): 
         self.get_slug()

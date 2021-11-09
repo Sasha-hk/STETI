@@ -1,3 +1,4 @@
+from django.db.models import query
 from django.shortcuts import render
 from django.views.generic import View
 from rest_framework import generics, status, viewsets
@@ -10,52 +11,37 @@ from .serializers import AnnouncementSerializer, NewsSerializer, EventSerializer
 
 
 
-class AnnouncementView(APIView):
-    permission_classes = (AllowAny, )
+# Announcements
+class AnnouncementView(generics.ListAPIView):
+    queryset = Announcement.objects.all()
     serializer_class = AnnouncementSerializer
 
 
-    def get(self, request, slug=None):
-        if slug:
-            announcement = Announcement.objects.get(slug=slug)
-            serialized = AnnouncementSerializer(announcement)
-            return Response(serialized.data, status=status.HTTP_200_OK)
-
-        else:
-            announcements = Announcement.objects.all()
-            serialized = AnnouncementSerializer(announcements, many=True)
-            return Response(serialized.data, status=status.HTTP_200_OK)
- 
-
-
-class NewsView(APIView):
-    permission_classes = (AllowAny, )
+class AnnouncementDetailsView(generics.RetrieveAPIView):
+    lookup_field = "slug"
+    queryset = News.objects.all()
     serializer_class = NewsSerializer
 
 
-    def get(self, request, slug=None):
-        if slug:
-            announcement = News.objects.get(slug=slug)
-            serialized = NewsSerializer(announcement)
-            return Response(serialized.data, status=status.HTTP_200_OK)
-
-        else:
-            announcements = News.objects.all()
-            serialized = NewsSerializer(announcements, many=True)
-            return Response(serialized.data, status=status.HTTP_200_OK)
+# News
+class NewsView(APIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
 
 
+class NewsDetailsView(generics.RetrieveAPIView):
+    lookup_field = "slug"
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+
+
+# Event
 class EventView(APIView):
-    permission_classes = (AllowAny, )
+    queryset = Event
     serializer_class = EventSerializer
 
-    def get(self, request, slug=None):
-        if slug:
-            announcement = Event.objects.get(slug=slug)
-            serialized = EventSerializer(announcement)
-            return Response(serialized.data, status=status.HTTP_200_OK)
 
-        else:
-            announcements = Event.objects.all()
-            serialized = EventSerializer(announcements, many=True)
-            return Response(serialized.data, status=status.HTTP_200_OK)
+class EventDetailsView(generics.RetrieveAPIView):
+    lookup_field = "slug"
+    queryset = Event
+    serializer_class = EventSerializer

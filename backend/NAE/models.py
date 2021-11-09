@@ -24,7 +24,7 @@ class Announcement(models.Model):
 
     title = models.CharField('Назва оголошення', max_length=100)
     content = RichTextField('Опис оголошення', blank=True)
-    img = models.ImageField('Банер', upload_to='NAE/advertisment/') 
+    img = models.ImageField('Банер', upload_to='NAE/advertisment/', blank=True) 
     imgs = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 

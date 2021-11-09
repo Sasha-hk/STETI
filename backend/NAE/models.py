@@ -1,6 +1,7 @@
-from django.db import models
-from string import ascii_letters
 from random import choice
+from string import ascii_letters
+
+from django.db import models
 from ckeditor.fields import RichTextField
 
 

@@ -1,14 +1,15 @@
 from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings 
 from django.conf.urls.static import static 
+from django.urls import path, include
+
+
 
 urlpatterns = [
+    # path('about/', include('about.urls')),
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('na/', include('NAE.urls')),
-    path('about/', include('about.urls')),
-    path('study/', include('study.urls')),
+    # path('nae/', include('NAE.urls')),
+    # path('study/', include('study.urls')),
 ]
 
 if settings.DEBUG == True:

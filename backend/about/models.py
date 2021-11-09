@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 
+
 class About(models.Model):
     class Meta:
         verbose_name_plural = "Про нас"
@@ -14,6 +15,7 @@ class About(models.Model):
 
     def __str__(self):
         return 'Про нас'
+
 
 class ContactsPhoneNumbers(models.Model):
     class Meta:
@@ -50,6 +52,7 @@ class GalleryCategoryImage(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class Gallery(models.Model):
     class Meta:
         verbose_name_plural = "Фото галереї"
@@ -59,6 +62,7 @@ class Gallery(models.Model):
 
     def __str__(self):
         return str(self.name)
+
 
 class GalleryCategory(models.Model):
     class Meta:

@@ -1,8 +1,0 @@
-/* all records */
-.all-records {
-    display: flex;
-    flex-direction: column; 
-}
-.all-records .panel:not(:last-child) {
-    margin-bottom: 30px;
-}

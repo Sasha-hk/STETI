@@ -1,8 +1,9 @@
 # project ignores
 env/env
-static/
 migrations/
-media/
+backend/static/
+backend/media/
+backend/env/
 
 # Django:
 *.log

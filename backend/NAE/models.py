@@ -1,8 +1,32 @@
 from random import choice
 from string import ascii_letters
 
-from django.db import models
 from ckeditor.fields import RichTextField
+from django.conf import settings
+from django.db import models
+
+
+
+def generate_slug():
+    slug = ""
+    for i in range(settings.SLUG_LENGTH):
+        slug += choice(ascii_letters)
+    
+    return slug
+    
+def get_slug(self):
+    slug = generate_slug()
+ 
+    if self.slug == '': 
+        slug = generate_slug()
+
+        while True: 
+            if type(self).objects.filter(slug = slug).exists():  
+                slug = generate_slug()
+        
+            else: 
+                self.slug = slug
+                break
 
 
 
@@ -29,23 +53,10 @@ class Announcement(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
-    def generate_slug(self):
-        slug_str = '' 
-
-        if self.slug == '': 
-            for i in range(0, Announcement._meta.get_field('slug').max_length):
-                slug_str += choice(ascii_letters) 
-            while True: 
-                if Announcement.objects.filter(slug = slug_str).exists():  
-                    for i in range(0, self.slug.max_length): 
-                        slug_str += choice(ascii_letters)
-            
-                else: 
-                    self.slug = slug_str
-                    break
+    get_slug = get_slug
 
     def save(self, *args, **kwargs): 
-        self.generate_slug()  
+        self.get_slug()
 
         super().save(*args, **kwargs)
 
@@ -65,23 +76,10 @@ class Event(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
-    def generate_slug(self):
-        slug_str = '' 
-
-        if self.slug == '': 
-            for i in range(0, Event._meta.get_field('slug').max_length):
-                slug_str += choice(ascii_letters) 
-            while True: 
-                if Event.objects.filter(slug = slug_str).exists():  
-                    for i in range(0, self.slug.max_length): 
-                        slug_str += choice(ascii_letters)
-            
-                else: 
-                    self.slug = slug_str
-                    break
+    get_slug = get_slug
 
     def save(self, *args, **kwargs): 
-        self.generate_slug()  
+        self.get_slug()
 
         super().save(*args, **kwargs)
 
@@ -102,23 +100,10 @@ class News(models.Model):
     slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
 
 
-    def generate_slug(self):
-        slug_str = '' 
-
-        if self.slug == '': 
-            for i in range(0, News._meta.get_field('slug').max_length):
-                slug_str += choice(ascii_letters) 
-            while True: 
-                if News.objects.filter(slug = slug_str).exists():  
-                    for i in range(0, self.slug.max_length): 
-                        slug_str += choice(ascii_letters)
-            
-                else: 
-                    self.slug = slug_str
-                    break
+    get_slug = get_slug
 
     def save(self, *args, **kwargs): 
-        self.generate_slug()  
+        self.get_slug()
 
         super().save(*args, **kwargs)
 

@@ -1,12 +1,23 @@
 from rest_framework import serializers
 
-from .models import Announcement, News, Event
+from .models import (
+    Announcement, 
+    Images, 
+    News, 
+    Event,
+)
 
 
 
 class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
+        fields = "__all__"
+
+
+class ImagesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Images
         fields = "__all__"
 
 

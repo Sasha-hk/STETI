@@ -1,10 +1,13 @@
 from django.urls import path
 
 from . import views
+from .serializers import ImagesSerializer
 
 
 
 urlpatterns = [
+    path('images/', views.ImagesView.as_view(), name="images"),
+
     path('announcements/', views.AnnouncementView.as_view()),    
     path('announcements/<str:slug>', views.AnnouncementDetailsView.as_view()),  
     

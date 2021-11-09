@@ -70,20 +70,20 @@
                             {% endif %}
                         </div>
 
-                        <div class="board-advertisement">
+                        <div class="board-Announcement">
                             <h3>Оголошення</h3>  
-                            {% if advertisement %} 
-                            {% for advertisement_item in advertisement %}
-                            <div class="advertisement-item"> 
-                                <a class="overflow-ellipsis" href="{% url 'announcement_detail' advertisement_item.slug %}">{{ advertisement_item.title }}</a>
-                                <p>{{ advertisement_item.pub_date | date:'d M. Y' }}</p>
+                            {% if Announcement %} 
+                            {% for Announcement_item in Announcement %}
+                            <div class="Announcement-item"> 
+                                <a class="overflow-ellipsis" href="{% url 'announcement_detail' Announcement_item.slug %}">{{ Announcement_item.title }}</a>
+                                <p>{{ Announcement_item.pub_date | date:'d M. Y' }}</p>
                             </div> 
                             {% endfor %} 
                             <div class="board-learn-more"> 
                                 <a href="{% url 'announcements' %}">Дивитись більше</a>
                             </div>
                             {% else %}
-                            <div class="advertisement-item"> 
+                            <div class="Announcement-item"> 
                                 <p>Покищо немає оголошення</p>
                             </div> 
                             {% endif %}

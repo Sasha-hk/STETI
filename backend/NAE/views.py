@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import View
-from .models import Advertisement, Event, News
+from .models import Announcement, Event, News
 
 
 
 class AllAnnouncements(View):
     def get(self, request):
         context = {
-            'records': Advertisement.objects.order_by('-id')[:50],
+            'records': Announcement.objects.order_by('-id')[:50],
         }  
 
         return render(request, 'NAE/all-announcements.html', context) 
@@ -25,7 +25,7 @@ class AllNews(View):
 class AnnouncementsDetail(View):
     def get(self, request, slug):
         context = {
-            'details': Advertisement.objects.get(slug=slug)
+            'details': Announcement.objects.get(slug=slug)
         } 
 
         return render(request, 'NAE/record-detail.html', context)
@@ -51,7 +51,7 @@ class EventDetail(View):
 class NewsAnnounce(View):
     def get(self, request): 
         context = {
-            'announcements': Advertisement.objects.order_by('-id')[:5],
+            'announcements': Announcement.objects.order_by('-id')[:5],
             'event': Event.objects.order_by('-id')[:2], 
             'news': News.objects.order_by('-id')[:5],
         }  

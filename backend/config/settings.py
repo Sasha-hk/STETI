@@ -4,35 +4,27 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-0xyw8o*i=0azse@^bve=7gqc#x0a#(ayrajic94&1vkpj(axgk'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
-# Application definition
-
 INSTALLED_APPS = [
-    'about',
-    'study',
-    'main',
-    'NAE',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'ckeditor',
     'geeks',
-    'livereload',
+
+    'about',
+    'study',
+    'main',
+    'NAE',
 ]
 
 MIDDLEWARE = [
@@ -43,12 +35,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
 ]
-
-MIDDLEWARE_CLASSES = (
-    'livereload.middleware.LiveReloadScript',
-)
+ 
 
 ROOT_URLCONF = 'config.urls'
 
@@ -68,11 +56,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+WSGI_APPLICATION = 'config.wsgi.application' 
 
 DATABASES = {
     'default': {
@@ -82,10 +66,6 @@ DATABASES = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -102,10 +82,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
@@ -115,9 +91,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# STATIC / MEDIA
 
 STATIC_URL = '/s/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

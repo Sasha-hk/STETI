@@ -36,18 +36,18 @@
 } 
 
 .news-item,
-.advertisement-item,
+.Announcement-item,
 .board-learn-more {
     display: flex;
     justify-content: space-between;
     align-items: center; 
 } 
 .news-item:not(:last-child), 
-.advertisement-item:not(:last-child) {
+.Announcement-item:not(:last-child) {
     margin-bottom: 20px;
 }
 .news-item a,
-.advertisement-item a {
+.Announcement-item a {
     color: var(--color-text); 
 } 
 
@@ -231,7 +231,7 @@
         min-height: 670px;
     }
     .board-news,
-    .board-advertisement {
+    .board-Announcement {
         min-height: 45%;
     }
 }

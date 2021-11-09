@@ -17,7 +17,7 @@ class Images(models.Model):
         return str(self.name)
 
 
-class Advertisement(models.Model):
+class Announcement(models.Model):
     class Meta:
         verbose_name_plural = "Оголошення"
 
@@ -32,10 +32,10 @@ class Advertisement(models.Model):
         slug_str = '' 
 
         if self.slug == '': 
-            for i in range(0, Advertisement._meta.get_field('slug').max_length):
+            for i in range(0, Announcement._meta.get_field('slug').max_length):
                 slug_str += choice(ascii_letters) 
             while True: 
-                if Advertisement.objects.filter(slug = slug_str).exists():  
+                if Announcement.objects.filter(slug = slug_str).exists():  
                     for i in range(0, self.slug.max_length): 
                         slug_str += choice(ascii_letters)
             

@@ -28,7 +28,7 @@ class ContactsPhoneNumbers(models.Model):
         return self.name
 
 
-class ContactsFace(models.Model):
+class Administration(models.Model):
     class Meta:
         verbose_name_plural = "Лиця Коледжу"
 

@@ -1,7 +1,11 @@
-from django.db import models
 from string import ascii_letters
 from random import choice
+
 from ckeditor.fields import RichTextField
+from django.db import models
+from django.conf import settings
+from django.utils.text import slugify
+
 
 
 
@@ -112,45 +116,32 @@ class ForEntrant(models.Model):
         return str(self.title)
 
 
+class LibraryItem(models.Model):
+    class Meta:
+        verbose_name_plural = 'Вміст бібліотеки'
+
+    name = models.CharField(verbose_name='Назва ресурсу', max_length=100)
+    link = models.CharField(verbose_name='Посилання на ресурс', max_length=200)
+
+    def __str__(self):
+        return self.name[:20]
+
+
 class LibraryCategory(models.Model):
     class Meta:
         verbose_name_plural = 'Категорії бібліотеки'
 
     category_name = models.CharField(verbose_name='Назва категорії', max_length=100)
     background = models.ImageField(verbose_name='Фон для кафедри', upload_to='study/library/library-category-img/', null=True, blank=True)
-    slug = models.SlugField(max_length=10, default='', blank=True, editable=False) 
+    items = models.ManyToManyField(LibraryItem, verbose_name='Ресурси')
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
 
-    def generate_slug(self):
-        slug_str = '' 
 
-        if self.slug == '': 
-            for i in range(0, ForEntrant._meta.get_field('slug').max_length):
-                slug_str += choice(ascii_letters) 
-            while True: 
-                if ForEntrant.objects.filter(slug = slug_str).exists():  
-                    for i in range(0, self.slug.max_length): 
-                        slug_str += choice(ascii_letters)
-            
-                else: 
-                    self.slug = slug_str
-                    break
-
-    def save(self, *args, **kwargs): 
-        self.generate_slug()  
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.category_name)
 
         super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.category_name)
-
-
-class LibraryItem(models.Model):
-    class Meta:
-        verbose_name_plural = 'Вміст бібліотеки'
-
-    name = models.CharField(verbose_name='Нащва ресурсу', max_length=100)
-    category = models.ForeignKey(LibraryCategory, verbose_name='Наледить до категорії', on_delete=models.CASCADE)
-    link = models.CharField(verbose_name='Посилання на ресурс', max_length=200)
-
-    def __str__(self):
-        return self.name[:20]

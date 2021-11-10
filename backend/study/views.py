@@ -1,57 +1,19 @@
-from django.shortcuts import render
-from django.views.generic import View
+from rest_framework import generics
+from rest_framework.permissions import AllowAny
 
-from .models import LibraryItem, LibraryCategory, ForStudent, ForEntrant
-
-
-
-class ForEntrantDetail(View):
-    def get(delf, request, slug):
-        context = {
-            'details': ForEntrant.objects.get(slug = slug)
-        }
-        return render(request, 'study/for-student-and-entrant-details.html', context)
+from .models import *
+from .serializers import *
 
 
-class ForEntrantView(View):
-    def get(self, request):
-        context = {
-            'for_entrant': ForEntrant.objects.order_by('-id')[:100]
-        }
-        return render(request, 'study/for-entrant.html', context)
+
+class LibraryCategoryView(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    queryset = LibraryCategory.objects.all()
+    serializer_class = LibraryCategorySrializer
 
 
-class ForStudentDetail(View):
-    def get(delf, request, slug):
-        context = {
-            'details': ForStudent.objects.get(slug = slug)
-        }
-        return render(request, 'study/for-student-and-entrant-details.html', context)
-
-
-class ForStudentView(View):
-    def get(self, request):
-        context = {
-            'for_student': ForStudent.objects.order_by('-id')[:100]
-        }
-        return render(request, 'study/for-student.html', context)
-
-
-class Library(View):
-    def get(self, request):
-        context = {
-            'categorys': LibraryCategory.objects.order_by('-id'),
-        }
-        return render(request, 'study/library.html', context)
-
-
-class LibraryDetail(View):
-    def get(self, request, slug):
-        library_category = LibraryCategory.objects.get(slug=slug)
-
-        context = {
-            'library_name': library_category,
-            'library_items': LibraryItem.objects.filter(category = library_category)
-        }
-
-        return render(request, 'study/library-detail.html', context)
+class LibraryItemView(generics.RetrieveAPIView):
+    lookup_field = 'slug'
+    permission_classes = [AllowAny]
+    queryset = LibraryCategory.objects.all()
+    serializer_class = LibraryCategoryDetailsSrializer

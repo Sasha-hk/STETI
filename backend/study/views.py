@@ -11,7 +11,7 @@ from .serializers import *
 class DepartmentView(generics.ListAPIView):
     permission_classes = [AllowAny]
     queryset = Department.objects.all()
-    serializer_class = ForEntrantSerializer 
+    serializer_class = DepartmentSerializer 
 
 
 # For entrants

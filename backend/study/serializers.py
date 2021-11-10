@@ -6,7 +6,7 @@ from .models import *
 
 
 # Departments
-class ForEntrantSerializer(serializers.ModelSerializer):
+class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'

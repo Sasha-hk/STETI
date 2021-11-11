@@ -10,7 +10,7 @@ export default function Home() {
     const getNews = () => {
         axios({
             method: 'GET',
-            url: '/api'
+            url: 'http://localhost:8000/nae/news'
         })
         .then(r => {
             console.log(r)

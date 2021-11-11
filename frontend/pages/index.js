@@ -7,10 +7,10 @@ export default function Home() {
             url: process.env.API_URL + 'nae/announcements'
         })
         .then(r => {
-            console.log(r)
+            alert(r)
         })
         .catch(r => {
-            console.log(r)
+            alert(r)
         })
     }
 

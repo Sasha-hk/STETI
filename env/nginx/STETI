@@ -1,0 +1,38 @@
+upstream django_backend {
+	server localhost:8000;
+}
+
+upstream react_frontend {
+	server localhost:3000;
+}
+
+server {
+	listen 80;
+
+	server_name api.mipando.com.ua;
+
+	location /static/ {
+		alias /home/petryk/dev/STETI/backend/static;
+	}
+	
+	location /media/ {
+		alias /home/petryk/dev/STETI/backend/media;
+	}
+
+	location / {
+		proxy_pass http://django_backend;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Host $host;
+		proxy_redirect off;
+	}
+}
+
+server {
+	listen 80;
+
+	server_name mipando.com.ua;
+	
+	location / {
+		proxy_pass http://react_frontend;
+	}
+}

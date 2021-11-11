@@ -11,13 +11,11 @@ About:
 
 News and announcements:
 
-- /nae/images/
-- /nae/announcements/
-- /nae/announcements/[slug]/
-- /nae/news/
-- /nae/news/[slug]/
-- /nae/events/
-- /nae/events/[slug]/
+- /news/images/
+- /news/news/
+- /news/news/[slug]/
+- /news/events/
+- /news/events/[slug]/
 
 Study:
 

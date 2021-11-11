@@ -12,17 +12,17 @@ from .serializers import *
 
 
 # Announcements
-class AnnouncementView(generics.ListAPIView):
+class NewsAndAnnouncementsView(generics.ListAPIView):
     permission_classes = [AllowAny]
-    queryset = Announcement.objects.all()
-    serializer_class = AnnouncementSerializer
+    queryset = NewsAndAnnouncements.objects.all()
+    serializer_class = NewsAndAnnouncementsSerializer
 
 
-class AnnouncementDetailsView(generics.RetrieveAPIView):
+class NewsAndAnnouncementsDetailsView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
     lookup_field = "slug"
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
+    queryset = NewsAndAnnouncements.objects.all()
+    serializer_class = NewsAndAnnouncementsSerializer
 
 
 # Images
@@ -30,20 +30,6 @@ class ImagesView(generics.ListAPIView):
     permission_classes = [AllowAny]
     queryset = Images.objects.all()
     serializer_class = ImagesSerializer
-
-
-# News
-class NewsView(generics.ListAPIView):
-    permission_classes = [AllowAny]
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
-
-
-class NewsDetailsView(generics.RetrieveAPIView):
-    permission_classes = [AllowAny]
-    lookup_field = "slug"
-    queryset = News.objects.all()
-    serializer_class = NewsSerializer
 
 
 # Event

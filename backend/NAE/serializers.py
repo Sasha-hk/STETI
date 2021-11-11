@@ -4,9 +4,9 @@ from .models import *
 
 
 
-class AnnouncementSerializer(serializers.ModelSerializer):
+class NewsAndAnnouncementsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Announcement
+        model = NewsAndAnnouncements
         fields = "__all__"
         depth = 1
 
@@ -14,13 +14,6 @@ class AnnouncementSerializer(serializers.ModelSerializer):
 class ImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Images
-        fields = "__all__"
-        depth = 1
-
-
-class NewsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = News
         fields = "__all__"
         depth = 1
 

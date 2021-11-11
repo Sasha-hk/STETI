@@ -44,12 +44,12 @@ class Images(models.Model):
         return str(self.name)
 
 
-class Announcement(models.Model):
+class NewsAndAnnouncements(models.Model):
     class Meta:
-        verbose_name_plural = "Оголошення"
+        verbose_name_plural = "Новини та оголошення"
 
-    title = models.CharField('Назва оголошення', max_length=100)
-    content = RichTextField('Опис оголошення', blank=True)
+    title = models.CharField('Заголовок', max_length=100)
+    content = RichTextField('Опис', blank=True)
     img = models.ImageField('Банер', upload_to='NAE/advertisment/', blank=True) 
     imgs = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -89,26 +89,3 @@ class Event(models.Model):
 
     def __str__(self):
         return str(self.title)
-
-
-class News(models.Model): 
-    class Meta:
-        verbose_name_plural = "Новини"
-
-    title = models.CharField('Назва новини', max_length=100)
-    content = RichTextField('Опис новини', blank=True)
-    img = models.ImageField('Банер', upload_to='NAE/news/', blank=True)
-    imgs = models.ManyToManyField(Images, blank=True)
-    pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
-
-    get_slug = get_slug
-
-
-    def save(self, *args, **kwargs): 
-        self.get_slug()
-
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return str(self.title) 

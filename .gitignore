@@ -1,5 +1,7 @@
 # project ignores
-env/env
+env/env/
+env/nginx/
+env/systemd/
 migrations/
 backend/static/
 backend/media/

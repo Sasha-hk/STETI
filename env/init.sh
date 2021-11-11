@@ -57,77 +57,51 @@ upstream react_frontend {
 
 server {
 	listen 80;
-	
-	###########
-	# URL ROUTING #
-	###########
-	
-	location /admin {
-		proxy_pass http://django_backend;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
-		proxy_set_header Host $host;
-		proxy_redirect off
-	}
-	
-	location /api {
-		proxy_pass http://django_backend;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header Host $host;
-		proxy_redirect off;
-	}
-	
-	###########
-	# STATIC FOLDER ROUTING 
-	###########
-	
-	location /static/admin/ {
-		alias /usr/src/app/django_files/static/admin/;
-	}
-	
-	location /static/rest_framework/ {
-		alias /usr/src/app/django_files/static/rest_framework/;
-	}
-	
+
+	server_name api.mipando.com.ua;
+
 	location /static/ {
-		alias $base_dir/backend/static;
+		alias /home/petryk/dev/STETI/backend/static;
 	}
 	
 	location /media/ {
-		alias $base_dir/backend/media;
+		alias /home/petryk/dev/STETI/backend/media;
 	}
-	
-	###########
-	# URL ROUTING #
-	###########
-	
+
 	location / {
-		proxy_pass http://react_frontend;
+		proxy_pass http://django_backend;
 		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 		proxy_set_header Host $host;
 		proxy_redirect off;
 	}
-}" >> nginx/$project_name
+}
+
+server {
+	listen 80;
+
+	server_name mipando.com.ua;
+	
+	location / {
+		proxy_pass http://react_frontend;
+	}
+}
+" >> nginx/$project_name
 
 
 ## systemd / Gunicorn
 echo "[Unit]
-Description=gunicorn socket
-[Socket]
-ListenStream=http://localhost:8000
-[Install]
-WantedBy=sockets.target" >> systemd/$project_name.django.socket
-
-echo "[Unit]
 Description=gunicorn daemon
-Requires=$project_name.socket
 After=network.target
+
 [Service]
-User=$user_to_run_gunicorn
-Group=$user_to_run_gunicorn
-WorkingDirectory=$base_dir/backend
-ExecStart=$base_dir/env/env/bin/gunicorn --error-logfile $base_dir/env/systemd/log/error.log --access-logfile $base_dir/env/systemd/log/access.log --workers $gunicorn_workers_count  --bind unix:$path_to_sock_file config.wsgi:application  
+User=petryk
+Group=petryk
+WorkingDirectory=/home/petryk/dev/STETI/backend
+ExecStart=/home/petryk/dev/STETI/env/env/bin/gunicorn --error-logfile /home/petryk/dev/STETI/env/systemd/log/error.log --access-logfile /home/petryk/dev/STETI/env/systemd/log/access.log --workers 3 --bind localhost:8000 config.wsgi
+
 [Install]
-WantedBy=multi-user.target" >> systemd/$project_name.django.service
+WantedBy=multi-user.target
+" >> systemd/$project_name.django.service
 
 # next.js system
 echo "[Unit]
@@ -136,17 +110,18 @@ After=network.target
 
 [Service]
 Type=simple
-User=$user_to_run_gunicorn
-Group=$user_to_run_gunicorn
+User=petryk
+Group=petryk
 Restart=on-failure
 RestartSec=10
-WorkingDirectory=$base_dir/frontend
+WorkingDirectory=/home/petryk/dev/STETI/frontend
 ExecStartPre=/usr/bin/npm install
 ExecStartPre=/usr/bin/npm run build
 ExecStart=/usr/bin/npm run start
 
 [Install]
-WantedBy=multi-user.target" >> systemd/$project_name.next.service
+WantedBy=multi-user.target
+" >> systemd/$project_name.next.service
 
 
 # Creating a symbolic link for server files

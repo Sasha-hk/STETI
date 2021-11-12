@@ -1,15 +1,32 @@
-from pathlib import Path
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-0xyw8o*i=0azse@^bve=7gqc#x0a#(ayrajic94&1vkpj(axgk'
+PRE_BASE_DIR = BASE_DIR.parent / 'env'
 
-DEBUG = True
+load_dotenv(PRE_BASE_DIR / '.env')
 
-ALLOWED_HOSTS = ["*"]
+SECRET_KEY = os.getenv('DJNAOG_SECRET_KEY')
+
+dev_snippets = ['development', 'DEVELOPMENT', 'dev', 'DEV']
+prod_snippets = ['production', 'PRODUCTION', 'prod', 'PROD']
+
+if os.getenv('PROJECT_STATE') in dev_snippets:
+    DEBUG = True
+    ALLOWED_HOSTS = ["*"]
+
+elif os.getenv('PROJECT_STATE') in prod_snippets: 
+    DEBUG = False
+    ALLOWED_HOSTS = ["*"]
+
+else:
+    print('Enter correct PROJECT_STATE mod!')
+
 
 CORS_ORIGIN_ALLOW_ALL = True
 

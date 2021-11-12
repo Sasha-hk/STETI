@@ -22,6 +22,8 @@ if [ ! -d 'env' ]; then
 
     # Install packages
     source env/bin/activate
+
+    $BASE_DIR/env/env/bin/python -m pip install --upgrade pip
     pip install -r requirements.txt
 else 
     echo [+] env directory already exists

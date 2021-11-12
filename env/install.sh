@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# define needed variables
-BASE_DIR=$( dirname  ${PWD})
-PATH_TO_BACKEND=$BASE_DIR/backend
-PATH_TO_FRONTEND=$BASE_DIR/frontend
+# Set and get needed variables
+source ./.env
+
 
 
 # Create .env file
@@ -15,6 +14,8 @@ if [ ! -f '.env' ]; then
 else 
     echo [+] .env file already exists
 fi
+
+
 
 # Make environment for django
 if [ ! -d 'env' ]; then
@@ -30,6 +31,7 @@ else
 fi
 
 
+
 # npm install 
 cd ..
 cd frontend
@@ -38,6 +40,8 @@ if [ ! -d 'node_modules' ]; then
 else 
     echo [+] node_modules directory already exists
 fi
+
+
 
 # finaly
 cd ..

@@ -13,14 +13,16 @@ load_dotenv(PRE_BASE_DIR / '.env')
 
 SECRET_KEY = os.getenv('DJANOG_SECRET_KEY')
 
+PROJECT_STATE = os.getenv('PROJECT_STATE')
+
 dev_snippets = ['development', 'DEVELOPMENT', 'dev', 'DEV']
 prod_snippets = ['production', 'PRODUCTION', 'prod', 'PROD']
 
-if os.getenv('PROJECT_STATE') in dev_snippets:
+if PROJECT_STATE in dev_snippets:
     DEBUG = True
     ALLOWED_HOSTS = ["*"]
 
-elif os.getenv('PROJECT_STATE') in prod_snippets: 
+elif PROJECT_STATE in prod_snippets: 
     DEBUG = False
     ALLOWED_HOSTS = ["*"]
 

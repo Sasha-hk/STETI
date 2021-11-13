@@ -11,7 +11,7 @@ PRE_BASE_DIR = BASE_DIR.parent / 'env'
 
 load_dotenv(PRE_BASE_DIR / '.env')
 
-SECRET_KEY = os.getenv('DJNAOG_SECRET_KEY')
+SECRET_KEY = os.getenv('DJANOG_SECRET_KEY')
 
 dev_snippets = ['development', 'DEVELOPMENT', 'dev', 'DEV']
 prod_snippets = ['production', 'PRODUCTION', 'prod', 'PROD']

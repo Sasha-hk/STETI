@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Set and get needed variables
 source ./.env
 

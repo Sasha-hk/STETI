@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import newsReducer from './newsReducer'
+import naeReducer from './naeReducer'
 
 
 const rootReducer = combineReducers({
-    news: newsReducer
+    news: naeReducer
 })
 
 

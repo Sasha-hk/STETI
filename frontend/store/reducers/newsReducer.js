@@ -1,22 +1,23 @@
+import * as types from '../types/newsTypes'
+
 const defaultNewsState = {
-    news: [
-        {
-            title: '',
-            body: ''
-        }
-    ],
+    news: [],
     isLoading: false,
     error: false,
 }
 
 const newsReducer = (state = defaultNewsState, action) => {
     switch (action.type) {
-        case 'UPLOAD':
-            console.log('1 ===================')
-            return {...state, isLoading: true}
-            
+        case types.NEWS_UPLOAD:
+            return {...state, isLoading: true, error: false}
+
+        case types.NEWS_FAIL:
+            return {...state, isLoading: false, error: true}
+
+        case types.NEWS_SUCCESS:
+            return {...state, isLoading: false, error: false, news: action.payload}
+
         default:
-            console.log('2 ===================')
             return state
     }
 }

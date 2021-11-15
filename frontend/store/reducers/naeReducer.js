@@ -31,6 +31,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 news: {
+                    ...state.news,
                     isLoading: true,
                     error: false,
                 }
@@ -40,6 +41,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 newsDetails: {
+                    ...state.newsDetails,
                     isLoading: true,
                     error: false,
                 }
@@ -49,6 +51,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 events: {
+                    ...state.events,
                     isLoading: true,
                     error: false,
                 }
@@ -58,6 +61,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 eventsDetails: {
+                    ...state.eventsDetails,
                     isLoading: true,
                     error: false,
                 }
@@ -109,6 +113,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 news: {
+                    ...state.news,
                     isLoading: false,
                     error: true,
                 }
@@ -118,6 +123,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 newsDetails: {
+                    ...state.newsDetails,
                     isLoading: false,
                     error: true,
                 }
@@ -127,6 +133,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 events: {
+                    ...state.events,
                     isLoading: false,
                     error: true,
                 }
@@ -135,6 +142,7 @@ const naeReducer = (state = defaultNewsState, action) => {
             return {
                 ...state,
                 eventsDetails: {
+                    ...state.eventsDetails,
                     isLoading: false,
                     error: true,
                 }

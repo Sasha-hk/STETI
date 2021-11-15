@@ -4,6 +4,7 @@ import * as types from '../types/naeTypes'
 import { API_URL_NEWS, API_URL_EVENTS } from '../../config/APIUrls'
 import { combineUrl } from '../../config/utils'
 
+
 const makeAction = (action) => {
     return {
         type: action
@@ -17,7 +18,7 @@ const makeActionWithPayload = (action, payload) => {
 }
 
 // urload news
-export const newsUpload = () => {
+export const uploadNews = () => {
     return dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_NEWS))
         
@@ -35,7 +36,7 @@ export const newsUpload = () => {
 }
 
 // urload news details
-export const newsUploadDetails = (slug) => {
+export const uploadNewsDetails = (slug) => {
     return dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_NEWS_DETAILS)) 
         axios({
@@ -52,7 +53,7 @@ export const newsUploadDetails = (slug) => {
 }
 
 // urload events
-export const eventsUpload = () => {
+export const uploadEvents = () => {
     return dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_EVENTS))
         
@@ -70,7 +71,7 @@ export const eventsUpload = () => {
 }
 
 // urload events details
-export const eventsUploadDetails = (slug) => {
+export const uploadEventsDetails = (slug) => {
     return dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_EVENTS_DETAILS))
         

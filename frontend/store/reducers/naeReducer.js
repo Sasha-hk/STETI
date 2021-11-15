@@ -1,112 +1,150 @@
 import * as types from '../types/naeTypes'
 
+
 const defaultNewsState = {
-    details: {
-        news: {},
-        events: {}
+    news: {
+        records: [],
+        isLoading: false,
+        error: false,
     },
-    error: {
-        news: false,
-        events: false
+    events: {
+        records: [],
+        isLoading: false,
+        error: false,
     },
-    isLoading: {
-        news: false,
-        events: false
+    newsDetails: {
+        records: [],
+        isLoading: false,
+        error: false,
     },
-    news_and_events: {
-        news: [],
-        events: []
-    },
+    eventsDetails: {
+        records: [],
+        isLoading: false,
+        error: false,
+    }
 }
 
 const naeReducer = (state = defaultNewsState, action) => {
     switch (action.type) {
-        // News
+        // Uploads
         case types.NAE_UPLOAD_NEWS:
             return {
                 ...state,
-                error: {
-                    ...state.error, 
-                    news: false,
-                },
-                isLoading: {
-                    ...state.isLoading, 
-                    news: true,
-                },
+                news: {
+                    isLoading: true,
+                    error: false,
+                }
             }
 
-        case types.NAE_SUCCESS_NEWS:
+        case types.NAE_UPLOAD_NEWS_DETAILS:
             return {
                 ...state,
-                error: {
-                    ...state.error, 
-                    news: false,
-                },
-                isLoading: {
-                    ...state.isLoading, 
-                    news: false,
-                },
-                news_and_events: {...state.news_and_events, news: action.payload}
-            }
-        
-        case types.NAE_FAIL_NEWS:
-            return {
-                ...state,
-                error: {
-                    ...state.error, 
-                    news: true,
-                },
-                isLoading: {
-                    ...state.isLoading, 
-                    news: false,
-                },
+                newsDetails: {
+                    isLoading: true,
+                    error: false,
+                }
             }
 
-        // Events
         case types.NAE_UPLOAD_EVENTS:
             return {
                 ...state,
-                error: {
-                    ...state.error, 
-                    events: false,
-                },
-                isLoading: {
-                    ...state.isLoading, 
-                    events: true,
-                },
+                events: {
+                    isLoading: true,
+                    error: false,
+                }
+            }
+        
+        case types.NAE_UPLOAD_EVENTS_DETAILS:
+            return {
+                ...state,
+                eventsDetails: {
+                    isLoading: true,
+                    error: false,
+                }
+            }
+
+        // Successes
+        case types.NAE_SUCCESS_NEWS:
+            return {
+                ...state,
+                news: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
+
+        case types.NAE_SUCCESS_NEWS_DETAILS:
+            return {
+                ...state,
+                newsDetails: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
             }
 
         case types.NAE_SUCCESS_EVENTS:
             return {
                 ...state,
-                error: {
-                    ...state.error, 
-                    events: false,
-                },
-                isLoading: {
-                    ...state.isLoading, 
-                    events: false,
-                },
-                news_and_events: {...state.news_and_events, events: action.payload}
-            } 
+                events: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
+
+        case types.NAE_SUCCESS_EVENTS_DETAILS:
+            return {
+                ...state,
+                eventsDetails: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
+        
+        // Fails
+        case types.NAE_FAIL_NEWS:
+            return {
+                ...state,
+                news: {
+                    isLoading: false,
+                    error: true,
+                }
+            }
+
+        case types.NAE_FAIL_NEWS_DETAILS:
+            return {
+                ...state,
+                newsDetails: {
+                    isLoading: false,
+                    error: true,
+                }
+            }
             
         case types.NAE_FAIL_EVENTS:
             return {
                 ...state,
-                error: {
-                    ...state.error, 
-                    events: false,
-                },
-                isLoading: {
-                    ...state.isLoading, 
-                    events: true,
-                },
+                events: {
+                    isLoading: false,
+                    error: true,
+                }
             }
-
+        case types.NAE_FAIL_EVENTS_DETAILS:
+            return {
+                ...state,
+                eventsDetails: {
+                    isLoading: false,
+                    error: true,
+                }
+            }
+    
 
         default:
             return state
     }
 }
+
 
 export default naeReducer

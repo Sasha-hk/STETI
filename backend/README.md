@@ -19,10 +19,10 @@ News and announcements:
 
 Study:
 
-- /sudy/departments/
-- /sudy/for-entrants/
-- /sudy/for-entrants/[slug]/
-- /sudy/for-students/
-- /sudy/for-students/[slug]/
-- /sudy/library/
-- /sudy/library/[slug]/
+- /study/departments/
+- /study/for-entrants/
+- /study/for-entrants/[slug]/
+- /study/for-students/
+- /study/for-students/[slug]/
+- /study/library/
+- /study/library/[slug]/

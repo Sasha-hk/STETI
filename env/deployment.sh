@@ -2,7 +2,8 @@
 
 
 # Set and get needed variables
-source ./.env
+
+. ./install.sh
 
 
 

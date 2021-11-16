@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux'
-import newsReducer from './newsReducer'
+import naeReducer from './naeReducer'
+import aboutReducer from './aboutReducer' 
+import studyReducer from './studyReducer' 
 
 
 const rootReducer = combineReducers({
-    news: newsReducer
+    about: aboutReducer,
+    news: naeReducer,
+    study: studyReducer,
 })
 
 

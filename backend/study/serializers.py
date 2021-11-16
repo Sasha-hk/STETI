@@ -16,7 +16,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
 class ForEntrantSerializer(serializers.ModelSerializer):
     class Meta:
         model = ForEntrant
-        fields = ('title', 'img', 'link', 'pub_date', 'slug', )
+        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', )
 
 
 class ForEntrantDetailsSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class ForEntrantDetailsSerializer(serializers.ModelSerializer):
 class ForStudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ForStudent
-        fields = ('title', 'img', 'link', 'pub_date', 'slug', )
+        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', )
 
 
 class ForStudentDetailsSerializer(serializers.ModelSerializer):
@@ -43,8 +43,8 @@ class ForStudentDetailsSerializer(serializers.ModelSerializer):
 # Library
 class LibraryCategorySrializer(serializers.ModelSerializer):
     class Meta:
-        model = LibraryCategory
-        fields = '__all__'
+        model = LibraryCategory 
+        fields = ('id', 'category_name', 'background', 'slug', )
 
 
 class LibraryCategoryDetailsSrializer(serializers.ModelSerializer):

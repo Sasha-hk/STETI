@@ -11,7 +11,6 @@ This website consists of two parts:
 
 ## **Fast setup for development**
 
-___
 
 - go to the [./env](./env "link to the env dir") directory:
 
@@ -39,7 +38,6 @@ ___
 
 ## **Server setup**
 
-___
 
 - go to the [./env](./env "link to the env dir") directory:
 

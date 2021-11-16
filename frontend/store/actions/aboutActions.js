@@ -6,8 +6,6 @@ import {
     API_URL_CONTACT_PHONES_NUMBERS,
     API_URL_ADMINISTRATION,
     API_URL_GALLERY,
-
-
 } from '../../config/APIUrls'
 
 import { combineUrl } from '../../config/utils'
@@ -133,5 +131,3 @@ export const uploadGalleryDetails = (slug) => {
             }) 
     }
 }
-
-

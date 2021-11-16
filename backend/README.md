@@ -10,7 +10,6 @@ See the full list of packages in the file [./requirements.txt](../env/requiremen
 
 ## **The API end points**
 
-___
 About:
 
 - /about/about/

@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 
+
 if settings.DEBUG:
     urlpatterns = [
         path('api/about/', include('about.urls')),
@@ -16,7 +17,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)                                                                                                                                                  
 
 else: 
-    rlpatterns = [
+    urlpatterns = [
         path('about/', include('about.urls')),
         path('admin/', admin.site.urls),
         path('nae/', include('NAE.urls')),

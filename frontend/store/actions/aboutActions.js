@@ -6,6 +6,8 @@ import {
     API_URL_CONTACT_PHONES_NUMBERS,
     API_URL_ADMINISTRATION,
     API_URL_GALLERY,
+    API_URL_USEFUL_LINKS,
+    API_URL_PARTNERS
 } from '../../config/APIUrls'
 
 import { combineUrl } from '../../config/utils'
@@ -128,6 +130,42 @@ export const uploadGalleryDetails = (slug) => {
             })
             .catch(e => {
                 dispatch(makeAction(types.ABOUT_FAIL_GALLERY_DETAILS))
+            }) 
+    }
+}
+
+// upload gallery category details
+export const uploadUsefulLinks = () => {
+    return dispatch => {
+        dispatch(makeAction(types.ABOUT_UPLOAD_USEFUL_LINKS))
+        
+        axios({
+            method: 'get',
+            url: API_URL_USEFUL_LINKS,
+        })
+            .then(r => {
+                dispatch(makeActionWithPayload(types.ABOUT_SUCCESS_USEFUL_LINKS, r.data))
+            })
+            .catch(e => {
+                dispatch(makeAction(types.ABOUT_FAIL_USEFUL_LINKS))
+            }) 
+    }
+}
+
+// upload gallery category details
+export const uploadPartners = () => {
+    return dispatch => {
+        dispatch(makeAction(types.ABOUT_UPLOAD_PARTNERS))
+        
+        axios({
+            method: 'get',
+            url: API_URL_PARTNERS,
+        })
+            .then(r => {
+                dispatch(makeActionWithPayload(types.ABOUT_SUCCESS_PARTNERS, r.data))
+            })
+            .catch(e => {
+                dispatch(makeAction(types.ABOUT_FAIL_PARTNERS))
             }) 
     }
 }

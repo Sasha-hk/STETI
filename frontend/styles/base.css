@@ -4,7 +4,7 @@
     box-sizing: border-box;
 
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px; /* 14px */
+    font-size: 14px;
 
     --bg-redular: #fff;
 
@@ -97,6 +97,7 @@ nav {
 .multi-navigation {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .multi-navigation-inside p {
     color: var(--color-navigation-item);
@@ -184,6 +185,22 @@ nav {
     }
     .navigation-item:not(:last-child) {
         margin-right: 30px;
+    }
+    .drop-down-menu {
+        background: var(--bg-redular);
+        border-radius: 7px;
+        box-shadow: 0px 0px 20px rgb(0, 0, 0, 0.1);
+        padding: 8px 13px;
+        position: absolute;
+        top: 0;
+        left: -15px;
+
+    }
+    .drop-down-menu.open {
+        top: 50px;
+    }
+    .drop-down-menu li:not(:last-child) {
+        margin-bottom: 7px;
     }
 }
 @media screen and (max-width: 1400px) {
@@ -309,15 +326,26 @@ nav {
         margin-right: 0;
         margin-bottom: 20px;
     }
-    .navigation-item a,
-    .navigation-item p {
+    .navigation-link a,
+    .navigation-link p {
         font-size: 23px;
+        font-weight: 500;
     }
     .multi-navigation {
         display: flex;
         flex-direction: column;
     }
+    .drop-down-menu {
+        padding: 0;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
     .drop-down-menu.open {
+        background: none;
+        border: none;
+        box-shadow: none;
+        top: 0;
         width: 100%;
     }
     .phone-logo {

@@ -33,3 +33,16 @@ class GalleryCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = GalleryCategory
         fields = ('id', 'category_name', 'image', 'pub_date', 'slug', )
+
+
+class UsefulLinkGroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UsefulLinkGroup
+        fields = '__all__'
+        depth = 2
+
+
+class PartnersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Partners
+        fields = '__all__'

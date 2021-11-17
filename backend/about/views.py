@@ -46,3 +46,17 @@ class GalleryView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
     queryset = GalleryCategory.objects.all()
     serializer_class = GallerySerializer
+
+
+# useful link
+class UsefulLinkGroupView(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    queryset = UsefulLinkGroup.objects.all()
+    serializer_class = UsefulLinkGroupSerializer
+
+
+# partners
+class PartnersView(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    queryset = Partners.objects.all()
+    serializer_class = PartnersSerializer

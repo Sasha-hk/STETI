@@ -13,4 +13,8 @@ urlpatterns = [
 
     path('gallery/', views.GalleryCategoryView.as_view()),
     path('gallery/<str:slug>/', views.GalleryView.as_view()),
+
+    path('useful-links/', views.UsefulLinkGroupView.as_view()),
+
+    path('partners/', views.PartnersView.as_view()),
 ]

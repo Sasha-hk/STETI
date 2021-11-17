@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 
+from study.models import ForStudent, ForEntrant
 
 
 class About(models.Model):
@@ -82,3 +83,50 @@ class GalleryCategory(models.Model):
 
     def __str__(self):
         return str(self.category_name)
+
+
+class Partners(models.Model):
+    class Meta:
+        verbose_name_plural = "Партнери"
+
+    name = models.CharField("Назва", max_length=250)
+    image = models.ImageField(verbose_name='Зображення', upload_to="about/partners/image")
+    pub_date = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
+
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class UsefulLink(models.Model):
+    class Meta:
+        verbose_name_plural = "Корисні посилання"
+
+    name = models.CharField(verbose_name='Назва посилання', max_length=100)
+    for_students = models.ManyToManyField(ForStudent, verbose_name='Посилання на ресурс "стеденту"', blank=True)
+    for_entrants = models.ManyToManyField(ForEntrant, verbose_name='Посилання на ресурс "абітурієнту"', blank=True)
+    own_link = models.CharField(verbose_name='Власне посилання', max_length=500, null=True, blank=True)
+
+
+    def __str__(self):
+        return str(self.name)
+
+
+class UsefulLinkGroup(models.Model):
+    class Meta:
+        verbose_name_plural = "Група корисних посилань"
+
+    group_name = models.CharField("Назва групи", max_length=100)
+    resource = models.ManyToManyField(UsefulLink, verbose_name='Ресурс')
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return str(self.group_name)

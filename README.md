@@ -11,7 +11,6 @@ This website consists of two parts:
 
 ## **Fast setup for development**
 
-___
 
 - go to the [./env](./env "link to the env dir") directory:
 
@@ -25,13 +24,13 @@ ___
     . ./install.sh
     ```
 
-- in the same [dir](./env "link to the env dir") actionvate env for django:
+- in the same [dir](./env "link to the env dir") activate env for django:
 
     ```shell
     source env/bin/activate
     ```
 
-- got to the [./backend](./backend "link to the env dir") directory and run server
+- go to the [./backend](./backend "link to the env dir") directory and run server
 
     ```shell
     python3 manage.py runserver
@@ -39,7 +38,6 @@ ___
 
 ## **Server setup**
 
-___
 
 - go to the [./env](./env "link to the env dir") directory:
 

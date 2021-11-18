@@ -18,6 +18,8 @@ About:
 - /about/administration/[slug]/
 - /about/gallery/
 - /about/gallery/[slug]/
+- /about/useful-links/
+- /about/partners/
 
 News and announcements:
 

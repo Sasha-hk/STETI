@@ -1,128 +1,135 @@
-import {useState} from 'react';
-import { SingleItem, MultiItem } from './NavigationItems'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 
-const navigation = () => {
-    const [mobileNavigation, setMobileNavigation] = useState({isOpen: false})
+const linkTypes = {
+    singleLink: 'singleLink',
+    multiLink: 'multiLink',
+}
 
-    const burgerClasses = ['burger']
+const moltiNavIndicator = (
+    <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L4 4L7 1"/>
+    </svg>
+)
 
-    if (mobileNavigation.isOpen) {
-        burgerClasses.push('active')
+export const LinkItem = ({link}) => {
+    if (link.type == linkTypes.singleLink) {
+        return (
+            <li>
+                <Link href={link.url}>   
+                    <div className="link-wrapper">
+                        <a>{ link.view }</a>
+                    </div>
+                </Link>
+            </li>
+        )
+    }
+    else {
+        let dropDownClasses = []
+        
+        return (
+            <li 
+                className={dropDownClasses.join(' ')}
+                onClick={() => openDropDonwMenu()}
+            >
+                <div className="link-wrapper">
+                    <p>{ link.view }</p>
+                    {moltiNavIndicator}
+                </div>
+
+                <div className="nav-drop-down">
+                    {
+                        link.items.map(item => {
+                            return (
+                                <Link href={item.url} key={item.url}>
+                                    <a>{item.view}</a>
+                                </Link>
+                            )
+                        })
+                    }
+                </div>
+            </li>
+        )  
+    }
+}
+
+const Navigation = () => {
+    const [navigation, setNabigatino] = useState({
+        isOpened: true,
+        links: [
+            {
+                id: 1,
+                type: linkTypes.singleLink,
+                view: 'Головна',
+                url: '/',
+            },
+            {
+                id: 2,
+                type: linkTypes.multiLink,
+                view: 'Заклад',
+                items: [
+                    {
+                        view: 'Про нас',
+                        url: '/about-us',
+                    },
+                    {
+                        view: 'Контакти',
+                        url: '/contacts',
+                    },
+                    {
+                        view: 'Галерея',
+                        url: '/gallery',
+                    },
+                ]
+            },
+        ],
+    })
+
+    const navigationPanelClasses = ['navigation-panel', 'container']
+
+    if (navigation.isOpened) {
+        navigationPanelClasses.push('open')
     }
 
     const handleBurger = () => {
-        if (mobileNavigation.isOpen) {
-            setMobileNavigation({isOpen: false})
+        console.log(1)
+        if (navigation.isOpened) {
+            setNabigatino({...navigation, isOpened: false})
         }
         else {
-            setMobileNavigation({isOpen: true})
+            setNabigatino({...navigation, isOpened: true})
         }
     }
 
-    const newPagaNandler = () => {
-        setMobileNavigation({isOpen: false})
-    }
-
-    const navigationTypes = {
-        single: 'single',
-        multi: 'multi',
-    }
-
-    const navigationData = [
-        {
-            type: navigationTypes.single,
-            pageName: 'Головна',
-            url: '/',
-        },
-        {
-            type: navigationTypes.single,
-            pageName: 'Новини та оголошення',
-            url: '/nae'
-        },
-        {
-            type: navigationTypes.single,
-            pageName: 'Циклова комісія',
-            url: '/cyclic-commission'
-        },
-        {
-            type: navigationTypes.multi,
-            pageName: 'Заклад',
-            id: 1,
-            items: [
-                {
-                    pageName: "Про нас",
-                    url: "/about-us",
-                },
-                {
-                    pageName: "Контакти",
-                    url: "/contacts"
-                },
-                {
-                    pageName: "Галерея",
-                    url: "/gallery"
-                }
-            ]
-        },
-        {
-            type: navigationTypes.multi,
-            pageName: 'Навчання',
-            id: 2,
-            items: [
-                {
-                    pageName: "Бібліотека",
-                    url: "/library"
-                },
-                {
-                    pageName: "Студентав",
-                    url: "/for-students"
-                },
-                {
-                    pageName: "Абітурієнтам",
-                    url: "/for-entrants"
-                },
-                {
-                    pageName: "ЗНО",
-                    url: "/zno"
-                }
-            ]
-        },
-    ]
-
     return (
-        <div className="navigation">
-            <nav
-                className={
-                    mobileNavigation.isOpen 
-                        ? "active"
-                        : ""
-                }
+        <div className="navigation centralize">
+            <div 
+                className={navigationPanelClasses.join(' ')}
             >
-                {
-                    navigationData.map(item => {
-                        return (
-                            item.type == navigationTypes.single
-                            ? <SingleItem 
-                                pageName={item.pageName} 
-                                url={item.url}
-                                onClick={() => newPagaNandler()}
-                                key={item.url} 
-                            /> 
-                            : <MultiItem 
-                                pageName={item.pageName}
-                                onClick={() => newPagaNandler()}
-                                items={item.items} 
-                                key={item.id}
-                            /> 
-                        )
-                    })
-                }
-            </nav>
-            <span className="phone-logo">STETI</span>
-            <div className={burgerClasses.join(' ')} onClick={() => handleBurger()}></div>
+                <span className="navigation-logo">STETI</span>
+
+                <nav>
+                    <ul>
+                        {
+                            navigation.links.map(link => {
+                                return (
+                                    <LinkItem link={link} key={link.id} />
+                                )
+                            })
+                        }
+                    </ul>
+                </nav>
+
+                <div 
+                    className="burger"
+                    onClick={() => handleBurger()}    
+                ></div>
+            </div>
         </div>
     )
 }
 
 
-export default navigation
+export default Navigation

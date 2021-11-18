@@ -1,15 +1,14 @@
 import Navigation from '../navigation/Navigation'
-import Footer from '../Footer'
+
 
 const BaseLayout = ({children}) => {
     return (
         <>
             <Navigation/>
             <div className="wrapper">
-                <main className="content-wrapper">
+                <div className="content">
                     {children}
-                </main>
-                <Footer/>   
+                </div>
             </div>
         </>
     )

@@ -160,6 +160,14 @@ nav > ul > li {
         background: #f8f8f8;
     }
 
+    .nav-drop-down a.active {
+        background: rgb(241, 241, 241);
+    }
+
+    /* active items */
+    .link-wrapper a.active {
+        border-bottom: 2px solid var(--navigation-item-inactiva);
+    }
 }
 
 
@@ -213,6 +221,11 @@ nav > ul > li {
     nav li.open .nav-drop-down {
         display: flex;
         flex-direction: column;
+    }
+
+    /* active */
+    nav li a.active {
+        color: var(--navigation-item-active);
     }
 }
 

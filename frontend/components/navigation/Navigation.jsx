@@ -9,11 +9,24 @@ const navigationType = {
 }
 
 const LinkItem = ({link, i, openDropDown}) => {
+    // active
+    const router = useRouter().route
+
     if (link.type == navigationType.single) {
         return (
             <li>
                 <div className="link-wrapper">
-                    <Link href={link.url}><a>{link.pageName}</a></Link>
+                    <Link href={link.url}>
+                        <a 
+                            className={
+                                router == link.url
+                                    ? "active"
+                                    : null
+                            }
+                        >
+                        {link.pageName}
+                        </a>
+                    </Link>
                 </div>
             </li>
         )
@@ -31,7 +44,9 @@ const LinkItem = ({link, i, openDropDown}) => {
                 onClick = {() => openDropDown()}
             >
                 <div className="link-wrapper">
-                    <p>{link.pageName}</p>
+                    <p>
+                        {link.pageName}
+                    </p>
                     {moltiNavIndicator}
                 </div>
 
@@ -39,7 +54,18 @@ const LinkItem = ({link, i, openDropDown}) => {
                     {
                         link.items.map((item, i) => {
                             return ( 
-                                <Link href={item.url} key={i}>{item.pageName}</Link>
+                                <Link href={item.url} key={i}>
+                                    <a 
+                                        className="active"
+                                        className={
+                                            router == item.url
+                                                ? "active"
+                                                : null
+                                        }
+                                    >
+                                        {item.pageName}
+                                    </a>
+                                </Link>
                             )
                         })
                     }

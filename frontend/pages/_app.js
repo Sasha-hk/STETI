@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 
 import store from '../store/store'
 import '../styles/base.css'
+import '../components/navigation/navigation.css'
 
 
 function MyApp({ Component, pageProps }) {

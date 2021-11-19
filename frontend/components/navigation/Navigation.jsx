@@ -1,106 +1,117 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 
-const linkTypes = {
-    singleLink: 'singleLink',
-    multiLink: 'multiLink',
+const navigationType = {
+    snigle: 'single',
+    multi: 'multi',
 }
 
-const moltiNavIndicator = (
-    <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L4 4L7 1"/>
-    </svg>
-)
-
-export const LinkItem = ({link}) => {
-    if (link.type == linkTypes.singleLink) {
+const LinkItem = ({link, i, openDropDown}) => {
+    if (link.type == navigationType.single) {
         return (
             <li>
-                <Link href={link.url}>   
-                    <div className="link-wrapper">
-                        <a>{ link.view }</a>
-                    </div>
-                </Link>
+                <div className="link-wrapper">
+                    <Link href={link.url}><a>{link.pageName}</a></Link>
+                </div>
             </li>
         )
     }
     else {
-        let dropDownClasses = []
-        
+        const moltiNavIndicator = (
+            <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L4 4L7 1"/>
+            </svg>
+        )
+
         return (
-            <li 
-                className={dropDownClasses.join(' ')}
-                onClick={() => openDropDonwMenu()}
+            <li
+                className={link.isOpen ? "open" : null}
+                onClick = {() => openDropDown()}
             >
                 <div className="link-wrapper">
-                    <p>{ link.view }</p>
+                    <p>{link.pageName}</p>
                     {moltiNavIndicator}
                 </div>
 
                 <div className="nav-drop-down">
                     {
-                        link.items.map(item => {
-                            return (
-                                <Link href={item.url} key={item.url}>
-                                    <a>{item.view}</a>
-                                </Link>
+                        link.items.map((item, i) => {
+                            return ( 
+                                <Link href={item.url} key={i}>{item.pageName}</Link>
                             )
                         })
                     }
                 </div>
             </li>
-        )  
+        )
     }
 }
 
 const Navigation = () => {
-    const [navigation, setNabigatino] = useState({
-        isOpened: true,
+    const navigationDefaultState = {
+        isOpen: false,
         links: [
             {
-                id: 1,
-                type: linkTypes.singleLink,
-                view: 'Головна',
+                type: navigationType.single,
+                pageName: 'Головна',
                 url: '/',
             },
             {
-                id: 2,
-                type: linkTypes.multiLink,
-                view: 'Заклад',
+                type: navigationType.multi,
+                pageName: 'Заклад',
+                isOpen: false,
                 items: [
                     {
-                        view: 'Про нас',
+                        pageName: 'Про нас',
                         url: '/about-us',
                     },
                     {
-                        view: 'Контакти',
+                        pageName: 'Контакти',
                         url: '/contacts',
-                    },
-                    {
-                        view: 'Галерея',
-                        url: '/gallery',
                     },
                 ]
             },
-        ],
-    })
-
-    const navigationPanelClasses = ['navigation-panel', 'container']
-
-    if (navigation.isOpened) {
-        navigationPanelClasses.push('open')
+            {
+                type: navigationType.multi,
+                pageName: 'Навчання',
+                isOpen: false,
+                items: [
+                    {
+                        pageName: 'Студенту',
+                        url: '/tor-entrant',
+                    },
+                    {
+                        pageName: 'Абітурієнту',
+                        url: '/for-student',
+                    },
+                ]
+            },
+        ]
     }
 
+    const [navigation, setNavigation] = useState(navigationDefaultState)
+
     const handleBurger = () => {
-        console.log(1)
-        if (navigation.isOpened) {
-            setNabigatino({...navigation, isOpened: false})
+        if (navigation.isOpen) {
+            setNavigation({
+                ...navigationDefaultState,
+                isOpen: false,
+            })
         }
         else {
-            setNabigatino({...navigation, isOpened: true})
+            setNavigation({
+                ...navigationDefaultState,
+                isOpen: true,
+            })
         }
+    }
+    
+    const navigationPanelClasses = ['navigation-panel', 'container']
+
+    if (navigation.isOpen) {
+        navigationPanelClasses.push('open')
     }
 
     return (
@@ -113,9 +124,24 @@ const Navigation = () => {
                 <nav>
                     <ul>
                         {
-                            navigation.links.map(link => {
+                            navigation.links.map((link, i) => {
+                                const openDropDown = () => {
+                                    let newLinks = [...navigationDefaultState.links]
+                                    if (navigation.links[i].isOpen) {
+                                        newLinks[i].isOpen = false
+                                    }
+                                    else {
+                                        newLinks[i].isOpen = true
+                                    }
+                                    setNavigation({
+                                        ...navigation,
+                                        links: [
+                                            ...newLinks
+                                        ]
+                                    })
+                                }
                                 return (
-                                    <LinkItem link={link} key={link.id} />
+                                    <LinkItem link={link} openDropDown={openDropDown} key={i} />
                                 )
                             })
                         }

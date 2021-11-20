@@ -27,10 +27,10 @@ const makeActionWithPayload = (action, payload) => {
 
 // upload departments
 export const uploadDepartments = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_DEPARTMENTS))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_DEPARTMENTS
         })
@@ -45,10 +45,10 @@ export const uploadDepartments = () => {
 
 // upload for students
 export const uploadForStudents = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_FOR_STUDENTS))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_FOR_STUDENTS
         })
@@ -63,10 +63,10 @@ export const uploadForStudents = () => {
 
 // upload for students details
 export const uploadForStudentsDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_FOR_STUDENTS_DETAILS))
         
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_FOR_STUDENTS, parts: [slug]})
         })
@@ -81,10 +81,10 @@ export const uploadForStudentsDetails = (slug) => {
 
 // upload for entrants
 export const uploadForEntrants = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_FOR_ENTRANTS))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_FOR_ENTRANTS
         })
@@ -99,10 +99,10 @@ export const uploadForEntrants = () => {
 
 // upload for entrants details
 export const uploadForEntrantsDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_FOR_ENTRANTS_DETAILS))
         
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_FOR_ENTRANTS, parts: [slug]})
         })
@@ -117,10 +117,10 @@ export const uploadForEntrantsDetails = (slug) => {
 
 // upload library categorys
 export const uploadLibrary = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_LIBRARY))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_LIBRARY
         })
@@ -135,10 +135,10 @@ export const uploadLibrary = () => {
 
 // upload library category details
 export const uploadLibraryDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.STUDY_UPLOAD_LIBRARY_DETAILS))
         
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_LIBRARY, parts: [slug]})
         })

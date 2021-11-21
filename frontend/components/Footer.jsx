@@ -1,70 +1,82 @@
-import Image from 'next/image'
-import img_1 from'../public/img_1.png'
-import img_2 from'../public/img_2.png'
-import img_3 from'../public/img_3.png'
-import img_4 from'../public/img_4.png'
-import img_5 from'../public/img_5.png'
-import img_6 from'../public/img_6.png'
+import Link from 'next/link'
 
-const Footer = () => {
+import { API_URL_FOR_STUDENTS, API_URL_FOR_ENTRANTS } from '../config/APIUrls.js'
+import { combineUrl } from '../config/utils';
+
+export default function Footer({footer}) {
+    console.log(footer.partners)
     return (
-        <footer className="container">
-            <div className="partners">
-                <div>
-                    <img src={img_1.src} alt="" />
+        <footer className="centralize">
+            <div className="container">
+                <div className="partners">
+                    {
+                        footer.partners.records.map(partner => {
+                            return (
+                                <div className="partner-item" key={partner.id}>
+                                    <img src={partner.image} alt={partner.name} />
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-                <div>
-                    <img src={img_2.src} alt="" />
-                </div>
-                <div>
-                    <img src={img_3.src} alt="" />
-                </div>
-                <div>
-                    <img src={img_4.src} alt="" />
-                </div>
-                <div>
-                    <img src={img_5.src} alt="" />
-                </div>
-                <div>
-                    <img src={img_6.src} alt="" />
-                </div>
-            </div> 
-            <div className="useful-links-wrapper">
+
                 <div className="useful-links">
-                    <b>Абітурієнту</b>
-                    <p>Правила прийому</p>
-                    <p>Оплата за навчання</p>
-                    <p>Приймальної комісії</p>
-                    <p>Підготовчі курси</p>
+                    {
+                        footer.usefulLinks.records.map(item => {
+                            return (
+                                <div className="useful-wrapper" key={item.id}>
+                                    <b>{item.group_name}</b>
+                                    {
+                                        item.resource.map(resourdeItem => {
+                                            let resourceLink
+                                            if (resourdeItem.own_link) {
+                                                resourceLink = resourdeItem.own_link
+                                            }
+                                            else if (resourdeItem.for_students) {
+                                                if (resourdeItem.for_students.link) {
+                                                    resourceLink = resourdeItem.for_students.link
+                                                }
+                                                else if (resourdeItem.for_students.slug) {
+                                                    resourceLink = combineUrl({baseUrl: API_URL_FOR_STUDENTS, parts: [resourdeItem.for_students.slug]})
+                                                }
+                                                else {
+                                                    resourceLink = '/'
+                                                }
+                                            } 
+                                            else if (resourdeItem.for_entrants) {
+                                                if (resourdeItem.for_entrants.link) {
+                                                    resourceLink = resourdeItem.for_students.link
+                                                }
+                                                else if (resourdeItem.for_entrants.slug !== null) {
+                                                    resourceLink = combineUrl({baseUrl: API_URL_FOR_ENTRANTS, parts: [resourdeItem.for_entrants.slug]})
+                                                }
+                                                else {
+                                                    resourceLink = '/'
+                                                }
+                                            }
+                                            return (
+                                                <Link
+                                                    href={resourceLink}
+                                                    key={resourdeItem.id}
+                                                >
+                                                    <a>{resourdeItem.name}</a>
+                                                </Link>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            )
+                        })
+                    }
                 </div>
-                <div className="useful-links">
-                    <b>Інформація</b>
-                    <p>Про нас</p>
-                    <p>Контакти</p>
-                    <p>Адміністрація</p>
-                    <p>Розклад роботи</p>
+
+                <div className="copyright-block">
+                    <span>
+                        Авторські права © 2013 - 2021 Самбірський технікум економіки та інформатики. Усі права захищені.
+                    </span>
                 </div>
-                <div className="useful-links">
-                    <b>Студенту</b>
-                    <p>Розклад пар</p>
-                    <p>Розклад дзвінків</p>
-                    <p>Студенту</p>
-                    <p>ONELINE навчання</p>
-                </div>
-                <div className="useful-links">
-                    <b>Соц мережі</b>
-                    <p>Instagram</p>
-                    <p>Telegram</p>
-                    <p>YouTube</p>
-                    <p>Facebook</p>
-                </div>
+
             </div>
-            <span>
-                Авторські права © 2013 - 2021 Самбірський технікум економіки та інформатики. Усі права захищені.
-            </span>
         </footer>
     )
 }
-
-
-export default Footer

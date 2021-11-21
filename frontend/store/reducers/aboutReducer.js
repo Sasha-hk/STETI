@@ -32,6 +32,16 @@ const defaultAboutState = {
         isLoading: false,
         error: false,
     }, 
+    usefulLinks: {
+        records: [],
+        isLoading: false,
+        error: false,
+    }, 
+    partners: {
+        records: [],
+        isLoading: false,
+        error: false,
+    }, 
 }
 
 
@@ -93,6 +103,26 @@ const aboutReducer = (state = defaultAboutState, action) => {
                 ...state,
                 galleryDetails: {
                     ...state.galleryDetails,
+                    isLoading: true,
+                    error: false,
+                }
+            }
+
+        case types.ABOUT_UPLOAD_USEFUL_LINKS:
+            return {
+                ...state,
+                usefulLinks: {
+                    ...state.usefulLinks,
+                    isLoading: true,
+                    error: false,
+                }
+            }
+
+        case types.ABOUT_UPLOAD_PARTNERS:
+            return {
+                ...state,
+                partners: {
+                    ...state.partners,
                     isLoading: true,
                     error: false,
                 }
@@ -160,6 +190,26 @@ const aboutReducer = (state = defaultAboutState, action) => {
                 }
             }
 
+        case types.ABOUT_SUCCESS_USEFUL_LINKS:
+            return {
+                ...state,
+                usefulLinks: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
+
+        case types.ABOUT_SUCCESS_PARTNERS:
+            return {
+                ...state,
+                partners: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
+
         // Fails
         case types.ABOUT_FAIL_ABOUT:
             return {
@@ -216,6 +266,26 @@ const aboutReducer = (state = defaultAboutState, action) => {
                 ...state,
                 galleryDetails: {
                     ...state.galleryDetails,
+                    isLoading: false,
+                    error: true,
+                }
+            }
+
+        case types.ABOUT_FAIL_USEFUL_LINKS:
+            return {
+                ...state,
+                usefulLinks: {
+                    ...state.usefulLinks,
+                    isLoading: false,
+                    error: true,
+                }
+            }
+
+        case types.ABOUT_FAIL_PARTNERS:
+            return {
+                ...state,
+                partners: {
+                    ...state.partners,
                     isLoading: false,
                     error: true,
                 }

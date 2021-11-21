@@ -1,0 +1,129 @@
+.copyright-block {
+    text-align: center;
+}
+footer span {
+    margin-top: 40px;
+}
+
+.copyright-block {
+    text-align: center;
+}
+
+.useful-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    white-space: nowrap;
+}
+.useful-wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 30px;
+    white-space: nowrap;
+}
+
+
+.useful-wrapper b {
+    font-weight: bold;
+    margin-bottom: 7px;
+}   
+.useful-wrapper a {
+    color: var(--color-muted);
+    margin-bottom: 3px;
+}
+
+/* partners */
+.partners {
+    border-top: 2px solid rgb(216, 216, 216);
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin-bottom: 60px;
+    padding-top: 40px;
+}
+.partner-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.partner-item img {
+    display: block;
+    object-fit: cover;
+    flex-shrink: 1;
+}
+
+
+
+/* Extra large screens, TV */
+@media only screen and (min-width: 1400px) and (max-width: 9999px) {
+
+}
+
+@media only screen and (min-width: 1400px) {
+    .useful-links {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .useful-wrapper {
+        width: min-content;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+
+}
+
+
+/* Desktops, large screens */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .partner-item img {
+        width: 300px;
+    }
+}
+
+
+/* Small screens, laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+   
+}
+@media only screen and (min-width: 769px) {
+    footer {
+        padding: 100px 0 30px 0;
+    }
+
+    .partners {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .partner-item img {
+        width: 200px;
+    }
+}
+
+
+/* iPads, Tablets */
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+    footer {
+        padding: 50px 0 30px 0;
+    }
+    .useful-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .partners {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .partner-item img {
+        width: 180px;
+    }
+}
+
+/* Mobile devices */
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+    .partner-item img {
+        width: 110px;
+    }
+}

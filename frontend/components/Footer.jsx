@@ -6,6 +6,7 @@ import { combineUrl } from '../config/utils'
 
 
 export default function Footer({footer}) {
+    console.log(footer.partners.records)
     return (
         <footer className="centralize">
             <div className="container">

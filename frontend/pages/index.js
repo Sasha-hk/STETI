@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { initializeStore } from '../store/store'
 import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
-import { uploadNews } from '../store/actions/naeActions'
+import { uploadNews, uploadAttachedNews } from '../store/actions/naeActions'
 import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 
 
 function Home({initialReduxState}) {
-    console.log(initialReduxState.news)
+    console.log(initialReduxState.news.attachedNews)
+
+    const attachedNews = initialReduxState.news.attachedNews.records[0]
+
     return (
         <BaseLayout 
             footer={
@@ -19,12 +22,14 @@ function Home({initialReduxState}) {
             }
         >
             <header>
-
+                <img src={attachedNews.img} alt="" />
+                <div className="container">
+                    <h1>{attachedNews.title}</h1>
+                </div>
             </header>
 
             <section className='container'>
-                <h1>Самбірський фаховий коледж економіки та інформаційних технологій</h1>
-
+                Content
             </section>
         </BaseLayout>
     )
@@ -41,6 +46,7 @@ export async function getStaticProps(context) {
     await dispatch(uploadUsefulLinks())
     await dispatch(uploadPartners())
     await dispatch(uploadNews())
+    await dispatch(uploadAttachedNews())
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }

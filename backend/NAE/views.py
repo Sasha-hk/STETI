@@ -43,19 +43,10 @@ class NewsAndAnnouncementsDetailsView(generics.RetrieveAPIView):
     serializer_class = NewsAndAnnouncementsSerializer
 
 
-class NewsAttechedView(APIView):
+class NewsAttechedView(generics.ListAPIView):
     permission_classes = [AllowAny]
+    queryset = NewsAndAnnouncements.objects.order_by('-id').filter(attach_at_home=True)[:1]
     serializer_class = NewsAndAnnouncementsSerializer
-
-    def get(self, request):
-        atteched_at_home = NewsAndAnnouncements.objects.order_by('-id').filter(attach_at_home=True)[:1]
-
-        if atteched_at_home:
-            serialized = self.serializer_class(atteched_at_home, many=True)
-
-            return Response(serialized.data, status=status.HTTP_200_OK)
-
-        return Response({'details': 'not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 # Images

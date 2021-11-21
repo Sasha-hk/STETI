@@ -108,8 +108,8 @@ class UsefulLink(models.Model):
         verbose_name_plural = "Корисні посилання"
 
     name = models.CharField(verbose_name='Назва посилання', max_length=100)
-    for_students = models.ManyToManyField(ForStudent, verbose_name='Посилання на ресурс "стеденту"', blank=True)
-    for_entrants = models.ManyToManyField(ForEntrant, verbose_name='Посилання на ресурс "абітурієнту"', blank=True)
+    for_students = models.ForeignKey(ForStudent, on_delete=models.CASCADE, verbose_name='Посилання на ресурс "стеденту"', blank=True, null=True)
+    for_entrants = models.ForeignKey(ForEntrant, on_delete=models.CASCADE, verbose_name='Посилання на ресурс "абітурієнту"', blank=True, null=True)
     own_link = models.CharField(
         verbose_name='Власне посилання',
         max_length=500,

@@ -2,6 +2,11 @@ import * as types from '../types/naeTypes'
 
 
 const defaultNewsState = {
+    attachedNews: {
+        records: [],
+        isLoading: false,
+        error: false,
+    },
     news: {
         records: [],
         isLoading: false,
@@ -66,6 +71,16 @@ const naeReducer = (state = defaultNewsState, action) => {
                     error: false,
                 }
             }
+        
+        case types.NAE_UPLOAD_ATTACHED_NEWS:
+            return {
+                ...state,
+                attachedNews: {
+                    ...state.attachedNews,
+                    isLoading: true,
+                    error: false,
+                }
+            }
 
         // Successes
         case types.NAE_SUCCESS_NEWS:
@@ -107,6 +122,16 @@ const naeReducer = (state = defaultNewsState, action) => {
                     error: false,
                 }
             }
+
+        case types.NAE_SUCCESS_ATTACHED_NEWS:
+            return {
+                ...state,
+                attachedNews: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
         
         // Fails
         case types.NAE_FAIL_NEWS:
@@ -138,11 +163,22 @@ const naeReducer = (state = defaultNewsState, action) => {
                     error: true,
                 }
             }
+            
         case types.NAE_FAIL_EVENTS_DETAILS:
             return {
                 ...state,
                 eventsDetails: {
                     ...state.eventsDetails,
+                    isLoading: false,
+                    error: true,
+                }
+            }
+
+        case types.NAE_FAIL_ATTACHED_NEWS:
+            return {
+                ...state,
+                attachedNews: {
+                    ...state.attachedNews,
                     isLoading: false,
                     error: true,
                 }

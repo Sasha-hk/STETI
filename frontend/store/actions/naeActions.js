@@ -19,14 +19,14 @@ const makeActionWithPayload = (action, payload) => {
 
 // urload news
 export const uploadNews = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_NEWS))
-        
-        axios({
+
+        await axios({
             method: 'get',
             url: API_URL_NEWS
         })
-            .then(r => {
+        .then(r => {
                 dispatch(makeActionWithPayload(types.NAE_SUCCESS_NEWS, r.data))
             })
             .catch(e => {
@@ -37,9 +37,9 @@ export const uploadNews = () => {
 
 // urload news details
 export const uploadNewsDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_NEWS_DETAILS)) 
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_NEWS, parts: [slug]})
         })  
@@ -54,10 +54,10 @@ export const uploadNewsDetails = (slug) => {
 
 // urload events
 export const uploadEvents = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_EVENTS))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_EVENTS
         })
@@ -72,10 +72,10 @@ export const uploadEvents = () => {
 
 // urload events details
 export const uploadEventsDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.NAE_UPLOAD_EVENTS_DETAILS))
         
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_EVENTS, parts: [slug]}),
         })

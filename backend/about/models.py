@@ -1,9 +1,10 @@
 from ckeditor.fields import RichTextField
+
+from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
-from django.conf import settings
 
-from study.models import ForStudent, ForEntrant
+from study.models import ForEntrant, ForStudent
 
 
 class About(models.Model):
@@ -30,7 +31,6 @@ class Administration(models.Model):
     description = RichTextField('Кородкий опис')
     phone_number = models.CharField('Номере телефону', max_length=30)
     slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
-
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -74,7 +74,6 @@ class GalleryCategory(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
 
-
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.category_name)
@@ -94,7 +93,6 @@ class Partners(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
 
-
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
@@ -110,10 +108,14 @@ class UsefulLink(models.Model):
         verbose_name_plural = "Корисні посилання"
 
     name = models.CharField(verbose_name='Назва посилання', max_length=100)
-    for_students = models.ManyToManyField(ForStudent, verbose_name='Посилання на ресурс "стеденту"', blank=True)
-    for_entrants = models.ManyToManyField(ForEntrant, verbose_name='Посилання на ресурс "абітурієнту"', blank=True)
-    own_link = models.CharField(verbose_name='Власне посилання', max_length=500, null=True, blank=True)
-
+    for_students = models.ForeignKey(ForStudent, on_delete=models.CASCADE, verbose_name='Посилання на ресурс "стеденту"', blank=True, null=True)
+    for_entrants = models.ForeignKey(ForEntrant, on_delete=models.CASCADE, verbose_name='Посилання на ресурс "абітурієнту"', blank=True, null=True)
+    own_link = models.CharField(
+        verbose_name='Власне посилання',
+        max_length=500,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return str(self.name)
@@ -124,9 +126,8 @@ class UsefulLinkGroup(models.Model):
         verbose_name_plural = "Група корисних посилань"
 
     group_name = models.CharField("Назва групи", max_length=100)
-    resource = models.ManyToManyField(UsefulLink, verbose_name='Ресурс')
+    resource = models.ManyToManyField(UsefulLink, verbose_name='Ресурс', blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-
 
     def __str__(self):
         return str(self.group_name)

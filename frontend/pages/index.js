@@ -1,33 +1,50 @@
-import axios from 'axios'
+import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
-import Head from 'next/head'
 
-import Navigation from '../components/navigation/Navigation.jsx'
+import { initializeStore } from '../store/store'
+import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
+import { uploadNews } from '../store/actions/naeActions'
+import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 
-function Home() {
+
+function Home({initialReduxState}) {
+    console.log(initialReduxState.news)
     return (
-        <>
-            <Head>
-                <meta name="keywords" content="STETI" />
-                <meta name="description" content="The official website of Sambir collage of economics and information technology" />
-                <title>STETI</title>
-            </Head>
-            <Navigation></Navigation>
-            
+        <BaseLayout 
+            footer={
+                {
+                    partners: initialReduxState.about.partners,
+                    usefulLinks: initialReduxState.about.usefulLinks
+                }
+            }
+        >
+            <header>
+
+            </header>
+
             <section className='container'>
                 <h1>Самбірський фаховий коледж економіки та інформаційних технологій</h1>
-                <h2>Самбірський фаховий коледж економіки та інформаційних технологій</h2>
-                <h3>Самбірський фаховий коледж економіки та інформаційних технологій</h3>
-                <h4>Самбірський фаховий коледж економіки та інформаційних технологій</h4>
-                <h5>Самбірський фаховий коледж економіки та інформаційних технологій</h5> 
-                <small>small Самбірський фаховий коледж економіки та інформаційних технологій</small>
-                <p>p Самбірський фаховий коледж економіки та інформаційних технологій</p>
-                <b>b Самбірський фаховий коледж економіки та інформаційних технологій</b><br />
-                <a href="">a Самбірський фаховий коледж економіки та інформаційних технологій</a>
+
             </section>
-        </>
+        </BaseLayout>
     )
 }
 
+Home.propTypes = {
+    initialReduxState: PropTypes.object.isRequired
+}
+ 
+export async function getStaticProps(context) {
+    const reduxStore = initializeStore()
+    const { dispatch } = reduxStore
+    
+    await dispatch(uploadUsefulLinks())
+    await dispatch(uploadPartners())
+    await dispatch(uploadNews())
+    
+    return { props: { initialReduxState: reduxStore.getState() } }
+}
+ 
 
-export default Home;
+
+export default Home

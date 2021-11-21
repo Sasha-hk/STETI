@@ -32,6 +32,8 @@
     --br-big: 10px;
     --br-bigest: 15px;
 
+    --container-margins: 80px;
+
     --shadow-regular: 0 0 15px rgba(0, 0, 0, 0.1);
     --shadow-little: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -84,6 +86,9 @@ h1 {margin-top: 0;}
 .container {
     width: var(--container-width);
     padding: var(--container-padding);
+}
+.container:not(:last-child) {
+    margin-bottom: var(--container-margins);
 }
 .container-fluid {
     width: 100%;

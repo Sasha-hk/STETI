@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
+import Link from 'next/link'
 
+import { combineUrl } from '../config/utils'
+import { API_URL_NEWS } from '../config/APIUrls'
 import { initializeStore } from '../store/store'
 import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
 import { uploadNews, uploadAttachedNews } from '../store/actions/naeActions'
 import BaseLayout from '../components/Layouts/BaseLayout.jsx'
-
+import classes from '../styles/index.module.css'
 
 function Home({initialReduxState}) {
-    console.log(initialReduxState.news.attachedNews)
-
     const attachedNews = initialReduxState.news.attachedNews.records[0]
 
     return (
@@ -21,10 +22,23 @@ function Home({initialReduxState}) {
                 }
             }
         >
-            <header>
-                <img src={attachedNews.img} alt="" />
-                <div className="container">
+            <style jsx global>{`
+                .wrapper {
+                    padding-top: 0;
+                }
+            `}</style>
+            <header className={['container-fluid', classes.header].join(' ')}>
+                <div className={classes.news_image_wrapper}>
+                    <img src={attachedNews.img} alt="" />
+                    <div className={classes.blur_news_image}></div>
+                </div>
+                <div className={['container', classes.news_details].join(' ')}>
                     <h1>{attachedNews.title}</h1>
+                    <Link href={
+                        combineUrl({baseURL: 'nae/', parts: [attachedNews.slug]})
+                    }>
+                        <a>Дізнатись більше</a>
+                    </Link>
                 </div>
             </header>
 

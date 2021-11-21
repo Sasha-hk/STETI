@@ -10,7 +10,7 @@
 .navigation {
     background: var(--bg-block);
     box-shadow: var(--shadow-regular);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: var(--navigation-height);
@@ -20,6 +20,7 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+    z-index: 3;
 }
 .navigation-panel {
     display: flex;

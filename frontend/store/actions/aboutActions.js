@@ -28,10 +28,10 @@ const makeActionWithPayload = (action, payload) => {
 
 // upload about data
 export const uploadAbout = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_ABOUT))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_ABOUT_US
         })
@@ -46,10 +46,10 @@ export const uploadAbout = () => {
 
 // upload contact pnone numbers
 export const uploadContactNumbers = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_CONTACT_PNONES))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_CONTACT_PHONES_NUMBERS
         })
@@ -64,10 +64,10 @@ export const uploadContactNumbers = () => {
 
 // upload administration list
 export const uploadAdministration = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_ADMINISTRATION))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_ADMINISTRATION
         })
@@ -82,10 +82,10 @@ export const uploadAdministration = () => {
 
 // upload administration details
 export const uploadAdministrationDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_ADMINISTRATION_DETAILS))
         
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_ADMINISTRATION, parts: [slug]})
         })
@@ -100,10 +100,10 @@ export const uploadAdministrationDetails = (slug) => {
 
 // upload gallery categorys
 export const uploadGalleryCategorys = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_GALLERY))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_GALLERY
         })
@@ -118,10 +118,10 @@ export const uploadGalleryCategorys = () => {
 
 // upload gallery category details
 export const uploadGalleryDetails = (slug) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_GALLERY_DETAILS))
         
-        axios({
+        await axios({
             method: 'get',
             url: combineUrl({baseUrl: API_URL_GALLERY, parts: [slug]})
         })
@@ -136,14 +136,15 @@ export const uploadGalleryDetails = (slug) => {
 
 // upload gallery category details
 export const uploadUsefulLinks = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_USEFUL_LINKS))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_USEFUL_LINKS,
         })
             .then(r => {
+                // console.log(r.data)
                 dispatch(makeActionWithPayload(types.ABOUT_SUCCESS_USEFUL_LINKS, r.data))
             })
             .catch(e => {
@@ -154,10 +155,10 @@ export const uploadUsefulLinks = () => {
 
 // upload gallery category details
 export const uploadPartners = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(makeAction(types.ABOUT_UPLOAD_PARTNERS))
         
-        axios({
+        await axios({
             method: 'get',
             url: API_URL_PARTNERS,
         })

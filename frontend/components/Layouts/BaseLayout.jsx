@@ -1,7 +1,7 @@
-import Navigation from '../navigation/Navigation'
+import Footer from '../Footer'
+import Navigation from '../Navigation'
 
-
-const BaseLayout = ({children}) => {
+const BaseLayout = ({children, footer}) => {
     return (
         <>
             <Navigation/>
@@ -9,6 +9,8 @@ const BaseLayout = ({children}) => {
                 <div className="content">
                     {children}
                 </div>
+                
+                <Footer footer={footer}></Footer>
             </div>
         </>
     )

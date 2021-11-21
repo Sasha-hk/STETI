@@ -1,22 +1,18 @@
-import { createWrapper } from 'next-redux-wrapper';
 import { Provider } from 'react-redux'
+import useStore from '../store/store'
 
-import store from '../store/store'
 import '../styles/base.css'
-import '../components/navigation/navigation.css'
+import '../styles/navigation.css'
+import '../styles/footer.css'
 
+export default function App({ Component, pageProps }) {
+    const store = useStore(pageProps.initialReduxState)
 
-function MyApp({ Component, pageProps }) {
-    return ( 
+    return (
         <Provider store={store}>
             <Component {...pageProps} />
         </Provider>
     )
 }
 
-const makeStore = () => store;
-const wrapper = createWrapper(makeStore)
 
-
-export default wrapper.withRedux(MyApp)
- 

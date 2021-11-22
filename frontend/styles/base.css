@@ -222,6 +222,8 @@ h1 {margin-top: 0;}
     * {
         --container-width: 100%;
         --container-padding: 0 16px;
+
+        --container-margins: 50px; 
     }
 
 

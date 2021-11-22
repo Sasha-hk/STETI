@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 
 const navigationType = {
@@ -8,8 +9,7 @@ const navigationType = {
     multi: 'multi',
 }
 
-const LinkItem = ({link, i, openDropDown}) => {
-    // active
+const LinkItem = ({link, openDropDown}) => {
     const router = useRouter().route
 
     if (link.type == navigationType.single) {
@@ -20,7 +20,7 @@ const LinkItem = ({link, i, openDropDown}) => {
                         <a 
                             className={
                                 router == link.url
-                                    ? "active"
+                                    ? 'active'
                                     : null
                             }
                         >
@@ -40,7 +40,7 @@ const LinkItem = ({link, i, openDropDown}) => {
 
         return (
             <li
-                className={link.isOpen ? "open" : null}
+                className={link.isOpen ? 'open' : null}
                 onClick = {() => openDropDown()}
             >
                 <div className="link-wrapper">
@@ -53,15 +53,15 @@ const LinkItem = ({link, i, openDropDown}) => {
                 <div className="nav-drop-down">
                     {
                         link.items.map((item, i) => {
+                            let linkClasses = ['active']
+
+                            if (router == item.url) {
+                                linkClasses.push('active')
+                            }
                             return ( 
                                 <Link href={item.url} key={i}>
                                     <a 
-                                        className="active"
-                                        className={
-                                            router == item.url
-                                                ? "active"
-                                                : null
-                                        }
+                                        className={linkClasses.join(' ')}
                                     >
                                         {item.pageName}
                                     </a>
@@ -73,6 +73,11 @@ const LinkItem = ({link, i, openDropDown}) => {
             </li>
         )
     }
+}
+
+LinkItem.propTypes = {
+    link: PropTypes.object.isRequired,
+    openDropDown: PropTypes.func.isRequired,
 }
 
 const Navigation = () => {

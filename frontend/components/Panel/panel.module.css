@@ -1,0 +1,88 @@
+/* panel */
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-block);
+    border-radius: var(--br-regular);
+    box-shadow: var(--shadow-regular);
+    width: 100%;
+    padding: 13px 15px;
+    position: relative;
+    top: 0px;
+    transition: var(--transition-regular);
+}
+.panel span,
+.panel a {
+    color: var(--color-muted);
+    font-weight: 500;
+    transition: var(--transition-regular);
+}
+
+
+/* panel wrapper */
+.panel_wrapper {
+    display: grid;
+}
+
+
+
+/* Extra large screens, TV */
+@media only screen and (min-width: 1400px) and (max-width: 9999px) {
+
+}
+
+@media only screen and (min-width: 1400px) {
+
+}
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+
+}
+
+
+/* Desktops, large screens */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+
+}
+
+
+/* Small screens, laptops */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+ 
+}
+@media only screen and (min-width: 769px) {
+    /* panel */
+    .panel_outside:hover .panel {
+        position: relative;
+        top: -5px;
+    }
+    .panel:hover span,
+    .panel:hover a {
+        transition: var(--transition-regular);
+        color: var(--color-regular);
+    }
+
+    /* panel wrapper */
+   .panel_wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 25px;
+        grid-column-gap: 25px;
+    }
+}
+
+
+/* iPads, Tablets */
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+
+}
+
+/* Mobile devices */
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+    /* panel wrapper */
+    .panel_wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 16px;
+    }
+}

@@ -42,7 +42,12 @@
 
 /* iPads, Tablets */
 @media only screen and (min-width: 0px) and (max-width: 768px) {
-
+    /* panel wrapper */
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 16px;
+        grid-column-gap: 16px;
+    }
 }
 
 /* Mobile devices */

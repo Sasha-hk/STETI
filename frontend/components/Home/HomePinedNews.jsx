@@ -12,6 +12,7 @@ const HomePindeNews = ({attachedNews}) => {
                 .navigation {
                     transition: var(--transition-regular);
                     background: rgba(0, 0, 0, 0);
+                    box-shadow: none;
                 }
                 .link-wrapper p,
                 .link-wrapper a {

@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import { API_URL_FOR_STUDENTS, API_URL_FOR_ENTRANTS } from '../config/APIUrls.js'
-import { combineUrl } from '../config/utils';
+import { combineUrl } from '../config/utils'
+
 
 export default function Footer({footer}) {
-    console.log(footer.partners)
     return (
         <footer className="centralize">
             <div className="container">
@@ -79,4 +80,8 @@ export default function Footer({footer}) {
             </div>
         </footer>
     )
+}
+
+Footer.propTypes = {
+    footer: PropTypes.object.isRequired,
 }

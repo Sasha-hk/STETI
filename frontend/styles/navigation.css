@@ -10,16 +10,19 @@
 .navigation {
     background: var(--bg-block);
     box-shadow: var(--shadow-regular);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: var(--navigation-height);
     width: 100%;
 
+    transition: var(--transition-regular);
+
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
+    z-index: 3;
 }
 .navigation-panel {
     display: flex;
@@ -217,10 +220,19 @@ nav > ul > li {
     nav ul {
         flex-direction: column;
     } 
+    nav ul li {
+        margin-bottom: 20px;
+    }
     
     nav li.open .nav-drop-down {
         display: flex;
         flex-direction: column;
+    }
+    .nav-drop-down {
+        margin-top: 10px; 
+    }
+    .nav-drop-down a:not(:last-child) {
+        margin-bottom: 5px;
     }
 
     /* active */
@@ -232,13 +244,6 @@ nav > ul > li {
 
 /* Mobile devices */
 @media only screen and (min-width: 0px) and (max-width: 480px) {
-    /* containers */
-    .container {
-        width: var(--container-width);
-        padding: var(--container-padding);
-    }
-
-
     /* navigation */
     .navigation-logo {
         display: block;

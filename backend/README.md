@@ -23,11 +23,12 @@ About:
 
 News and announcements:
 
-- /news/images/
-- /news/news/
-- /news/news/[slug]/
 - /news/events/
 - /news/events/[slug]/
+- /news/images/
+- /news/news/
+- /news/news/atteched/
+- /news/news/[slug]/
 
 Study:
 

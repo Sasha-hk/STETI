@@ -1,33 +1,56 @@
-import axios from 'axios'
+import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
-import Head from 'next/head'
+import Link from 'next/link'
+import { combineUrl } from '../config/utils'
+import { API_URL_NEWS } from '../config/APIUrls'
+import { initializeStore } from '../store/store'
+import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
+import { uploadNews, uploadAttachedNews } from '../store/actions/naeActions'
+import { uploadForStudents } from '../store/actions/studyActions'
+import BaseLayout from '../components/Layouts/BaseLayout.jsx'
+import classes from '../styles/index.module.css'
 
-import Navigation from '../components/navigation/Navigation.jsx'
+import HomePindeNews from '../components/Home/HomePinedNews'
+import ForStudent from '../components/Home/ForStudent'
 
-function Home() {
+function Home({initialReduxState}) {
+    const attachedNews = initialReduxState.news.attachedNews.records[0]
+    const forStudents = initialReduxState.study.forStudents
+
     return (
-        <>
-            <Head>
-                <meta name="keywords" content="STETI" />
-                <meta name="description" content="The official website of Sambir collage of economics and information technology" />
-                <title>STETI</title>
-            </Head>
-            <Navigation></Navigation>
+        <BaseLayout 
+            footer={
+                {
+                    partners: initialReduxState.about.partners,
+                    usefulLinks: initialReduxState.about.usefulLinks
+                }
+            }
+        >
+            <HomePindeNews attachedNews={attachedNews} />
+
+            <ForStudent forStudents={forStudents} />
             
-            <section className='container'>
-                <h1>Самбірський фаховий коледж економіки та інформаційних технологій</h1>
-                <h2>Самбірський фаховий коледж економіки та інформаційних технологій</h2>
-                <h3>Самбірський фаховий коледж економіки та інформаційних технологій</h3>
-                <h4>Самбірський фаховий коледж економіки та інформаційних технологій</h4>
-                <h5>Самбірський фаховий коледж економіки та інформаційних технологій</h5> 
-                <small>small Самбірський фаховий коледж економіки та інформаційних технологій</small>
-                <p>p Самбірський фаховий коледж економіки та інформаційних технологій</p>
-                <b>b Самбірський фаховий коледж економіки та інформаційних технологій</b><br />
-                <a href="">a Самбірський фаховий коледж економіки та інформаційних технологій</a>
-            </section>
-        </>
+        </BaseLayout>
     )
 }
 
+Home.propTypes = {
+    initialReduxState: PropTypes.object.isRequired
+}
+ 
+export async function getStaticProps(context) {
+    const reduxStore = initializeStore()
+    const { dispatch } = reduxStore
+    
+    await dispatch(uploadUsefulLinks())
+    await dispatch(uploadPartners())
+    await dispatch(uploadNews())
+    await dispatch(uploadAttachedNews())
+    await dispatch(uploadForStudents())
+    
+    return { props: { initialReduxState: reduxStore.getState() } }
+}
+ 
 
-export default Home;
+
+export default Home

@@ -16,6 +16,8 @@
     height: var(--navigation-height);
     width: 100%;
 
+    transition: var(--transition-regular);
+
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
@@ -233,13 +235,6 @@ nav > ul > li {
 
 /* Mobile devices */
 @media only screen and (min-width: 0px) and (max-width: 480px) {
-    /* containers */
-    .container {
-        width: var(--container-width);
-        padding: var(--container-padding);
-    }
-
-
     /* navigation */
     .navigation-logo {
         display: block;

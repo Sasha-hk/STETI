@@ -53,9 +53,10 @@ const LinkItem = ({link, openDropDown}) => {
                 <div className="nav-drop-down">
                     {
                         link.items.map((item, i) => {
-                            let linkClasses = ['active']
+                            let linkClasses = []
 
                             if (router == item.url) {
+                                console.log(123)
                                 linkClasses.push('active')
                             }
                             return ( 

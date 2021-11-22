@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import classes from '../../styles/index.module.css'
@@ -5,13 +6,65 @@ import { combineUrl } from '../../config/utils'
 
 
 const HomePindeNews = ({attachedNews}) => {
+    const correctNavigatinonDefault = (
+        <style jsx global>
+            {`
+                .navigation {
+                    transition: var(--transition-regular);
+                    background: rgba(0, 0, 0, 0);
+                }
+                .link-wrapper p,
+                .link-wrapper a {
+                    color: var(--color-revert);
+                } 
+                .link-wrapper svg {
+                    stroke: var(--color-revert);
+                }
+                .navigation-logo {
+                    color: var(--color-revert);
+                }
+                .burger:before, 
+                .burger:after {
+                    background: var(--color-revert);
+                }
+                .link-wrapper svg {
+                    stroke: var(--color-revert);
+                }
+
+                @media only screen and (min-width: 769px) {
+                    .link-wrapper a.active {
+                        border-bottom: 2px solid var(--color-revert);
+                    }
+                }
+                @media only screen and (min-width: 0) and (max-width: 769px) {
+                    nav {
+                        background: rgba(0, 0, 0, 0.7);
+                        backdrop-filter: blur(5px);
+                    }
+                }
+            `}
+        </style>
+    )
+    const [correstNevigatnion, setCorrectNavigatino] = useState(correctNavigatinonDefault)
+    useEffect(() => {
+        document.addEventListener('scroll', e => {
+            if (window.scrollY == 0) {
+                setCorrectNavigatino(correctNavigatinonDefault)
+            }
+            else {
+                setCorrectNavigatino('')
+            }
+        })
+    }, [])
     return (
         <>
             <style jsx global>{`
                     .wrapper {
                         padding-top: 0;
                     }
-                `}</style>
+                `}
+            </style>
+            {correstNevigatnion}
                 <header className={['container-fluid', classes.header].join(' ')}>
                     <div className={classes.news_image_wrapper}>
                         <img src={attachedNews.img} alt="" />

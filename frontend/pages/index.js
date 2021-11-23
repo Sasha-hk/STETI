@@ -32,7 +32,7 @@ function Home({initialReduxState}) {
 
             <ForStudent forStudents={forStudents} />
 
-            <NewsBlock></NewsBlock>
+            <NewsBlock news={initialReduxState.news.news} />
             
         </BaseLayout>
     )

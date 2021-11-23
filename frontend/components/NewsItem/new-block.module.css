@@ -1,4 +1,6 @@
 .news_block {
+    display: flex;
+    flex-direction: column;
     background: var(--br-block);
     box-shadow: var(--shadow-regular);
     border-radius: var(--br-regular);
@@ -16,16 +18,19 @@
 .image_wrapper {
     height: min-content;
     position: relative;
-}
+} 
 .news_description_wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    flex: 1;
     padding: 24px 24px 15px 24px;
     position: relative;
 }
-.news_description_wrapper h4 {
+.news_description {
+    margin-bottom: 20px;
+}
+.news_description h4 {
     margin: 0 0 8px 0;
 }
 .news_description_wrapper i {

@@ -2,9 +2,6 @@ import PropTypes from 'prop-types'
 import classes from './new-block.module.css'
 
 const NewsBlock = ({newsItem}) => {
-    console.log(newsItem)
-    console.log(newsItem.pub_date)
-
     let pubDateInput = Date.parse(newsItem.pub_date)
     let toParse = new Date(pubDateInput)
 
@@ -17,18 +14,18 @@ const NewsBlock = ({newsItem}) => {
     return (
         <article className={classes.news_block}>
             {
-                    newsItem.img 
-                        && (
-                            <div className={classes.image_wrapper}>
-                                <img src={newsItem.img} alt="" />
-                            </div>
-                        )
-                }
+                newsItem.img 
+                    && (
+                        <div className={classes.image_wrapper}>
+                            <img src={newsItem.img} alt="" />
+                        </div>
+                    )
+            }
 
             <div className={classes.news_description_wrapper}>
                 <div className={classes.news_description}>
-                    <h4>{newsItem.title}</h4>
-                    <div>{newsItem.content}</div>
+                    <a href=""><h4>{newsItem.title}</h4></a>
+                    <div>{newsItem.short_description}</div>
                 </div>
 
                 <i>{pubDate}</i>

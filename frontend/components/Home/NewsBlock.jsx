@@ -4,7 +4,7 @@ import Grid from '../Layouts/Grid'
 
 export const NewsBlock = ({news}) => {
     const newsRecords = news.records.slice(news.records.length - 2, news.records.length)
-    console.log(newsRecords)
+    
     return (
         <section className="container">
             <Grid>

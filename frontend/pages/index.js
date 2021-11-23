@@ -12,6 +12,7 @@ import classes from '../styles/index.module.css'
 
 import HomePindeNews from '../components/Home/HomePinedNews'
 import ForStudent from '../components/Home/ForStudent'
+import NewsBlock from '../components/Home/NewsBlock.jsx'
 
 function Home({initialReduxState}) {
     const attachedNews = initialReduxState.news.attachedNews.records[0]
@@ -26,9 +27,12 @@ function Home({initialReduxState}) {
                 }
             }
         >
+            
             <HomePindeNews attachedNews={attachedNews} />
 
             <ForStudent forStudents={forStudents} />
+
+            <NewsBlock news={initialReduxState.news.news} />
             
         </BaseLayout>
     )

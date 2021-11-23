@@ -48,7 +48,8 @@ class NewsAndAnnouncements(models.Model):
         verbose_name_plural = "Новини та оголошення"
 
     title = models.CharField('Заголовок', max_length=100)
-    content = RichTextField('Опис', blank=True)
+    short_description = RichTextField(verbose_name='Коротки опис', blank=True)
+    body = RichTextField('Опис', blank=True)
     img = models.ImageField('Банер', upload_to='NAE/advertisment/', blank=True)
     imgs = models.ManyToManyField(Images, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)

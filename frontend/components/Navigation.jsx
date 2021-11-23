@@ -56,7 +56,6 @@ const LinkItem = ({link, openDropDown}) => {
                             let linkClasses = []
 
                             if (router == item.url) {
-                                console.log(123)
                                 linkClasses.push('active')
                             }
                             return ( 
@@ -89,6 +88,16 @@ const Navigation = () => {
                 type: navigationType.single,
                 pageName: 'Головна',
                 url: '/',
+            },
+            {
+                type: navigationType.single,
+                pageName: 'Новини та оголовшення',
+                url: '/nae',
+            },
+            {
+                type: navigationType.single,
+                pageName: 'Циклова комісія',
+                url: '/cyclic-comission',
             },
             {
                 type: navigationType.multi,

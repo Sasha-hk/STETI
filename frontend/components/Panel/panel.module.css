@@ -20,13 +20,6 @@
 }
 
 
-/* panel wrapper */
-.panel_wrapper {
-    display: grid;
-}
-
-
-
 /* Extra large screens, TV */
 @media only screen and (min-width: 1400px) and (max-width: 9999px) {
 
@@ -63,26 +56,18 @@
         transition: var(--transition-regular);
         color: var(--color-regular);
     }
-
-    /* panel wrapper */
-   .panel_wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        grid-row-gap: 25px;
-        grid-column-gap: 25px;
-    }
 }
 
 
 /* iPads, Tablets */
 @media only screen and (min-width: 0px) and (max-width: 768px) {
-
-}
-
-/* Mobile devices */
-@media only screen and (min-width: 0px) and (max-width: 480px) {
     /* panel wrapper */
     .panel_wrapper {
         grid-template-columns: repeat(1, 1fr);
         grid-row-gap: 16px;
     }
+}
+
+/* Mobile devices */
+@media only screen and (min-width: 0px) and (max-width: 480px) {
 }

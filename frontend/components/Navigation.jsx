@@ -82,6 +82,7 @@ LinkItem.propTypes = {
 
 const Navigation = () => {
     const navigationDefaultState = {
+        lockScroll: false,
         isOpen: false,
         links: [
             {
@@ -139,16 +140,29 @@ const Navigation = () => {
             setNavigation({
                 ...navigationDefaultState,
                 isOpen: false,
+                lockScroll: false,
             })
         }
         else {
+            console.log('lock')
             setNavigation({
                 ...navigationDefaultState,
                 isOpen: true,
+                lockScroll: true,
             })
         }
     }
     
+    const lockBody = (
+        <style jsx global>
+            {`
+                body {
+                    overflow: hidden;
+                }
+            `}
+        </style>
+    )
+
     const navigationPanelClasses = ['navigation-panel', 'container']
 
     if (navigation.isOpen) {
@@ -157,6 +171,9 @@ const Navigation = () => {
 
     return (
         <div className="navigation centralize">
+            {
+                navigation.lockScroll && lockBody
+            }
             <div 
                 className={navigationPanelClasses.join(' ')}
             >

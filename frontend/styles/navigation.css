@@ -192,6 +192,7 @@ nav > ul > li {
         height: 100vh;
         width: 100%;
         opacity: 0.2;
+        overflow: auto;
         padding: 55px 20px;
         position: absolute;
         top: -20px;

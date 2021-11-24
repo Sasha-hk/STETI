@@ -16,7 +16,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
 class ForEntrantSerializer(serializers.ModelSerializer):
     class Meta:
         model = ForEntrant
-        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', )
+        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', 'show_on_home')
 
 
 class ForEntrantDetailsSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class ForEntrantDetailsSerializer(serializers.ModelSerializer):
 class ForStudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ForStudent
-        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', )
+        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', 'show_on_home')
 
 
 class ForStudentDetailsSerializer(serializers.ModelSerializer):

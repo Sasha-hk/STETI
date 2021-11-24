@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import classes from './panel.module.css'
 
+import { parseDate } from '../../utils/date.js'
+
 
 const Panel = ({title, href, date}) => {
     if (href) {
@@ -9,7 +11,7 @@ const Panel = ({title, href, date}) => {
                 <a href={href}>
                     <div className={classes.panel}>
                         <span>{title}</span>
-                        <span>{date}</span>
+                        <span>{parseDate(date)}</span>
                     </div>
                 </a>
             </div>
@@ -20,7 +22,7 @@ const Panel = ({title, href, date}) => {
             <div className={classes.panel_outside}>
                 <div className={classes.panel}>
                     <span>{title}</span>
-                    <span>{date}</span>
+                    <span>{parseDate(date)}</span>
                 </div>
             </div>
         )

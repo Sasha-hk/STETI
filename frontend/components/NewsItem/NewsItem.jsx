@@ -1,15 +1,10 @@
 import PropTypes from 'prop-types'
 import classes from './new-block.module.css'
 
-const NewsBlock = ({newsItem}) => {
-    let pubDateInput = Date.parse(newsItem.pub_date)
-    let toParse = new Date(pubDateInput)
+import { parseDate } from '../../utils/date.js'
 
-    let pubDate = [
-        toParse.getDate(),
-        toParse.getMonth(),
-        toParse.getYear(),
-    ].join('.')
+
+const NewsBlock = ({newsItem}) => {
 
     return (
         <article className={classes.news_block}>
@@ -28,7 +23,7 @@ const NewsBlock = ({newsItem}) => {
                     <div>{newsItem.short_description}</div>
                 </div>
 
-                <i>{pubDate}</i>
+                <i>{parseDate(newsItem.pub_date)}</i>
             </div>
         </article>
     )

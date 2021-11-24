@@ -1,5 +1,5 @@
 * text=auto
 
 # languages
-.sh linguist-detectable=true
-.sh linguist-language=Shell
+*.sh linguist-detectable=true
+*.sh linguist-language=Shell

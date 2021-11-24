@@ -1,8 +1,4 @@
 * text=auto
 
 # languages
-*.sh linguist-detectable=true
-*.sh linguist-language=Shell
-
-* linguist-documentation=false
-env/* linguist-vendored=true
+*.sh linguist-language=sh

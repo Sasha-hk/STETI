@@ -5,3 +5,4 @@
 *.sh linguist-language=Shell
 
 * linguist-documentation=false
+env/* linguist-vendored=true

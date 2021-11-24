@@ -3,3 +3,5 @@
 # languages
 *.sh linguist-detectable=true
 *.sh linguist-language=Shell
+
+* linguist-documentation=false

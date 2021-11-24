@@ -2,3 +2,4 @@
 
 # languages
 .sh linguist-detectable=true
+.sh linguist-language=Shell

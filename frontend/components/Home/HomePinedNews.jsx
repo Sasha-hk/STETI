@@ -65,35 +65,39 @@ const HomePindeNews = ({attachedNews}) => {
         })
     }, [])
 
-    const newsImageLoader = ({ src, width, quality, layout }) => {
-        return `${src} || 75}`
+    if (attachedNews) {    
+        return (
+            <>
+                <style jsx global>{`
+                        .wrapper {
+                            padding-top: 0;
+                        }
+                    `}
+                </style>
+                {correstNevigatnion}
+                <header className={['container-fluid', classes.header].join(' ')}>
+                    <div className={classes.news_image_wrapper}>
+                        {
+                            attachedNews.img
+                                && <img src={attachedNews.img} alt="" />
+                        }
+                        <div className={classes.blur_news_image}></div>
+                    </div>
+                    <div className={['container', classes.news_details].join(' ')}>
+                        <h1>{attachedNews.title}</h1>
+                        <Link href={
+                            combineUrl({baseURL: 'nae/', parts: [attachedNews.slug]})
+                        }>
+                            <a>Дізнатись більше</a>
+                        </Link>
+                    </div>
+                </header>
+            </>
+        )
     }
-
-    return (
-        <>
-            <style jsx global>{`
-                    .wrapper {
-                        padding-top: 0;
-                    }
-                `}
-            </style>
-            {correstNevigatnion}
-            <header className={['container-fluid', classes.header].join(' ')}>
-                <div className={classes.news_image_wrapper}>
-                    <img src={attachedNews.img} alt="" />
-                    <div className={classes.blur_news_image}></div>
-                </div>
-                <div className={['container', classes.news_details].join(' ')}>
-                    <h1>{attachedNews.title}</h1>
-                    <Link href={
-                        combineUrl({baseURL: 'nae/', parts: [attachedNews.slug]})
-                    }>
-                        <a>Дізнатись більше</a>
-                    </Link>
-                </div>
-            </header>
-        </>
-    )
+    else {
+        return null
+    }
 }
 
 HomePindeNews.propTypes = {

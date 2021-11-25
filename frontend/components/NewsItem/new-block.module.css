@@ -4,6 +4,7 @@
     background: var(--br-block);
     box-shadow: var(--shadow-regular);
     border-radius: var(--br-regular);
+    width: 100%;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -14,7 +15,6 @@
     max-height: 250px;
     object-fit: cover;
 }
-
 .image_wrapper {
     height: min-content;
     position: relative;
@@ -48,10 +48,10 @@
 
 }
 
-
 @media only screen and (min-width: 1200px) and (max-width: 1400px) {
 
 }
+
 @media only screen and (min-width: 1200px) {
     .news_block {
         width: 420px;
@@ -73,6 +73,7 @@
         width: 300px;
     }
 }
+
 @media only screen and (min-width: 769px) {
     
 }
@@ -84,6 +85,7 @@
         width: 100%;
     }
 }
+
 
 /* Mobile devices */
 @media only screen and (min-width: 0px) and (max-width: 480px) {

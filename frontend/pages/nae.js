@@ -9,15 +9,13 @@ import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 
 import NewsItem from '../components/NewsItem/NewsItem.jsx'
 import Grid from '../components/Layouts/Grid'
+import classes from '../styles/nae.module.css'
 
 function NAE({initialReduxState}) {
-    const attachedNews = initialReduxState.news.attachedNews.records[0]
-    const forStudents = initialReduxState.study.forStudents
     const news = initialReduxState.news.news
- 
 
     return (
-        <BaseLayout 
+        <BaseLayout
             footer={
                 {
                     partners: initialReduxState.about.partners,
@@ -27,7 +25,7 @@ function NAE({initialReduxState}) {
         >
 
             <div className="container">
-                <h2>Новини та оголовшення</h2>
+                <h2 className={classes.fix_title}>Новини та оголовшення</h2>
                 <Grid>
                     {
                         news.records.map(newsItem => {

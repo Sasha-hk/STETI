@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
-import NewsItem from '../NewsItem/NewsItem'
+import {NewsItem} from '../News/NewsItem'
 import Grid from '../Layouts/Grid'
 
-export const NewsBlock = ({news}) => {
+const NewsBlock = ({news}) => {
     const newsRecords = news.records.slice(news.records.length - 2, news.records.length)
     
     return (

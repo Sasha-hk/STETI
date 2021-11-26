@@ -7,7 +7,7 @@ import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
 import { uploadNews } from '../store/actions/naeActions'
 import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 
-import NewsItem from '../components/NewsItem/NewsItem.jsx'
+import { NewsView } from '../components/News/NewsItem.jsx'
 import Grid from '../components/Layouts/Grid'
 import classes from '../styles/nae.module.css'
 
@@ -30,7 +30,7 @@ function NAE({initialReduxState}) {
                     {
                         news.records.map(newsItem => {
                             return (
-                                <NewsItem newsItem={newsItem} key={newsItem.id} />
+                                <NewsView newsItem={newsItem} key={newsItem.id} />
                             )
                         })
                     }

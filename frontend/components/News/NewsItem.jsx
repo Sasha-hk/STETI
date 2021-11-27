@@ -19,7 +19,6 @@ export const NewsItem = ({newsItem}) => {
 
             <div className={classes.news_description_wrapper}>
                 <div className={classes.news_description}>
-                    <a href=""><h4>{newsItem.title}</h4></a>
                     <Link href={'nae/' + newsItem.slug}>
                         <a><h4>{newsItem.title}</h4></a>
                     </Link>

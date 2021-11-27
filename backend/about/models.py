@@ -30,7 +30,7 @@ class Administration(models.Model):
     positon = models.CharField('Звання', max_length=100)
     description = RichTextField('Кородкий опис')
     phone_number = models.CharField('Номере телефону', max_length=30)
-    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -57,7 +57,7 @@ class Gallery(models.Model):
     class Meta:
         verbose_name_plural = "Фото галереї"
 
-    name = models.CharField('Назва фото', max_length=100) 
+    name = models.CharField('Назва фото', max_length=100)
     image = models.ImageField('Фото', upload_to='about/gallery')
 
     def __str__(self):
@@ -72,7 +72,7 @@ class GalleryCategory(models.Model):
     image = models.ImageField(verbose_name='Фото категоріії', upload_to="about/gallery/galery-category-img/")
     images = models.ManyToManyField(Gallery, verbose_name='Більше фото', blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -91,7 +91,7 @@ class Partners(models.Model):
     name = models.CharField("Назва", max_length=250)
     image = models.ImageField(verbose_name='Зображення', upload_to="about/partners/image")
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -108,8 +108,18 @@ class UsefulLink(models.Model):
         verbose_name_plural = "Корисні посилання"
 
     name = models.CharField(verbose_name='Назва посилання', max_length=100)
-    for_students = models.ForeignKey(ForStudent, on_delete=models.CASCADE, verbose_name='Посилання на ресурс "стеденту"', blank=True, null=True)
-    for_entrants = models.ForeignKey(ForEntrant, on_delete=models.CASCADE, verbose_name='Посилання на ресурс "абітурієнту"', blank=True, null=True)
+    for_students = models.ForeignKey(
+        ForStudent,
+        on_delete=models.CASCADE,
+        verbose_name='Посилання на ресурс "стеденту"',
+        blank=True, null=True
+    )
+    for_entrants = models.ForeignKey(
+        ForEntrant,
+        on_delete=models.CASCADE,
+        verbose_name='Посилання на ресурс "абітурієнту"', blank=True,
+        null=True
+    )
     own_link = models.CharField(
         verbose_name='Власне посилання',
         max_length=500,

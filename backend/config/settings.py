@@ -4,7 +4,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 PRE_BASE_DIR = BASE_DIR.parent / 'env'
@@ -22,7 +21,7 @@ if PROJECT_STATE in dev_snippets:
     DEBUG = True
     ALLOWED_HOSTS = ["*"]
 
-elif PROJECT_STATE in prod_snippets: 
+elif PROJECT_STATE in prod_snippets:
     DEBUG = False
     ALLOWED_HOSTS = ["*"]
 
@@ -45,9 +44,11 @@ INSTALLED_APPS = [
     'ckeditor',
     'geeks',
 
+    'cyclic_commission',
     'about',
     'study',
     'NAE',
+    'utils',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissions',
     ]
-} 
+}
 
 ROOT_URLCONF = 'config.urls'
 
@@ -85,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application' 
+WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {

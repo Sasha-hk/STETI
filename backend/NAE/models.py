@@ -1,34 +1,9 @@
-from random import choice
-from string import ascii_letters
-
 from ckeditor.fields import RichTextField
 
 from django.conf import settings
 from django.db import models
 
-
-# slug generator
-def generate_slug():
-    slug = ""
-    for random_char in range(settings.SLUG_LENGTH):
-        slug += choice(ascii_letters)
-
-    return slug
-
-
-# slug setter
-def get_slug(self):
-    slug = generate_slug()
-
-    if self.slug == '':
-        slug = generate_slug()
-        while True:
-            if type(self).objects.filter(slug=slug).exists():
-                slug = generate_slug()
-
-            else:
-                self.slug = slug
-                break
+from utils.slug import get_slug
 
 
 class Images(models.Model):

@@ -18,19 +18,19 @@ Describe how you solve it
 
 ## **Did you test this version ?**
 
-- [] Yes
-- [] No
+- [ ] Yes
+- [ ] No
 
 ## **Tested in browser**
 
-- [] Chrome
-- [] Safari
-- [] Firefox
-- [] Edge
-- [] Internet Explorer
+- [ ] Chrome
+- [ ] Safari
+- [ ] Firefox
+- [ ] Edge
+- [ ] Internet Explorer
 
 ## **Tested on**
 
-- [] phone
-- [] laptop
-- [] PC
+- [ ] phone
+- [ ] laptop
+- [ ] PC

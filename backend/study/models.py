@@ -1,11 +1,10 @@
-from string import ascii_letters
-from random import choice
-
 from ckeditor.fields import RichTextField
-from django.db import models
+
 from django.conf import settings
+from django.db import models
 from django.utils.text import slugify
 
+from utils.slug import get_slug
 
 
 class Department(models.Model):
@@ -35,32 +34,28 @@ class ForEntrant(models.Model):
     class Meta:
         verbose_name_plural = 'Для абітурієнтів'
 
-    title = models.CharField('Назва', max_length=100)  
+    title = models.CharField('Назва', max_length=100)
     content = RichTextField('Вміст', blank=True)
     img = models.ImageField(verbose_name='Фото', upload_to='study/for-entrant/img', blank=True)
     imgs = models.ManyToManyField(ForEntrantImages, verbose_name='Більше фото', blank=True)
-    link = models.CharField('Посилання на ресурс', max_length=500, blank=True, help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" не біде доступне')
+    link = models.CharField(
+        'Посилання на ресурс',
+        max_length=500,
+        blank=True,
+        help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" не біде доступне'
+    )
     pub_date = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
+    slug = models.SlugField(
+        max_length=11,
+        default='',
+        blank=True,
+        editable=False
+    )
 
-    def generate_slug(self):
-        slug_str = ''
+    get_slug = get_slug
 
-        if self.slug == '':
-            for i in range(0, ForEntrant._meta.get_field('slug').max_length):
-                slug_str += choice(ascii_letters) 
-            while True: 
-                if ForEntrant.objects.filter(slug = slug_str).exists():  
-                    for i in range(0, self.slug.max_length): 
-                        slug_str += choice(ascii_letters)
-            
-                else: 
-                    self.slug = slug_str
-                    break
-
-    def save(self, *args, **kwargs): 
-        self.generate_slug()  
-
+    def save(self, *args, **kwargs):
+        self.get_slug()
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -86,29 +81,20 @@ class ForStudent(models.Model):
     content = RichTextField('Вміст', blank=True)
     img = models.ImageField(verbose_name='Фото', upload_to='study/for-student/img', blank=True)
     imgs = models.ManyToManyField(ForStudentImages, verbose_name='Більше фото', blank=True)
-    link = models.CharField('Посилання на ресурс', max_length=500, blank=True, help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" не біде доступне')
+    link = models.CharField(
+        'Посилання на ресурс',
+        max_length=500,
+        blank=True,
+        help_text='Якщо ви лишаєте посилання на ресурс то поле "вміст" не біде доступне'
+    )
     pub_date = models.DateTimeField(auto_now_add=True)
     show_on_home = models.BooleanField(verbose_name='Показувати на домашній сторінці', default=False)
-    slug = models.SlugField(max_length=11, default='', blank=True, editable=False) 
+    slug = models.SlugField(max_length=11, default='', blank=True, editable=False)
 
-    def generate_slug(self):
-        slug_str = ''
-
-        if self.slug == '': 
-            for i in range(0, ForStudent._meta.get_field('slug').max_length):
-                slug_str += choice(ascii_letters) 
-            while True: 
-                if ForStudent.objects.filter(slug = slug_str).exists():
-                    for i in range(0, self.slug.max_length):
-                        slug_str += choice(ascii_letters)
-            
-                else:
-                    self.slug = slug_str
-                    break
+    get_slug = get_slug
 
     def save(self, *args, **kwargs):
-        self.generate_slug()
-
+        self.get_slug()
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -131,10 +117,14 @@ class LibraryCategory(models.Model):
         verbose_name_plural = 'Категорії бібліотеки'
 
     category_name = models.CharField(verbose_name='Назва категорії', max_length=100)
-    background = models.ImageField(verbose_name='Фон для кафедри', upload_to='study/library/library-category-img/', null=True, blank=True)
+    background = models.ImageField(
+        verbose_name='Фон для кафедри',
+        upload_to='study/library/library-category-img/',
+        null=True,
+        blank=True
+    )
     items = models.ManyToManyField(LibraryItem, verbose_name='Ресурси')
-    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False) 
-
+    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:

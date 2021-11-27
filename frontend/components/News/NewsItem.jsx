@@ -33,6 +33,7 @@ NewsItem.propTypes = {
 }
 
 export const NewsView = ({newsItem}) => {
+    console.log(newsItem.img)
     return (
         <article className={classes.news_block_view}>
             {
@@ -51,11 +52,11 @@ export const NewsView = ({newsItem}) => {
                     )
                     : (
                         <div className={classes.news_description}>
-                            <div className={classes.news_description}>
+                            <div className=''>
                                 <a href=""><h4>{newsItem.title}</h4></a>
                                 <div>{newsItem.short_description}</div>
                             </div>
-                            
+
                             <i>{parseDate(newsItem.pub_date)}</i>
                         </div>
                     )

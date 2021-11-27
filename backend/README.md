@@ -40,4 +40,9 @@ Study:
 - /study/library/
 - /study/library/[slug]/
 
+Cyclic commission:
+
+- /cyclic-commisison/
+- /cyclic-commisison/[slug]/
+
 The API will be modified

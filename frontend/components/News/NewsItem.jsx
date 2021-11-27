@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import classes from './new-block.module.css'
+import Link from 'next/link'
 
 import { parseDate } from '../../utils/date.js'
 
@@ -19,6 +20,9 @@ export const NewsItem = ({newsItem}) => {
             <div className={classes.news_description_wrapper}>
                 <div className={classes.news_description}>
                     <a href=""><h4>{newsItem.title}</h4></a>
+                    <Link href={'nae/' + newsItem.slug}>
+                        <a><h4>{newsItem.title}</h4></a>
+                    </Link>
                     <div>{newsItem.short_description}</div>
                 </div>
 
@@ -46,14 +50,18 @@ export const NewsView = ({newsItem}) => {
                             </div>
                             <div className={classes.news_description_fill}>
                                 <i>{parseDate(newsItem.pub_date)}</i>
-                                <a href=""><h4>{newsItem.title}</h4></a>
+                                <Link href={'nae/' + newsItem.slug}>
+                                    <a><h4>{newsItem.title}</h4></a>
+                                </Link>
                             </div>
                         </>
                     )
                     : (
                         <div className={classes.news_description}>
                             <div className=''>
-                                <a href=""><h4>{newsItem.title}</h4></a>
+                                <Link href={'nae/' + newsItem.slug}>
+                                    <a><h4>{newsItem.title}</h4></a>
+                                </Link>
                                 <div>{newsItem.short_description}</div>
                             </div>
 

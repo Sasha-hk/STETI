@@ -18,3 +18,4 @@ export const API_URL_FOR_ENTRANTS = API_URL + '/study/for-entrants/'
 export const API_URL_FOR_STUDENTS = API_URL + '/study/for-students/'
 export const API_URL_LIBRARY = API_URL + '/study/library/'
 
+export const API_URL_ATTACHED_NEWS = API_URL + '/nae/news/atteched/'

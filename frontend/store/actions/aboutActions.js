@@ -144,7 +144,6 @@ export const uploadUsefulLinks = () => {
             url: API_URL_USEFUL_LINKS,
         })
             .then(r => {
-                // console.log(r.data)
                 dispatch(makeActionWithPayload(types.ABOUT_SUCCESS_USEFUL_LINKS, r.data))
             })
             .catch(e => {

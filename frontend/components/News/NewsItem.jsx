@@ -36,7 +36,6 @@ NewsItem.propTypes = {
 }
 
 export const NewsView = ({newsItem}) => {
-    console.log(newsItem.img)
     return (
         <article className={classes.news_block_view}>
             {

@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { combineUrl } from '../config/utils'
-import { API_URL_NEWS } from '../config/APIUrls'
-import { initializeStore } from '../store/store'
-import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
-import { uploadNews } from '../store/actions/naeActions'
-import BaseLayout from '../components/Layouts/BaseLayout.jsx'
+import { combineUrl } from '../../config/utils'
+import { API_URL_NEWS } from '../../config/APIUrls'
+import { initializeStore } from '../../store/store'
+import {uploadUsefulLinks, uploadPartners} from '../../store/actions/aboutActions'
+import { uploadNews } from '../../store/actions/naeActions'
+import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
 
-import { NewsView } from '../components/News/NewsItem.jsx'
-import Grid from '../components/Layouts/Grid'
-import classes from '../styles/nae.module.css'
+import { NewsView } from '../../components/News/NewsItem.jsx'
+import Grid from '../../components/Layouts/Grid'
+import classes from '../../styles/nae.module.css'
 
 function NAE({initialReduxState}) {
     const news = initialReduxState.news.news

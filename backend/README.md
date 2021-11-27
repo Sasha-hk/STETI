@@ -6,7 +6,7 @@ To write backend we using the following frameworks and libraries:
 - [Django-rest-framework](https://www.django-rest-framework.org/ "Django-rest-framework website")
 - [Pillow](https://pillow.readthedocs.io/en/stable/ "Pillow website")
 
-See the full list of packages in the file [./requirements.txt](../env/requirements.txt "link to the requirements.txt")
+See the full list of packages in the file [`./requirements.txt`](../env/requirements.txt "link to the requirements.txt")
 
 ## **The API end points**
 

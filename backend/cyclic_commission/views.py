@@ -20,5 +20,12 @@ class CyclicCommissionCategoryView(generics.ListAPIView):
 class CyclicCommissionDetailsView(generics.RetrieveAPIView):
     permission_classes = [AllowAny]
     lookup_field = 'slug'
+    queryset = CyclicCommissionCategory.objects.all()
+    serializer_class = CyclicCommissionCategorySerializer
+
+
+class CyclicCommissionItemDetailsView(generics.RetrieveAPIView):
+    permission_classes = [AllowAny]
+    lookup_field = 'slug'
     queryset = CyclicCommissionItem.objects.all()
     serializer_class = CyclicCommissionItemSerializer

@@ -1,4 +1,4 @@
-# Backend
+# **Backend**
 
 To write backend we using the following frameworks and libraries:
 
@@ -44,5 +44,6 @@ Cyclic commission:
 
 - /cyclic-commisison/
 - /cyclic-commisison/[slug]/
+- /cyclic-commisison/item/[slug]/
 
 The API will be modified

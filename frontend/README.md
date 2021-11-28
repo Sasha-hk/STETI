@@ -1,4 +1,4 @@
-# Frontend
+# **Frontend**
 
 To write frontend we using the following frameworks and libraries:
 

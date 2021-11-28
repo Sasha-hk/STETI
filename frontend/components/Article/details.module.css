@@ -1,16 +1,17 @@
 /* news details */
-.news_details_header {
+.details_header {
     text-align: center;
+    margin-top: 42px;
     margin-bottom: 25px;
 }
-.news_details_header i {
+.details_header i {
     color: var(--color-muted);
 }
-.news_details_header h2 {
+.details_header h2 {
     margin-top: 0;
     margin-bottom: 8px;
 }
-.news_image {
+.image {
     flex-shrink: 1;
     width: 100%;
     height: 100%;

@@ -5,10 +5,10 @@ import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
 import classes from '../../styles/cyclic-commission/cyclic-commission.module.css'
 import Panel from '../../components/Panel/Panel.jsx'
 
-import { uploadCyclicCommission } from '../../store/actions/cyclicCommissionActions'
+import { uploadCyclicCommissionDetails } from '../../store/actions/cyclicCommissionActions'
 
-function CyclicCommission({initialReduxState}) {
-    const cyclicCommissionList = initialReduxState.cyclicCommission.cyclicCommissionList
+function CyclicCommissionDetails({initialReduxState}) {
+    const cyclicCommissionDetails = initialReduxState.cyclicCommission.cyclicCommissionDetails.records
 
     return (
         <BaseLayout
@@ -21,12 +21,13 @@ function CyclicCommission({initialReduxState}) {
         >
             
             <div className="container">
-                <h2>Циклова комісія</h2>
+                <h2>{cyclicCommissionDetails.name}</h2>
+
                 <div className={classes.list_wrapper}>
                     {
-                        cyclicCommissionList.records.map(item => {
+                        cyclicCommissionDetails.items.map(item => {
                             return (
-                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug}/>
+                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/item/' +  item.slug}/>
                             )
                         })
                     }
@@ -37,20 +38,20 @@ function CyclicCommission({initialReduxState}) {
     )
 }
 
-CyclicCommission.propTypes = {
+CyclicCommissionDetails.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
     
     await dispatch(uploadUsefulLinks())
     await dispatch(uploadPartners())
-    await dispatch(uploadCyclicCommission())
+    await dispatch(uploadCyclicCommissionDetails(context.query.slug))
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }
 
 
-export default CyclicCommission
+export default CyclicCommissionDetails

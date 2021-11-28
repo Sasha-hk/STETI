@@ -1,0 +1,5 @@
+/* cyclic commission */
+.list_wrapper {
+    display: grid;
+    grid-row-gap: 16px;
+}

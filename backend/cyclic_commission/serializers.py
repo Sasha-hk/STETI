@@ -9,7 +9,7 @@ from .models import (
 class CyclicCommissionCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = CyclicCommissionCategory
-        fields = '__all__'
+        fields = ('id', 'name', 'items',)
         depth = 1
 
 

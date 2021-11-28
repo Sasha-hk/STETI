@@ -12,8 +12,6 @@ import { parseDate } from '../../utils/date'
 function NAEDetails({initialReduxState}) {
     const newsDetails = initialReduxState.news.newsDetails.records
 
-    console.log(newsDetails)
-
     return (
         <BaseLayout
             footer={

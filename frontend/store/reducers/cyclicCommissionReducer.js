@@ -12,6 +12,11 @@ const defaultCyclicCommissionState = {
         isLoading: false,
         error: false,
     },
+    cyclicCommissionItemDetails: {
+        records: [],
+        isLoading: false,
+        error: false,
+    },
 }
 
 const cyclicCommissionReducer = (state = defaultCyclicCommissionState, action) => {
@@ -32,6 +37,16 @@ const cyclicCommissionReducer = (state = defaultCyclicCommissionState, action) =
                 ...state,
                 cyclicCommissionDetails: {
                     ...state.cyclicCommissionDetails,
+                    isLoading: true,
+                    error: false,
+                }
+            }
+
+        case types.CYCLIC_COMMISISON_UPLOAD_ITEM_DETAILS:
+            return {
+                ...state,
+                cyclicCommissionItemDetails: {
+                    ...state.cyclicCommissionItemDetails,
                     isLoading: true,
                     error: false,
                 }
@@ -58,6 +73,16 @@ const cyclicCommissionReducer = (state = defaultCyclicCommissionState, action) =
                     error: false,
                 }
             }
+
+        case types.CYCLIC_COMMISISON_SUCCESS_ITEM_DETAILS:
+            return {
+                ...state,
+                cyclicCommissionItemDetails: {
+                    records: action.payload,
+                    isLoading: false,
+                    error: false,
+                }
+            }
         
 
         // Fails
@@ -76,6 +101,16 @@ const cyclicCommissionReducer = (state = defaultCyclicCommissionState, action) =
                 ...state,
                 cyclicCommissionDetails: {
                     ...state.cyclicCommissionDetails,
+                    isLoading: false,
+                    error: true,
+                }
+            }
+
+        case types.CYCLIC_COMMISISON_FAIL_ITEM_DETAILS:
+            return {
+                ...state,
+                cyclicCommissionItemDetails: {
+                    ...state.cyclicCommissionItemDetails,
                     isLoading: false,
                     error: true,
                 }

@@ -4,10 +4,7 @@ import {uploadUsefulLinks, uploadPartners} from '../../store/actions/aboutAction
 import { uploadNews, uploadNewsDetails } from '../../store/actions/naeActions'
 import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
 
-
-import Grid from '../../components/Layouts/Grid.jsx'
-import classes from '../../styles/nae/nae-details.module.css'
-import { parseDate } from '../../utils/date'
+import Details from '../../components/Article/Details'
 
 function NAEDetails({initialReduxState}) {
     const newsDetails = initialReduxState.news.newsDetails.records
@@ -21,23 +18,14 @@ function NAEDetails({initialReduxState}) {
                 }
             }
         >
-
             
-            <div className="container">
-                <div className={['text-wrapper', classes.news_details_header].join(' ')}>
-                    <i>{parseDate(newsDetails.pub_date)}</i>
-                    <h2>{newsDetails.title}</h2>
-                    <p>{newsDetails.short_description}</p>
-                </div>
-
-                <div className={classes.image_wrapper}>
-                    <img src={newsDetails.img} className={classes.news_image} alt="" />
-                </div>
-
-                <div className="text-wrapper">
-                    {newsDetails.body}
-                </div>
-            </div>
+            <Details 
+                pub_date={newsDetails.pub_date}
+                title={newsDetails.title}
+                shortDescripton={newsDetails.short_description}
+                img={newsDetails.img}
+                body={newsDetails.body}
+            />
             
         </BaseLayout>
     )

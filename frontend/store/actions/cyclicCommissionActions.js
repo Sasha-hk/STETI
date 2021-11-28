@@ -3,6 +3,7 @@ import axios from 'axios'
 import * as types from '../types/cyclicCommissionTypes'
 import { 
     API_URL_CYCLIC_COMMISSION,
+    API_URL_CYCLIC_COMMISSION_ITEM,
 } from '../../config/APIUrls'
 
 import { combineUrl } from '../../config/utils'
@@ -24,20 +25,15 @@ const makeActionWithPayload = (action, payload) => {
 // upload cyclic commission
 export const uploadCyclicCommission = () => {
     return async dispatch => {
-        console.log(1)
         dispatch(makeAction(types.CYCLIC_COMMISISON_UPLOAD))
-        console.log(2)
         await axios({
             method: 'get',
             url: API_URL_CYCLIC_COMMISSION
         })
         .then(r => {
-                console.log(3)
                 dispatch(makeActionWithPayload(types.CYCLIC_COMMISISON_SUCCESS, r.data))
-                console.log(3.1)
             })
             .catch(e => {
-                console.log(4)
                 dispatch(makeAction(types.CYCLIC_COMMISISON_FAIL))
             }) 
     }
@@ -56,9 +52,25 @@ export const uploadCyclicCommissionDetails = (slug) => {
                 dispatch(makeActionWithPayload(types.CYCLIC_COMMISISON_SUCCESS_DETAILS, r.data))
             })
             .catch(e => {
-                console.log(e)
-                console.log(e.response)
                 dispatch(makeAction(types.CYCLIC_COMMISISON_FAIL_DETAILS))
+            }) 
+    }
+}
+
+// upload cyclic commission item details
+export const uploadCyclicCommissionItemDetails = (slug) => {
+    return async dispatch => {
+        dispatch(makeAction(types.CYCLIC_COMMISISON_UPLOAD_ITEM_DETAILS))
+        
+        await axios({
+            method: 'get',
+            url: combineUrl({baseUrl: API_URL_CYCLIC_COMMISSION_ITEM, parts: [slug]})
+        })
+            .then(r => {
+                dispatch(makeActionWithPayload(types.CYCLIC_COMMISISON_SUCCESS_ITEM_DETAILS, r.data))
+            })
+            .catch(e => {
+                dispatch(makeAction(types.CYCLIC_COMMISISON_FAIL_ITEM_DETAILS))
             }) 
     }
 }

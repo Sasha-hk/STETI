@@ -20,3 +20,4 @@ export const API_URL_LIBRARY = API_URL + '/study/library/'
 
 export const API_URL_ATTACHED_NEWS = API_URL + '/nae/news/atteched/'
 export const API_URL_CYCLIC_COMMISSION = API_URL + '/cyclic-commission/'
+export const API_URL_CYCLIC_COMMISSION_ITEM = API_URL + '/cyclic-commission/item/'

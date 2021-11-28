@@ -25,6 +25,8 @@ class CyclicCommissionItem(models.Model):
     body = RichTextField(verbose_name='Тіло путкта', blank=True)
     imgs = models.ManyToManyField(CyclicCommissionImages, verbose_name='Інші фото', blank=True)
     slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
+    pub_date = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -52,6 +54,8 @@ class CyclicCommissionCategory(models.Model):
         blank=True,
         editable=False
     )
+    pub_date = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, editable=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:

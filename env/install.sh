@@ -5,7 +5,7 @@
 if [ ! -f '.env' ]; then 
 
     DOMAIN_NAME=''
-    USER_TO_RUN_GUNICORN = ''
+    USER_TO_RUN_GUNICORN=''
     PROJECT_STATE='dev'
     PROJECT_STATE_CHOOSE=1
     DJANGO_PORT=8001

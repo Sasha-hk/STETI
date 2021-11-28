@@ -19,11 +19,11 @@ if [ ! -f '.env' ]; then
 
     echo "Select project mood\n\t1 - development\n\t2 - production"
     read PROJECT_STATE_CHOOSE 
-    if [ ${PROJECT_STATE_CHOOSE} == 1 ]; 
+    if [ ${PROJECT_STATE_CHOOSE} = 1 ]; 
     then
         PROJECT_STATE='development'
 
-    elif [ ${PROJECT_STATE_CHOOSE} == 2 ];
+    elif [ ${PROJECT_STATE_CHOOSE} = 2 ];
     then
         PROJECT_STATE='production'
 
@@ -58,7 +58,7 @@ PUBLIC_API_URL_PROD='http://127.0.0.1:3333/api'
 " >| .env
 
 else 
-    echo [-] .env file already exists
+    echo "[-] .env file already exists"
 fi
 
 
@@ -78,7 +78,7 @@ if [ ! -d 'env' ]; then
     $BASE_DIR/env/env/bin/python -m pip install --upgrade pip
     pip install -r requirements.txt
 else 
-    echo [-] env directory already exists
+    echo "[-] env directory already exists"
 fi
 
 
@@ -89,7 +89,7 @@ cd frontend
 if [ ! -d 'node_modules' ]; then 
     npm install
 else 
-    echo [-] node_modules directory already exists
+    echo "[-] node_modules directory already exists"
 fi
 
 

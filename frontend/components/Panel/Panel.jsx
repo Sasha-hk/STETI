@@ -11,7 +11,9 @@ const Panel = ({title, href, date}) => {
                 <a href={href}>
                     <div className={classes.panel}>
                         <span>{title}</span>
-                        <span>{parseDate(date)}</span>
+                        {
+                            date && <span>{parseDate(date)}</span>
+                        }
                     </div>
                 </a>
             </div>
@@ -22,7 +24,9 @@ const Panel = ({title, href, date}) => {
             <div className={classes.panel_outside}>
                 <div className={classes.panel}>
                     <span>{title}</span>
-                    <span>{parseDate(date)}</span>
+                    {
+                        date && <span>{parseDate(date)}</span>
+                    }
                 </div>
             </div>
         )

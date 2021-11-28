@@ -44,5 +44,6 @@ Cyclic commission:
 
 - /cyclic-commisison/
 - /cyclic-commisison/[slug]/
+- /cyclic-commisison/item/[slug]/
 
 The API will be modified

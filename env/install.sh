@@ -19,11 +19,11 @@ if [ ! -f '.env' ]; then
 
     echo "Select project mood\n\t1 - development\n\t2 - production"
     read PROJECT_STATE_CHOOSE 
-    if [ ${PROJECT_STATE_CHOOSE} == 1 ]; 
+    if [ ${PROJECT_STATE_CHOOSE} = 1 ]; 
     then
         PROJECT_STATE='development'
 
-    elif [ ${PROJECT_STATE_CHOOSE} == 2 ];
+    elif [ ${PROJECT_STATE_CHOOSE} = 2 ];
     then
         PROJECT_STATE='production'
 

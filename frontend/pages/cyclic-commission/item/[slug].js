@@ -24,6 +24,7 @@ function CyclicCommissionItemDetails({initialReduxState}) {
                 title={cyclicCommissionDetails.name}
                 img={cyclicCommissionDetails.img}
                 body={cyclicCommissionDetails.body}
+                pub_date={cyclicCommissionDetails.updated_at}
             />
             
         </BaseLayout>

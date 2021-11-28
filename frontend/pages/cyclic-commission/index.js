@@ -26,7 +26,7 @@ function CyclicCommission({initialReduxState}) {
                     {
                         cyclicCommissionList.records.map(item => {
                             return (
-                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug}/>
+                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug} date={item.updated_at}/>
                             )
                         })
                     }

@@ -15,7 +15,7 @@ function CyclicCommission({initialReduxState}) {
     const forStudents = initialReduxState.study.forStudents
 
     return (
-        <BaseLayout 
+        <BaseLayout
             footer={
                 {
                     partners: initialReduxState.about.partners,
@@ -24,7 +24,9 @@ function CyclicCommission({initialReduxState}) {
             }
         >
             
-            1
+            <div className="container">
+                1
+            </div>
             
         </BaseLayout>
     )

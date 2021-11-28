@@ -98,7 +98,7 @@ const Navigation = () => {
             {
                 type: navigationType.single,
                 pageName: 'Циклова комісія',
-                url: '/cyclic-comission',
+                url: '/cyclic-commission',
             },
             {
                 type: navigationType.multi,

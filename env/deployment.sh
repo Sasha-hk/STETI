@@ -43,6 +43,7 @@ server {
     server_name ${DOMAIN_NAME};
 
     location / {
+        proxy_set_header Host      \$host; 
         proxy_pass http://127.0.0.1:${NEXT_PORT};
     }
 }
@@ -53,6 +54,7 @@ server {
     server_name api.${DOMAIN_NAME};
 
     location / {
+        proxy_set_header Host      \$host; 
         proxy_pass http://127.0.0.1:${DJANGO_PORT};
     }
     location /static {

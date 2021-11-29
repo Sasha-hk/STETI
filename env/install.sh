@@ -58,7 +58,7 @@ PATH_TO_BACKEND='${BASE_DIR}/backend'
 PATH_TO_FRONTEND='${BASE_DIR}/frontend'
 
 PUBLIC_API_URL_DEV='http://${DOMAIN_NAME}'
-PUBLIC_API_URL_PROD='https://api/${DOMAIN_NAME}'
+PUBLIC_API_URL_PROD='https://api.${DOMAIN_NAME}'
 " >| .env
 
 else 

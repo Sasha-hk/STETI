@@ -41,7 +41,7 @@ CyclicCommission.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
     

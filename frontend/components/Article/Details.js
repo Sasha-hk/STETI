@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import { parseDate } from '../../utils/date'
 import classes from './details.module.css'
+import ReactHtmlParser from 'react-html-parser'
+
 
 function Details({title, shortDescripton, body, img, pub_date}) {
     return (
@@ -13,7 +15,7 @@ function Details({title, shortDescripton, body, img, pub_date}) {
                     title && <h2>{title}</h2>
                 }
                 {
-                    shortDescripton && <p>{shortDescripton}</p>
+                    shortDescripton && ReactHtmlParser(shortDescripton)
                 }
             </div>
 
@@ -28,7 +30,7 @@ function Details({title, shortDescripton, body, img, pub_date}) {
             {
                 body && (
                     <div className="text-wrapper">
-                        {body}
+                        {ReactHtmlParser(body)}
                     </div>
                 )
             }

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import classes from './new-block.module.css'
 import Link from 'next/link'
+import ReactHtmlParser from 'react-html-parser'
 
 import { parseDate } from '../../utils/date.js'
 
@@ -22,7 +23,7 @@ export const NewsItem = ({newsItem}) => {
                     <Link href={'nae/' + newsItem.slug}>
                         <a><h4>{newsItem.title}</h4></a>
                     </Link>
-                    <div>{newsItem.short_description}</div>
+                    <div>{ReactHtmlParser(newsItem.short_description)}</div>
                 </div>
 
                 <i>{parseDate(newsItem.pub_date)}</i>
@@ -60,7 +61,7 @@ export const NewsView = ({newsItem}) => {
                                 <Link href={'nae/' + newsItem.slug}>
                                     <a><h4>{newsItem.title}</h4></a>
                                 </Link>
-                                <div>{newsItem.short_description}</div>
+                                <div>{ReactHtmlParser(newsItem.short_description)}</div>
                             </div>
 
                             <i>{parseDate(newsItem.pub_date)}</i>

@@ -16,7 +16,7 @@ import NewsBlock from '../components/Home/NewsBlock.jsx'
 
 function Home({initialReduxState}) {
     const attachedNews = initialReduxState.news.attachedNews.records[0]
-    const forStudents = initialReduxState.study.forStudents
+    const forStudents = initialReduxState.study.forStudents.records
 
     return (
         <BaseLayout 
@@ -30,7 +30,7 @@ function Home({initialReduxState}) {
             
             <HomePindeNews attachedNews={attachedNews} />
 
-            <GridList items={forStudents} title='Студенту' />
+            <GridList items={forStudents} title='Студенту' helpURL='/study/for-students' />
 
             <NewsBlock news={initialReduxState.news.news} />
             

@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types'
-import { initializeStore } from '../../store/store'
-import {uploadUsefulLinks, uploadPartners} from '../../store/actions/aboutActions'
-import { uploadForStudents } from '../../store/actions/studyActions'
-import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
-import GridList from '../../components/GridList.jsx'
+import { initializeStore } from '../../../store/store'
+import {uploadUsefulLinks, uploadPartners} from '../../../store/actions/aboutActions'
+import { uploadForEntrants } from '../../../store/actions/studyActions'
+import BaseLayout from '../../../components/Layouts/BaseLayout.jsx'
+import GridList from '../../../components/GridList.jsx'
 
 
-function ForStudents({initialReduxState}) {
-    const forStudents = initialReduxState.study.forStudents
-     
-    console.log(forStudents)
-
+function ForEntrants({initialReduxState}) {
+    const forEntrants = initialReduxState.study.forEntrants.records
 
     return (
         <BaseLayout 
@@ -22,13 +19,13 @@ function ForStudents({initialReduxState}) {
             }
         >
             
-            <GridList items={forStudents} title='Студентам' />
+            <GridList items={forEntrants} title='Абітурієнтам' />
             
         </BaseLayout>
     )
 }
 
-ForStudents.propTypes = {
+ForEntrants.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
@@ -38,11 +35,11 @@ export async function getServerSideProps(context) {
     
     await dispatch(uploadUsefulLinks())
     await dispatch(uploadPartners())
-    await dispatch(uploadForStudents())
+    await dispatch(uploadForEntrants())
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }
  
 
 
-export default ForStudents
+export default ForEntrants

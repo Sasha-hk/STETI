@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types'
-import { initializeStore } from '../../store/store'
-import {uploadUsefulLinks, uploadPartners} from '../../store/actions/aboutActions'
-import { uploadForEntrants } from '../../store/actions/studyActions'
-import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
-import GridList from '../../components/GridList.jsx'
+import { initializeStore } from '../../../store/store'
+import {uploadUsefulLinks, uploadPartners} from '../../../store/actions/aboutActions'
+import { uploadLibrary } from '../../../store/actions/studyActions'
+import BaseLayout from '../../../components/Layouts/BaseLayout.jsx'
+
+import { LibraryBlock } from '../../../components/study/LibraryView'
 
 
-function ForEntrants({initialReduxState}) {
-    const forEntrants = initialReduxState.study.forEntrants
-    console.log(forEntrants)
+function ForStudents({initialReduxState}) {
+    const library = initialReduxState.study.library.records
+
     return (
         <BaseLayout 
             footer={
@@ -18,14 +19,14 @@ function ForEntrants({initialReduxState}) {
                 }
             }
         >
-            
-            <GridList items={forEntrants} title='Абітурієнтам' />
+
+            <LibraryBlock library={library} title='Бібліотека' />  
             
         </BaseLayout>
     )
 }
 
-ForEntrants.propTypes = {
+ForStudents.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
@@ -35,11 +36,11 @@ export async function getServerSideProps(context) {
     
     await dispatch(uploadUsefulLinks())
     await dispatch(uploadPartners())
-    await dispatch(uploadForEntrants())
+    await dispatch(uploadLibrary())
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }
  
 
 
-export default ForEntrants
+export default ForStudents

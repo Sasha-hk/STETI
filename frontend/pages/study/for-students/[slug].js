@@ -11,8 +11,6 @@ import Details from '../../../components/Article/Details'
 function ForStudents({initialReduxState}) {
     const forStudentsDetails = initialReduxState.study.forStudentsDetails.records
 
-    console.log(forStudentsDetails) 
-
     return (
         <BaseLayout 
             footer={

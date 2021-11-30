@@ -85,7 +85,7 @@ const HomePindeNews = ({attachedNews}) => {
                     </div>
                     <div className={['container', classes.news_details].join(' ')}>
                         <h1>{attachedNews.title}</h1>
-                        <Link href={'nae/' + attachedNews.slug}>
+                        <Link href={'/nae/' + attachedNews.slug}>
                             <a>Дізнатись більше</a>
                         </Link>
                     </div>

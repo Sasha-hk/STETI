@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link' 
 
 
-const GridList = ({items, title}) => {
+const GridList = ({items, title, helpURL}) => {
     const router = useRouter()
 
     if (items) {
@@ -17,9 +17,8 @@ const GridList = ({items, title}) => {
                 }
                 <Grid>
                     {
-                        items.records.map(panelItem => {
+                        items.map(panelItem => {
                             if (panelItem.link) {
-                                console.log(panelItem.link)
                                 if (panelItem.link.includes('http')) {
                                     return (
                                         <Link href={panelItem.link} key={panelItem.id} >
@@ -31,6 +30,15 @@ const GridList = ({items, title}) => {
                                 }
                             }
                             else {
+                                if (helpURL) {
+                                    return (
+                                        <Link href={helpURL + '/' + panelItem.slug} key={panelItem.id} >
+                                            <a>
+                                                <Panel title={panelItem.title} date={panelItem.pub_date} />
+                                            </a>
+                                        </Link>
+                                    )
+                                }
                                 return (
                                     <Link href={router.pathname + '/' + panelItem.slug} key={panelItem.id} >
                                         <a>
@@ -52,7 +60,9 @@ const GridList = ({items, title}) => {
 
 GridList.propTypes = {
     items: PropTypes.object,
+    items: PropTypes.array,
     title: PropTypes.string,
+    helpURL: PropTypes.string,
 }
 
 

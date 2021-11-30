@@ -1,15 +1,13 @@
 import PropTypes from 'prop-types'
 import { initializeStore } from '../../../store/store'
 import {uploadUsefulLinks, uploadPartners} from '../../../store/actions/aboutActions'
-import { uploadForEntrantsDetails } from '../../../store/actions/studyActions'
+import { uploadForStudents } from '../../../store/actions/studyActions'
 import BaseLayout from '../../../components/Layouts/BaseLayout.jsx'
+import GridList from '../../../components/GridList.jsx'
 
 
-import Details from '../../../components/Article/Details'
-
-
-function ForEntrantsDetails({initialReduxState}) {
-    const forStudentsDetails = initialReduxState.study.forEntrantsDetails.records
+function ForStudents({initialReduxState}) {
+    const forStudents = initialReduxState.study.forStudents.records
 
     return (
         <BaseLayout 
@@ -21,32 +19,27 @@ function ForEntrantsDetails({initialReduxState}) {
             }
         >
             
-            <Details 
-                pub_date={forStudentsDetails.pub_date}
-                title={forStudentsDetails.title}
-                img={forStudentsDetails.img}
-                body={forStudentsDetails.content}
-            />
+            <GridList items={forStudents} title='Студентам' />
             
         </BaseLayout>
     )
 }
 
-ForEntrantsDetails.propTypes = {
+ForStudents.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
 export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
- 
     
     await dispatch(uploadUsefulLinks())
-    await dispatch(uploadForEntrantsDetails(context.query.slug))
+    await dispatch(uploadPartners())
+    await dispatch(uploadForStudents())
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }
  
 
 
-export default ForEntrantsDetails
+export default ForStudents

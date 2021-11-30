@@ -126,19 +126,19 @@ const Navigation = () => {
                 items: [
                     {
                         pageName: 'Студенту',
-                        url: '/tor-entrant',
+                        url: '/study/for-students',
                     },
                     {
                         pageName: 'Абітурієнту',
-                        url: '/for-student',
+                        url: '/study/for-entrants',
                     },
                     {
                         pageName: 'Бібліотека',
-                        url: '/library',
+                        url: '/study/library',
                     },
                     {
                         pageName: 'ЗНО',
-                        url: '/zno',
+                        url: '/study/zno',
                     },
                 ]
             },

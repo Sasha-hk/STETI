@@ -21,7 +21,7 @@ class ForEntrantView(generics.ListAPIView):
     serializer_class = ForEntrantSerializer
 
 
-class ForEntrantDetailsView(generics.ListAPIView):
+class ForEntrantDetailsView(generics.RetrieveAPIView):
     lookup_field = 'slug'
     permission_classes = [AllowAny]
     queryset = ForEntrant.objects.all()

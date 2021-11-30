@@ -113,6 +113,10 @@ const Navigation = () => {
                         pageName: 'Контакти',
                         url: '/contacts',
                     },
+                    {
+                        pageName: 'Галерея',
+                        url: '/gallery',
+                    },
                 ]
             },
             {
@@ -127,6 +131,14 @@ const Navigation = () => {
                     {
                         pageName: 'Абітурієнту',
                         url: '/for-student',
+                    },
+                    {
+                        pageName: 'Бібліотека',
+                        url: '/library',
+                    },
+                    {
+                        pageName: 'ЗНО',
+                        url: '/zno',
                     },
                 ]
             },

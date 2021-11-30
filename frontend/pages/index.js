@@ -11,7 +11,7 @@ import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 import classes from '../styles/index.module.css'
 
 import HomePindeNews from '../components/Home/HomePinedNews'
-import ForStudent from '../components/Home/ForStudent'
+import GridList from '../components/GridList'
 import NewsBlock from '../components/Home/NewsBlock.jsx'
 
 function Home({initialReduxState}) {
@@ -30,7 +30,7 @@ function Home({initialReduxState}) {
             
             <HomePindeNews attachedNews={attachedNews} />
 
-            <ForStudent forStudents={forStudents} />
+            <GridList items={forStudents} title='Студенту' />
 
             <NewsBlock news={initialReduxState.news.news} />
             

@@ -16,7 +16,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
 class ForEntrantSerializer(serializers.ModelSerializer):
     class Meta:
         model = ForEntrant
-        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug', 'show_on_home')
+        fields = ('id', 'title', 'img', 'link', 'pub_date', 'slug',)
 
 
 class ForEntrantDetailsSerializer(serializers.ModelSerializer):

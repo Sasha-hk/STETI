@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types'
 import { initializeStore } from '../../store/store'
 import {uploadUsefulLinks, uploadPartners} from '../../store/actions/aboutActions'
-import { uploadNews, uploadNewsDetails } from '../../store/actions/naeActions'
+import { uploadNews, uploadAttachedNews } from '../../store/actions/naeActions'
+import { uploadForStudents } from '../../store/actions/studyActions'
 import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
+
+import { uploadAbout } from '../../store/actions/aboutActions'
 
 import Details from '../../components/Article/Details'
 
-function NAEDetails({initialReduxState}) {
-    const newsDetails = initialReduxState.news.newsDetails.records
+
+function AboutUs({initialReduxState}) {
+    const aboutUs = initialReduxState.about.about.records[0]
+
+    console.log(aboutUs)
 
     return (
-        <BaseLayout
+        <BaseLayout 
             footer={
                 {
                     partners: initialReduxState.about.partners,
@@ -19,38 +25,33 @@ function NAEDetails({initialReduxState}) {
             }
         >
             
-            <Details 
-                pub_date={newsDetails.pub_date}
-                title={newsDetails.title}
-                shortDescription={newsDetails.short_description}
-                img={newsDetails.img}
-                body={newsDetails.body}
+            <Details
+                title='Про нас'
+                shortDescription='1945 - 2021' 
+                img={aboutUs.img}
+                body={aboutUs.first_paragraph}
+                
             />
             
         </BaseLayout>
     )
 }
 
-NAEDetails.propTypes = {
+AboutUs.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
-
-export async function getServerSideProps(context) {    
+ 
+export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
     
     await dispatch(uploadUsefulLinks())
     await dispatch(uploadPartners())
-    await dispatch(uploadNews())
-    await dispatch(uploadNewsDetails(context.query.slug))
+    await dispatch(uploadAbout())
     
-    return {
-        props: { 
-            initialReduxState: reduxStore.getState() 
-        },
-    }
+    return { props: { initialReduxState: reduxStore.getState() } }
 }
  
 
 
-export default NAEDetails
+export default AboutUs

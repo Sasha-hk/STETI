@@ -14,5 +14,5 @@ urlpatterns = [
     path('for-students/<str:slug>/', views.ForStudentViewDetailsView.as_view()),
 
     path('library/', views.LibraryCategoryView.as_view()),
-    path('library/<str:slug>/', views.LibraryItemView.as_view()),    
+    path('library/<str:slug>/', views.LibraryItemView.as_view()),
 ]

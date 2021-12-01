@@ -2,7 +2,8 @@ from ckeditor.fields import RichTextField
 
 from django.conf import settings
 from django.db import models
-from django.utils.text import slugify
+
+from utils.slug import get_slug
 
 
 class CyclicCommissionImages(models.Model):
@@ -20,7 +21,7 @@ class CyclicCommissionItem(models.Model):
     class Meta:
         verbose_name_plural = 'Пункт в категорії циклової комісії'
 
-    name = models.CharField(verbose_name='Назва путкту', max_length=200)
+    name = models.CharField(verbose_name='Назва пункту', max_length=200)
     img = models.ImageField(verbose_name='Головне фото', upload_to='study/cyclic-commissin/img', blank=True)
     body = RichTextField(verbose_name='Тіло путкта', blank=True)
     imgs = models.ManyToManyField(CyclicCommissionImages, verbose_name='Інші фото', blank=True)
@@ -28,9 +29,10 @@ class CyclicCommissionItem(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, editable=False)
 
+    get_slug = get_slug
+
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        self.get_slug()
 
         super().save(*args, **kwargs)
 
@@ -57,9 +59,10 @@ class CyclicCommissionCategory(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, editable=False)
 
+    get_slug = get_slug
+
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        self.get_slug()
 
         super().save(*args, **kwargs)
 

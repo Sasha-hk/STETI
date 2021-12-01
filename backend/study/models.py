@@ -2,7 +2,6 @@ from ckeditor.fields import RichTextField
 
 from django.conf import settings
 from django.db import models
-from django.utils.text import slugify
 
 from utils.slug import get_slug
 
@@ -123,12 +122,19 @@ class LibraryCategory(models.Model):
         null=True,
         blank=True
     )
-    items = models.ManyToManyField(LibraryItem, verbose_name='Ресурси')
-    slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
+    items = models.ManyToManyField(LibraryItem, verbose_name='Ресурси', blank=True)
+    slug = models.SlugField(
+        verbose_name='Slug',
+        max_length=settings.SLUG_LENGTH,
+        default='',
+        blank=True,
+        editable=False,
+    )
+
+    get_slug = get_slug
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.category_name)
+        self.get_slug()
 
         super().save(*args, **kwargs)
 

@@ -107,6 +107,11 @@ h1 {margin-top: 0;}
 .text-wrapper {
     margin: 0 auto;
 }
+.text-overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
 /* Extra large screens, TV */

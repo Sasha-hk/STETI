@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types'
 import { initializeStore } from '../../../store/store'
 import {uploadUsefulLinks, uploadPartners} from '../../../store/actions/aboutActions'
+import { uploadForEntrantsDetails } from '../../../store/actions/studyActions'
 import BaseLayout from '../../../components/Layouts/BaseLayout.jsx'
-import classes from '../../../styles/cyclic-commission/cyclic-commission.module.css'
+
+
 import Details from '../../../components/Article/Details'
 
-import { uploadCyclicCommissionItemDetails } from '../../../store/actions/cyclicCommissionActions'
 
-function CyclicCommissionItemDetails({initialReduxState}) {
-    const cyclicCommissionDetails = initialReduxState.cyclicCommission.cyclicCommissionItemDetails.records
+function ForEntrantsDetails({initialReduxState}) {
+    const forStudentsDetails = initialReduxState.study.forEntrantsDetails.records
 
     return (
-        <BaseLayout
+        <BaseLayout 
             footer={
                 {
                     partners: initialReduxState.about.partners,
@@ -19,32 +20,33 @@ function CyclicCommissionItemDetails({initialReduxState}) {
                 }
             }
         >
-
+            
             <Details 
-                title={cyclicCommissionDetails.name}
-                img={cyclicCommissionDetails.img}
-                body={cyclicCommissionDetails.body}
-                pub_date={cyclicCommissionDetails.updated_at}
+                pub_date={forStudentsDetails.pub_date}
+                title={forStudentsDetails.title}
+                img={forStudentsDetails.img}
+                body={forStudentsDetails.content}
             />
             
         </BaseLayout>
     )
 }
 
-CyclicCommissionItemDetails.propTypes = {
+ForEntrantsDetails.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
 export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
+ 
     
     await dispatch(uploadUsefulLinks())
-    await dispatch(uploadPartners())
-    await dispatch(uploadCyclicCommissionItemDetails(context.query.slug))
+    await dispatch(uploadForEntrantsDetails(context.query.slug))
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }
+ 
 
 
-export default CyclicCommissionItemDetails
+export default ForEntrantsDetails

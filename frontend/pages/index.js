@@ -11,12 +11,12 @@ import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 import classes from '../styles/index.module.css'
 
 import HomePindeNews from '../components/Home/HomePinedNews'
-import ForStudent from '../components/Home/ForStudent'
+import GridList from '../components/GridList'
 import NewsBlock from '../components/Home/NewsBlock.jsx'
 
 function Home({initialReduxState}) {
     const attachedNews = initialReduxState.news.attachedNews.records[0]
-    const forStudents = initialReduxState.study.forStudents
+    const forStudents = initialReduxState.study.forStudents.records
 
     return (
         <BaseLayout 
@@ -30,7 +30,7 @@ function Home({initialReduxState}) {
             
             <HomePindeNews attachedNews={attachedNews} />
 
-            <ForStudent forStudents={forStudents} />
+            <GridList items={forStudents} title='Студенту' helpURL='/study/for-students' />
 
             <NewsBlock news={initialReduxState.news.news} />
             
@@ -42,7 +42,7 @@ Home.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
     

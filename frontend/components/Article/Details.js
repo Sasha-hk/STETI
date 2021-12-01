@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import { parseDate } from '../../utils/date'
 import classes from './details.module.css'
+import ReactHtmlParser from 'react-html-parser'
 
-function Details({title, shortDescripton, body, img, pub_date}) {
+
+function Details({title, shortDescription, body, img, pub_date}) {
     return (
         <div className="container">
             <div className={['text-wrapper', classes.details_header].join(' ')}>
@@ -13,7 +15,7 @@ function Details({title, shortDescripton, body, img, pub_date}) {
                     title && <h2>{title}</h2>
                 }
                 {
-                    shortDescripton && <p>{shortDescripton}</p>
+                    shortDescription && ReactHtmlParser(shortDescription)
                 }
             </div>
 
@@ -28,7 +30,7 @@ function Details({title, shortDescripton, body, img, pub_date}) {
             {
                 body && (
                     <div className="text-wrapper">
-                        {body}
+                        {ReactHtmlParser(body)}
                     </div>
                 )
             }
@@ -38,7 +40,7 @@ function Details({title, shortDescripton, body, img, pub_date}) {
 
 Details.propTypes = {
     title: PropTypes.string,
-    shortDescripton: PropTypes.string,
+    shortDescription: PropTypes.string,
     body: PropTypes.string,
     img: PropTypes.string,
     pub_date: PropTypes.string,

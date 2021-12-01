@@ -27,7 +27,7 @@ function CyclicCommissionDetails({initialReduxState}) {
                     {
                         cyclicCommissionDetails.items.map(item => {
                             return (
-                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/item/' +  item.slug}/>
+                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/item/' +  item.slug} date={cyclicCommissionDetails.updated_at}/>
                             )
                         })
                     }

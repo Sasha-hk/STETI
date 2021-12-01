@@ -26,7 +26,7 @@ function CyclicCommission({initialReduxState}) {
                     {
                         cyclicCommissionList.records.map(item => {
                             return (
-                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug}/>
+                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug} date={item.updated_at}/>
                             )
                         })
                     }
@@ -41,7 +41,7 @@ CyclicCommission.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const reduxStore = initializeStore()
     const { dispatch } = reduxStore
     

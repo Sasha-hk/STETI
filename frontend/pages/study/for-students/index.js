@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types'
 import { initializeStore } from '../../../store/store'
 import {uploadUsefulLinks, uploadPartners} from '../../../store/actions/aboutActions'
+import { uploadForStudents } from '../../../store/actions/studyActions'
 import BaseLayout from '../../../components/Layouts/BaseLayout.jsx'
-import classes from '../../../styles/cyclic-commission/cyclic-commission.module.css'
-import Details from '../../../components/Article/Details'
+import GridList from '../../../components/GridList.jsx'
 
-import { uploadCyclicCommissionItemDetails } from '../../../store/actions/cyclicCommissionActions'
 
-function CyclicCommissionItemDetails({initialReduxState}) {
-    const cyclicCommissionDetails = initialReduxState.cyclicCommission.cyclicCommissionItemDetails.records
+function ForStudents({initialReduxState}) {
+    const forStudents = initialReduxState.study.forStudents.records
 
     return (
-        <BaseLayout
+        <BaseLayout 
             footer={
                 {
                     partners: initialReduxState.about.partners,
@@ -19,19 +18,14 @@ function CyclicCommissionItemDetails({initialReduxState}) {
                 }
             }
         >
-
-            <Details 
-                title={cyclicCommissionDetails.name}
-                img={cyclicCommissionDetails.img}
-                body={cyclicCommissionDetails.body}
-                pub_date={cyclicCommissionDetails.updated_at}
-            />
+            
+            <GridList items={forStudents} title='Студентам' />
             
         </BaseLayout>
     )
 }
 
-CyclicCommissionItemDetails.propTypes = {
+ForStudents.propTypes = {
     initialReduxState: PropTypes.object.isRequired
 }
  
@@ -41,10 +35,11 @@ export async function getServerSideProps(context) {
     
     await dispatch(uploadUsefulLinks())
     await dispatch(uploadPartners())
-    await dispatch(uploadCyclicCommissionItemDetails(context.query.slug))
+    await dispatch(uploadForStudents())
     
     return { props: { initialReduxState: reduxStore.getState() } }
 }
+ 
 
 
-export default CyclicCommissionItemDetails
+export default ForStudents

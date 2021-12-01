@@ -25,6 +25,7 @@ elif PROJECT_STATE in prod_snippets:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    os.environ['HTTPS'] = "on"
 
     DEBUG = False
     ALLOWED_HOSTS = ["*"]

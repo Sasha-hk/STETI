@@ -112,6 +112,11 @@ h1 {margin-top: 0;}
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.text-overflow-wraper {
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
 /* Extra large screens, TV */

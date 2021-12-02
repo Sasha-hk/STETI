@@ -113,10 +113,6 @@ const Navigation = () => {
                         pageName: 'Контакти',
                         url: '/contacts',
                     },
-                    {
-                        pageName: 'Галерея',
-                        url: '/gallery',
-                    },
                 ]
             },
             {
@@ -125,16 +121,16 @@ const Navigation = () => {
                 isOpen: false,
                 items: [
                     {
-                        pageName: 'Студенту',
-                        url: '/study/for-students',
+                        pageName: 'Бібліотека',
+                        url: '/study/library',
                     },
                     {
                         pageName: 'Абітурієнту',
                         url: '/study/for-entrants',
                     },
                     {
-                        pageName: 'Бібліотека',
-                        url: '/study/library',
+                        pageName: 'Студенту',
+                        url: '/study/for-students',
                     },
                     {
                         pageName: 'ЗНО',

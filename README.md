@@ -1,7 +1,8 @@
 # **Source code of STETI**
 
 Source code of Sambir collage of economics and information technologies.
-Now I host it on [https://mipando.com.ua/](https://mipando.com.ua/ "temporary domain"), this is my domain to developю
+
+Now I host it on [https://mipando.com.ua/](https://mipando.com.ua/ "temporary domain"), this is my domain to develop.
 
 ## **Briefly about the website**
 

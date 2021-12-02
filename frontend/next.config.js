@@ -20,10 +20,13 @@ function env() {
         console.log('Enter correct PROJECT_STATE mod!')
     }
 
-    return envObject;
+    return envObject
 }
 
 module.exports = {
     reactStrictMode: true,
     env: env(),
+    experimental: {
+        scrollRestoration: true,
+    },
 }

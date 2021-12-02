@@ -55,12 +55,15 @@ server {
 
     location / {
         proxy_set_header Host      \$host; 
+        proxy_set_header X-Forwarded-Proto \$scheme; 
         proxy_pass http://127.0.0.1:${DJANGO_PORT};
     }
     location /static {
+        proxy_set_header X-Forwarded-Proto \$scheme; 
         root ${PATH_TO_BACKEND};
     }
     location /media {
+        proxy_set_header X-Forwarded-Proto \$scheme; 
         root ${PATH_TO_BACKEND};
     }
 }" >| "nginx/${PROJECT_NAME}.conf"

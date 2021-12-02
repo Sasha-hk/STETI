@@ -10,17 +10,19 @@ footer span {
 }
 
 .useful-links {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: 100%;
+    grid-column-gap: 10px;
+    min-width: 0;
     margin-bottom: 20px;
     text-align: center;
     white-space: nowrap;
 }
 .useful-wrapper {
     display: flex;
-    width: 100%;
     flex-direction: column;
+    min-width: 100%;
     margin-bottom: 30px;
     white-space: nowrap;
 }
@@ -65,7 +67,17 @@ footer span {
 
 @media only screen and (min-width: 1400px) {
     .useful-links {
-        display: flex;
+        flex: 1 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 10px;
+        min-width: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .useful-links {
+        /* display: flex; */
         justify-content: space-evenly;
     }
     .useful-wrapper {

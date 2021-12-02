@@ -13,8 +13,6 @@ import Details from '../../components/Article/Details'
 function AboutUs({initialReduxState}) {
     const aboutUs = initialReduxState.about.about.records[0]
 
-    console.log(aboutUs)
-
     return (
         <BaseLayout 
             footer={
@@ -28,7 +26,7 @@ function AboutUs({initialReduxState}) {
             <Details
                 title='Про нас'
                 shortDescription='1945 - 2021' 
-                img={aboutUs.img}
+                img={aboutUs.img ? aboutUs.img : null} 
                 body={aboutUs.first_paragraph}
                 
             />

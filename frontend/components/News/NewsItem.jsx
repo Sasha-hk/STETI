@@ -57,11 +57,13 @@ export const NewsView = ({newsItem}) => {
                     )
                     : (
                         <div className={classes.news_description}>
-                            <div className=''>
+                            <div className={classes.news_description_inside}>
                                 <Link href={'nae/' + newsItem.slug}>
                                     <a><h4>{newsItem.title}</h4></a>
                                 </Link>
-                                <div>{ReactHtmlParser(newsItem.short_description)}</div>
+                                <div className={['text-overflow-wraper', classes.shor_description_wrapper].join(' ')}>
+                                    {ReactHtmlParser(newsItem.short_description)}
+                                </div>
                             </div>
 
                             <i>{parseDate(newsItem.pub_date)}</i>

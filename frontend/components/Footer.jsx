@@ -26,7 +26,7 @@ export default function Footer({footer}) {
                         footer.usefulLinks.records.map(item => {
                             return (
                                 <div className="useful-wrapper" key={item.id}>
-                                    <b>{item.group_name}</b>
+                                    <b className='text-overflow'>{item.group_name}</b>
                                     {
                                         item.resource.map(resourdeItem => {
                                             let resourceLink
@@ -60,7 +60,7 @@ export default function Footer({footer}) {
                                                     href={resourceLink}
                                                     key={resourdeItem.id}
                                                 >
-                                                    <a>{resourdeItem.name}</a>
+                                                    <a className='text-overflow'>{resourdeItem.name}</a>
                                                 </Link>
                                             )
                                         })

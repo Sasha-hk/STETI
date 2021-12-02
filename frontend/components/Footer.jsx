@@ -14,7 +14,11 @@ export default function Footer({footer}) {
                         footer.partners.records.map(partner => {
                             return (
                                 <div className="partner-item" key={partner.id}>
-                                    <img src={partner.image} alt={partner.name} />
+                                    <Link href={partner.link ? partner.link : '#'}>
+                                        <a>
+                                            <img src={partner.image} alt={partner.name} />
+                                        </a>
+                                    </Link>
                                 </div>
                             )
                         })

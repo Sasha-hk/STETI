@@ -27,7 +27,7 @@
     z-index: 1;
 }
 .image_filter {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 70%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.5) 100%);
     position: absolute;
     top: 0;
     width: 100%;
@@ -53,14 +53,17 @@
 
 /* XS / Extra small */
 @media only screen and (min-width: 0px) and (max-width: 480px) {
-    .library_view {
-        height: 210px;
+    .library_name {
+        padding: 20px;
+    }
+    .image_filter {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%);
     }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-    .library_view {
-        height: 300px;
+    .library_name {
+        padding: 30px;
     }
 }
 
@@ -68,16 +71,25 @@
     .library_view {
         height: 320px;
     }
+    .library_name {
+        padding: 30px;
+    }
 }
 
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
     .library_view {
         height: 220px;
     }
+    .library_name {
+        padding: 20px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
     .library_view {
         height: 350px;
+    }
+    .library_name {
+        padding: 40px;
     }
 }

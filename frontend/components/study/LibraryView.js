@@ -8,8 +8,6 @@ import classes from './library-view.module.css'
 export const LibraryView = ({library}) => {
     const router = useRouter()
 
-    console.log(library)
-
     return (
         <Link href={router.pathname + '/' + library.slug} key={library.slug}>
             <a>
@@ -29,7 +27,9 @@ export const LibraryView = ({library}) => {
                                     color: 'var(--color-revert)'
                                 }
                             }
-                        >{library.category_name}</h3>
+                        >
+                            {library.category_name}
+                        </h3>
                     </div>
                 </div>
             </a>

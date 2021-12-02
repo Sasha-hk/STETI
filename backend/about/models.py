@@ -95,6 +95,11 @@ class Partners(models.Model):
 
     name = models.CharField("Назва", max_length=250)
     image = models.ImageField(verbose_name='Зображення', upload_to="about/partners/image")
+    link = models.CharField(
+        verbose_name='Посилання на сайт партнера',
+        max_length=1000,
+        blank=True,
+    )
     pub_date = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=settings.SLUG_LENGTH, default='', blank=True, editable=False)
 

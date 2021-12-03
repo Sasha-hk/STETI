@@ -132,10 +132,6 @@ const Navigation = () => {
                         pageName: 'Студенту',
                         url: '/study/for-students',
                     },
-                    {
-                        pageName: 'ЗНО',
-                        url: '/study/zno',
-                    },
                 ]
             },
         ]

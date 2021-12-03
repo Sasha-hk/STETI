@@ -4,12 +4,13 @@ import Grid from './Layouts/Grid'
 
 import { useRouter } from 'next/router'
 import Link from 'next/link' 
+import PanelNothing from './Panel/PanelNothing'
 
 
 const GridList = ({items, title, helpURL}) => {
     const router = useRouter()
 
-    if (items) {
+    if (items.length != 0) {
         return (
             <section className="container">
                 {
@@ -54,7 +55,15 @@ const GridList = ({items, title, helpURL}) => {
         )   
     } 
     else {
-        return null
+        return (
+            <section className="container">
+                {
+                    title && <h2>{title}</h2>
+                }
+                
+                <PanelNothing />
+            </section>
+        )
     }
 }
 

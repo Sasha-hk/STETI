@@ -12,6 +12,17 @@
     top: 0px;
     transition: var(--transition-regular);
 }
+.panel_nothing {
+    background: rgba(var(--color-panel-nothing), 0.2);
+    border: 2px solid rgb(var(--color-panel-nothing));
+    padding: 13px 15px;
+    width: 100%;
+    border-radius: var(--br-regular);
+}
+.panel_nothing span {
+    color: rgb(var(--color-panel-nothing));
+    font-weight: 500;
+}
 .panel span,
 .panel a {
     color: var(--color-muted);

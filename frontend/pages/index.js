@@ -13,6 +13,7 @@ import classes from '../styles/index.module.css'
 import HomePindeNews from '../components/Home/HomePinedNews'
 import GridList from '../components/GridList'
 import NewsBlock from '../components/Home/NewsBlock.jsx'
+import PanelNothing from '../components/Panel/PanelNothing'
 
 function Home({initialReduxState}) {
     const attachedNews = initialReduxState.news.attachedNews.records[0]

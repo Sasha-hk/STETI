@@ -10,6 +10,7 @@ import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
 import { NewsView } from '../../components/News/NewsItem.jsx'
 import Grid from '../../components/Layouts/Grid'
 import classes from '../../styles/nae.module.css'
+import PanelNothing from '../../components/Panel/PanelNothing'
 
 function NAE({initialReduxState}) {
     const news = initialReduxState.news.news
@@ -26,15 +27,22 @@ function NAE({initialReduxState}) {
 
             <div className="container">
                 <h2 className={classes.fix_title}>Новини та оголовшення</h2>
-                <Grid>
-                    {
-                        news.records.map(newsItem => {
-                            return (
-                                <NewsView newsItem={newsItem} key={newsItem.id} />
-                            )
-                        })
-                    }
-                </Grid>
+
+                {
+                    news.records.length
+                        ? (
+                            <Grid>
+                                {
+                                    news.records.map(newsItem => {
+                                        return (
+                                            <NewsView newsItem={newsItem} key={newsItem.id} />
+                                        )
+                                    })
+                                }
+                            </Grid>
+                        )
+                        : <PanelNothing />
+                }
             </div>
             
         </BaseLayout>

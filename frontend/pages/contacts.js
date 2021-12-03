@@ -4,6 +4,7 @@ import {uploadUsefulLinks, uploadPartners} from '../store/actions/aboutActions'
 import { uploadContactNumbers } from '../store/actions/aboutActions'
 import BaseLayout from '../components/Layouts/BaseLayout.jsx'
 import Grid from '../components/Layouts/Grid'
+import PanelNothing from '../components/Panel/PanelNothing'
 
 
 function Contacts({initialReduxState}) {
@@ -22,26 +23,34 @@ function Contacts({initialReduxState}) {
             <section className="container">
                 <h2>Контакти</h2>
 
-                <Grid>
-                    {
-                        contactNumbers.records.map(contactnumber => {
-                            return (
-                                <div 
-                                    key={contactnumber.id} 
-                                    style={
-                                        {
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                        }
-                                    }
-                                >
-                                    <b className='text-overflow'>{contactnumber.name}</b>
-                                    <i className='text-overflow'>{contactnumber.phone_number}</i>
-                                </div>
-                            )
-                        })
-                    }
-                </Grid>
+                {
+                    contactNumbers.records.length != 0
+                        ? (
+                            <Grid>
+                                {
+                                    contactNumbers.records.map(contactnumber => {
+                                        return (
+                                            <div 
+                                                key={contactnumber.id} 
+                                                style={
+                                                    {
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                    }
+                                                }
+                                            >
+                                                <b className='text-overflow'>{contactnumber.name}</b>
+                                                <i className='text-overflow'>{contactnumber.phone_number}</i>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </Grid>
+                        )
+                        : (
+                            <PanelNothing />
+                        )
+                }
             </section>
             
         </BaseLayout>

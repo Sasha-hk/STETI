@@ -8,6 +8,7 @@ import BaseLayout from '../../components/Layouts/BaseLayout.jsx'
 import { uploadAbout } from '../../store/actions/aboutActions'
 
 import Details from '../../components/Article/Details'
+import PanelNothing from '../../components/Panel/PanelNothing'
 
 
 function AboutUs({initialReduxState}) {
@@ -22,14 +23,24 @@ function AboutUs({initialReduxState}) {
                 }
             }
         >
-            
-            <Details
-                title='Про нас'
-                shortDescription='1945 - 2021' 
-                img={aboutUs.img ? aboutUs.img : null} 
-                body={aboutUs.first_paragraph}
-                
-            />
+
+            {
+                aboutUs 
+                    ? (
+                        <Details
+                            title='Про нас'
+                            shortDescription='1945 - 2021' 
+                            img={aboutUs.img ? aboutUs.img : null} 
+                            body={aboutUs.first_paragraph}
+                            
+                        />
+                    )
+                    : (
+                        <section className="container">
+                            <PanelNothing />
+                        </section>
+                    )
+            }
             
         </BaseLayout>
     )

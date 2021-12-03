@@ -4,6 +4,7 @@ import Grid from '../../components/Layouts/Grid.jsx'
 import { useRouter } from 'next/router'
 
 import classes from './library-view.module.css'
+import PanelNothing from '../Panel/PanelNothing'
 
 export const LibraryView = ({library}) => {
     const router = useRouter()
@@ -48,18 +49,25 @@ export const LibraryBlock = ({library, title}) => {
             {
                 title && <h2>{title}</h2>
             }
-            <Grid>
-                {
-                    library.map(item => {
-                        return (
-                            <LibraryView 
-                                key={item.id} 
-                                library={item}
-                            />
-                        )
-                    })
-                }
-            </Grid>
+
+            {
+                library.length != 0
+                    ? (
+                        <Grid>
+                            {
+                                library.map(item => {
+                                    return (
+                                        <LibraryView 
+                                            key={item.id} 
+                                            library={item}
+                                        />
+                                    )
+                                })
+                            }
+                        </Grid>
+                    )
+                    : <PanelNothing />
+            }
         </section>
     )
 }

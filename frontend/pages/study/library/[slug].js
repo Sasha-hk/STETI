@@ -7,6 +7,7 @@ import BaseLayout from '../../../components/Layouts/BaseLayout.jsx'
 import Grid from '../../../components/Layouts/Grid'
 import Link from 'next/link'
 import Panel from '../../../components/Panel/Panel'
+import PanelNothing from '../../../components/Panel/PanelNothing.jsx'
 
 
 function LibraryDetails({initialReduxState}) {
@@ -26,20 +27,27 @@ function LibraryDetails({initialReduxState}) {
                 {
                     libraryDetails.category_name && <h2>{libraryDetails.category_name}</h2>
                 }
-                <Grid>
-                    {
-                        libraryDetails.items.map(panelItem => {
-                            console.log(panelItem)
-                            return (
-                                <Link href={panelItem.link} key={panelItem.id}>
-                                    <a target="_blank">
-                                        <Panel title={panelItem.name} />
-                                    </a>
-                                </Link>
-                            )
-                        })
-                    }
-                </Grid>
+                
+                {
+                    libraryDetails.items.length != 0
+                        ? (
+                            <Grid>
+                                {
+                                    libraryDetails.items.map(panelItem => {
+                                        console.log(panelItem)
+                                        return (
+                                            <Link href={panelItem.link} key={panelItem.id}>
+                                                <a target="_blank">
+                                                    <Panel title={panelItem.name} />
+                                                </a>
+                                            </Link>
+                                        )
+                                    })
+                                }
+                            </Grid>
+                        )
+                        : <PanelNothing />
+                }
             </section>
 
         </BaseLayout>

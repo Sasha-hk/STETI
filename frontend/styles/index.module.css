@@ -88,7 +88,9 @@
 
 /* iPads, Tablets */
 @media only screen and (min-width: 0px) and (max-width: 768px) {
-
+    .header {
+        margin-bottom: 15px;
+    }
 }
 
 /* Mobile devices */

@@ -6,6 +6,7 @@ import classes from '../../styles/cyclic-commission/cyclic-commission.module.css
 import Panel from '../../components/Panel/Panel.jsx'
 
 import { uploadCyclicCommission } from '../../store/actions/cyclicCommissionActions'
+import PanelNothing from '../../components/Panel/PanelNothing'
 
 function CyclicCommission({initialReduxState}) {
     const cyclicCommissionList = initialReduxState.cyclicCommission.cyclicCommissionList
@@ -22,15 +23,21 @@ function CyclicCommission({initialReduxState}) {
             
             <div className="container">
                 <h2>Циклова комісія</h2>
-                <div className={classes.list_wrapper}>
-                    {
-                        cyclicCommissionList.records.map(item => {
-                            return (
-                                <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug} date={item.updated_at}/>
-                            )
-                        })
-                    }
-                </div>
+                {
+                    cyclicCommissionList.records.length != 0
+                        ? (
+                            <div className={classes.list_wrapper}>
+                                {
+                                    cyclicCommissionList.records.map(item => {
+                                        return (
+                                            <Panel key={item.id} title={item.name} href={'/cyclic-commission/' +  item.slug} date={item.updated_at}/>
+                                        )
+                                    })
+                                }
+                            </div>
+                        )
+                        : <PanelNothing />
+                }
             </div>
             
         </BaseLayout>

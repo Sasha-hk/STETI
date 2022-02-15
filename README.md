@@ -1,8 +1,8 @@
 # **Collage website**
 
-Recently I was denied the development of this site.
+🧊 Recently I was denied the development of this site.
 
-But I will leave this repository as an example of my work.
+✒️ But I will leave this repository as an example of my work.
 
 ## **Briefly about the website**
 
